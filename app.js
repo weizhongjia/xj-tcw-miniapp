@@ -28,7 +28,7 @@ App({
         if (res.code) {
           //发起网络请求
           wx.request({
-            url: 'https://group.mrourou.com/wx/user/_login?code=' + res.code,
+            url: 'https://group.mrourou.com/api/wx/user/_login?code=' + res.code,
             method: 'POST',
             success: response => {
               console.log(response)

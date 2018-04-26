@@ -14,11 +14,9 @@ Page({
   },
   onLoad: function () {
     if (app.globalData.token) {
-      this.getGroupList()
       this.updateUserInfo()
     } else {
       app.loginCallback = res => {
-        this.getGroupList()
         this.updateUserInfo()
       }
     }
@@ -27,27 +25,13 @@ Page({
       withShareTicket: true
     })
   },
-  getGroupList: function() {
-    var that = this
-    wx.request({
-      url: 'https://group.mrourou.com/wx/group',
-      header: {
-        'content-type': 'application/json', // 默认值
-        'wx-group-token': app.globalData.token
-      },
-      success: function (res) {
-        console.log(res.data)
-        that.setData({groupList:res.data.data.list})
-      }
-    })
-  },
   updateUserInfo: function(e) {
     wx.getUserInfo({
       withCredentials: true,
       success: res => {
         console.log(res)
         wx.request({
-          url: 'https://group.mrourou.com/wx/user',
+          url: 'https://group.mrourou.com/api/wx/user',
           header: {
             'content-type': 'application/json', // 默认值
             'wx-group-token': app.globalData.token
