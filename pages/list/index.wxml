@@ -1,0 +1,21 @@
+<view class=''>
+  <!-- <text>本周推荐</text> -->
+  <swiper indicator-dots='{{true}}' indicator-active-color='black' previous-margin='25rpx' next-margin='25rpx' autoplay='{{true}}' current='{{currentIndex}}'>
+    <swiper-item wx:for='{{MovieList}}' wx:key='item.name' style='position:relative'>
+      <text>第{{index+1}}周 {{item.name}}</text>
+      <image src='{{item.imagePath}}'></image>
+    </swiper-item>
+  </swiper>
+  <view class='movie-details-cont'>
+    <view class='movie-details' wx:for='{{MovieList}}' wx:key='item.name'>
+      <image src='{{item.imagePath}}'></image>
+      <view class='movie-details-info'>
+        <text data-title='title'>第{{index+1}}周 电影名称: {{item.name}}</text>
+        <text>点评：{{item.comment}}</text>
+        <text wx:if='{{item.isHighlyRecommended}}' >强烈推荐</text>
+      </view>
+    </view>
+    <button bindtap='func1'>click me {{count}}</button>
+  </view>
+
+</view>
