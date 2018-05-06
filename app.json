@@ -4,6 +4,8 @@
     "pages/mine/index",
     "pages/detail/index",
     "pages/list/index",
+    "pages/webSocket/index",
+    "pages/chat/chat",
     "pages/add/index"
   ],
   "window":{
@@ -25,6 +27,18 @@
         "text": "我的",
         "iconPath": "./res/mine.png",
         "selectedIconPath": "./res/mine1.png"
+      },
+      {
+        "pagePath": "pages/chat/chat",
+        "text": "我的聊天室",
+        "iconPath": "./res/good.png",
+        "selectedIconPath": "./res/good1.png"
+      },
+      {
+        "pagePath": "pages/webSocket/index",
+        "text": "我的聊天室2",
+        "iconPath": "./res/good.png",
+        "selectedIconPath": "./res/good1.png"
       }
     ],
     "backgroundColor": "#fff",

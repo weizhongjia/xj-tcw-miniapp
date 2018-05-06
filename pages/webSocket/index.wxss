@@ -1,0 +1,59 @@
+
+.selfMessage, .otherMessage {
+  position: relative;
+}
+.item::after,.item::before {
+  content:".";
+  display:block;
+  height:0;
+  clear:both;
+  visibility:hidden
+}
+.nameInfo {
+  display: inline-block;
+  font-size: 10px;
+  width: 80rpx;
+  height: 80rpx;
+}
+/* .selfMessage .nameInfo {
+  position: absolute;
+  right: 0px;
+}
+.selfMessage .detailMessage {
+  position: absolute;
+  right: 90rpx;
+} */
+/* .otherMessage .nameInfo {
+  position: absolute;
+  left: 0px;
+}
+.otherMessage .detailMessage {
+  position: absolute;
+  left: 90rpx;
+} */
+
+.selfMessage view {
+float: right;
+}
+.otherMessage view {
+float: left;
+}
+.selfMessage nameInfo {
+  text-align: right;
+}
+.detailMessage {
+  max-width: 590rpx;
+  font-size: 14px;
+  color: #fff;
+  background-color:#0fdd4b;
+  border-radius: 5px;
+  padding: 3px;
+  display: inline-block;
+}
+
+.bottomArea {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
