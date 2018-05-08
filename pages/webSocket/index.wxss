@@ -1,6 +1,7 @@
 
 .selfMessage, .otherMessage {
   position: relative;
+  overflow: auto;
 }
 .item::after,.item::before {
   content:".";
@@ -12,6 +13,11 @@
 .nameInfo {
   display: inline-block;
   font-size: 10px;
+  width: 80rpx;
+  height: 80rpx;
+  overflow: hidden;
+}
+.nameInfo .user-avatar {
   width: 80rpx;
   height: 80rpx;
 }
@@ -49,6 +55,10 @@ float: left;
   border-radius: 5px;
   padding: 3px;
   display: inline-block;
+  position: relative;
+  top: 4px;
+  margin-left: 4px;
+  margin-right: 4px;
 }
 
 .bottomArea {
