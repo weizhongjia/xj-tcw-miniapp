@@ -25,7 +25,7 @@ Page({
     wx.onSocketOpen(function (res) {
       console.log("连接服务器成功。");
       self.setData({
-        placeholderText: "连接服务器成功，请输入姓名。",
+        placeholderText: "连接服务器成功，请输入信息。",
         socketOpen: true
       });
     });
@@ -68,12 +68,27 @@ Page({
       });
     }
   },
-
   sendSocketMessage: function (msg) {
-    if (this.data.socketOpen) {
+    var self = this;
+    if (self.data.socketOpen) {
+      let message = {
+          type: 'self',
+          name: 'wang',
+          time: '2000-2-2',
+          message: msg
+        }
       wx.sendSocketMessage({
-        data: msg
+        data: {
+          type: 'self',
+          name: 'wang',
+          time: '2000-2-2',
+          message: message
+        }
       })
+
+      this.setData({
+        messageArray: self.data.messageArray.concat(message)
+      });
     }
   }
 });

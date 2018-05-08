@@ -57,3 +57,6 @@ float: left;
   left: 0;
   right: 0;
 }
+.item {
+  margin-top: 10px;
+}
