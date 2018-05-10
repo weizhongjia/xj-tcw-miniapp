@@ -1,3 +1,5 @@
+const client = require('../../utils/stompclient')
+const chatConfig = require('../../config/chatconfig')
 Page({
   data: {
     animate: true,
@@ -19,43 +21,39 @@ Page({
     inputValue: ""
   },
   onLoad: function (options) {
-    var self = this;
-    console.log("将要连接服务器。");
-    wx.connectSocket({
-      url: 'wss://group.mrourou.com/ws'
-    });
+    const self = this;
 
-    wx.onSocketOpen(function (res) {
-      console.log("连接服务器成功。");
-      self.setData({
-        placeholderText: "连接服务器成功，请输入信息。",
-        socketOpen: true
+      client.init(() => {
+        this.setData({
+            socketOpen:true,
+            placeholderText: "连接服务器成功，请输入信息。"
+        })
       });
-    });
-    wx.onSocketError(function (res) {
-      console.log('WebSocket连接打开失败，请检查！')
-    })
-    wx.onSocketMessage(function (res) {
-      console.log('收到服务器内容：' + res.data);
-      var data = res.data;
-      var dataArray = data.split("_");
-      var newMessage = {
-        // id
-        id:'id',
-        type: dataArray[0],
-        name: dataArray[1],
-        time: dataArray[2],
-        message: dataArray[3]
-      };
-      var newArray = self.data.messageArray.concat(newMessage);
-      self.setData({
-        messageArray: newArray,
-        placeholderText: "请输入信息",
-        num: newArray[newArray.length-1].id
-      });
-    });
-    //初始化滚动位置
-    this.setNum(this.data.messageArray)
+      client.connect('user', 'pass', function (sessionId) {
+          console.log('sessionId', sessionId)
+
+          client.subscribe(chatConfig.subcribeUrl, function (body, headers) {
+              console.log('From MQ:', body);
+              var data = JSON.parse(body.body);
+              console.log("data:" + data)
+              var newMessage = {
+                  // id
+                  id:'id',
+                  type: 'other',
+                  name: 'wang',
+                  time: '2000-2-2',
+                  message: data.content
+              };
+              var newArray = self.data.messageArray.concat(newMessage);
+              self.setData({
+                  messageArray: newArray,
+                  placeholderText: "请输入信息",
+                  num: newArray[newArray.length-1].id
+              });
+          });
+
+          client.send(chatConfig.sendMsgUrl, { priority: 9 }, JSON.stringify({name: 'zhongjia'}));
+      })
   },
   onUnload: function () {
     wx.closeSocket();
@@ -72,7 +70,7 @@ Page({
   },
 
   send: function () {
-    if (this.data.inputValue != "") {
+    if (this.data.inputValue !== "") {
       this.sendSocketMessage(this.data.inputValue);
       this.setData({
         inputValue: ""
@@ -90,9 +88,7 @@ Page({
           time: '2000-2-2',
           message: msg
         }
-      wx.sendSocketMessage({
-        data: message
-      })
+      client.send(chatConfig.sendMsgUrl, { priority: 9 }, JSON.stringify({name: msg}))
 
       this.setData({
         messageArray: self.data.messageArray.concat(message),
