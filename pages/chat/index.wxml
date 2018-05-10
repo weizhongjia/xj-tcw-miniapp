@@ -4,7 +4,7 @@
         <view wx:for="{{messageArray}}" wx:for-index="idx" wx:for-item="itemName" wx:key='itemName' class='item' id="msg{{itemName.id}}">
             <view class="selfMessage" wx:if="{{itemName.type == 'self'}}">
                 <view class="nameInfo">
-                  <image src='/res/index.png' class='user-avatar'></image>
+                  <image src="{{userInfo.avatarUrl}}" class='user-avatar'></image>
                 </view>
                 <view class="detailMessage">{{itemName.message}}</view>
             </view>

@@ -1,5 +1,5 @@
 const client = require('../../utils/stompclient')
-const chatConfig = require('../../config/chatconfig')
+const chatConfig = require('../../config/index')
 const app = getApp()
 const request = require('../../utils/request')
 
@@ -21,7 +21,8 @@ Page({
             message: '确实是确实是确实是确实是确实是确实是确实是确实是确实是确实是确实是确实是确实是确实是确实是确实是确实是确实是'
         }],
         socketOpen: false,
-        inputValue: ""
+        inputValue: "",
+        userInfo: {}
     },
     onLoad: function (options) {
         const self = this;
@@ -105,6 +106,7 @@ Page({
         }
     },
     updateUserInfo: function(e) {
+        const self = this
         wx.getUserInfo({
             withCredentials: true,
             success: res => {
@@ -116,7 +118,11 @@ Page({
                         iv: res.iv
                     },
                     success: function (res) {
-                        console.log(res.data)
+                        console.log(res)
+                        app.globalData.userInfo = res.data.data
+                        self.setData({
+                            userInfo: res.data.data
+                        })
                     }
                 })
             }

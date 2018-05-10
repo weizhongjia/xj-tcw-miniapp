@@ -1,5 +1,7 @@
 const Stomp = require('stomp.js').Stomp;
 const socketMsgQueue = []
+const app = getApp()
+const config = require('../config')
 let socketOpen = false;
 function sendSocketMessage(msg) {
     console.log('send msg:')
@@ -22,7 +24,7 @@ Stomp.clearInterval = function () { }
 const client = Stomp.over(ws);
 client.init = function (callback) {
     wx.connectSocket({
-        url: 'ws://localhost:8080/ws'
+        url: config.webSocketProtocol+config.host+'/ws'
     })
     wx.onSocketOpen(function (res) {
         console.log('WebSocket连接已打开！')

@@ -11,9 +11,6 @@ AV.init({
 
 
 App({
-  config: {
-    host: 'group.mrourou.com'
-  },
   onLaunch: function () {
     var token = wx.getStorageSync('token')
     var that = this
