@@ -1,6 +1,5 @@
-//index.js
-//获取应用实例
 const app = getApp()
+const request = require('../../utils/request')
 
 Page({
   data: {
@@ -20,23 +19,14 @@ Page({
         this.updateUserInfo()
       }
     }
-    
-    wx.showShareMenu({
-      withShareTicket: true
-    })
   },
   updateUserInfo: function(e) {
     wx.getUserInfo({
       withCredentials: true,
       success: res => {
         console.log(res)
-        wx.request({
-          url: 'https://group.mrourou.com/api/wx/user',
-          header: {
-            'content-type': 'application/json', // 默认值
-            'wx-group-token': app.globalData.token
-          },
-          method:"POST",
+        request({
+          url: '/api/wx/user',
           data:{
             encryptedData: res.encryptedData,
             iv: res.iv
@@ -46,12 +36,6 @@ Page({
           }
         })
       }
-    })
-  },
-  //自己定义的方法
-  toDetail: function(){
-    wx.navigateTo({
-      url: "/pages/detail/index"
     })
   },
   onShareAppMessage: function (res) {
