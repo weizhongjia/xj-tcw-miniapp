@@ -1,7 +1,7 @@
 const Stomp = require('stomp.js').Stomp;
 const socketMsgQueue = []
 const app = getApp()
-const config = require('../config')
+const config = require('../config/index')
 let socketOpen = false;
 function sendSocketMessage(msg) {
     console.log('send msg:')

@@ -1,5 +1,5 @@
 const app = getApp()
-const config = require('../config')
+const config = require('../config/index')
 module.exports = function (obj) {
     obj['header'] = obj.head || {};
     obj.header['content-type'] = obj.header['content-type'] || "application/json"
