@@ -26,6 +26,8 @@
                 <input type="text" placeholder="{{placeholderText}}" class="message" bindinput="bindKeyInput"/>
             </view>
             <button size="default" type="primary" form-type="reset" class="sendButton">发送</button>
+
         </form>
+        <button size="default" type="primary" open-type="getUserInfo" bindgetuserinfo="updateUserInfo" class="sendButton">登录</button>
     </view>
 </view>

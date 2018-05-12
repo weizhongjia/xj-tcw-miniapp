@@ -27,11 +27,11 @@ Page({
     onLoad: function (options) {
         const self = this;
         if (app.globalData.token) {
-            this.updateUserInfo()
+            // this.updateUserInfo()
             this.initStompClient()
         } else {
             app.loginCallback = res => {
-                this.updateUserInfo()
+                // this.updateUserInfo()
                 this.initStompClient()
             }
         }
@@ -105,26 +105,21 @@ Page({
             });
         }
     },
-    updateUserInfo: function(e) {
-        const self = this
-        wx.getUserInfo({
-            withCredentials: true,
-            success: res => {
+    updateUserInfo: function(res) {
+        console.log(res)
+        app.globalData.userInfo = res.detail.userInfo
+        this.setData({
+            userInfo: res.detail.userInfo
+        })
+        request({
+            url: '/api/wx/user',
+            data:{
+                encryptedData: res.encryptedData,
+                iv: res.iv
+            },
+            success: function (res) {
                 console.log(res)
-                request({
-                    url: '/api/wx/user',
-                    data:{
-                        encryptedData: res.encryptedData,
-                        iv: res.iv
-                    },
-                    success: function (res) {
-                        console.log(res)
-                        app.globalData.userInfo = res.data.data
-                        self.setData({
-                            userInfo: res.data.data
-                        })
-                    }
-                })
+
             }
         })
     }
