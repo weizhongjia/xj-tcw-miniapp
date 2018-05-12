@@ -27,11 +27,11 @@ Page({
     onLoad: function (options) {
         const self = this;
         if (app.globalData.token) {
-            // this.updateUserInfo()
+            this.checkUserInfo()
             this.initStompClient()
         } else {
             app.loginCallback = res => {
-                // this.updateUserInfo()
+                this.checkUserInfo()
                 this.initStompClient()
             }
         }
@@ -105,17 +105,35 @@ Page({
             });
         }
     },
+    checkUserInfo: function (e) {
+        wx.getUserInfo({
+            withCredentials: true,
+            success: res => {
+                app.globalData.userInfo = res.userInfo
+                this.setData({
+                    userInfo: res.userInfo
+                })
+                this.sendEncryptedData(res.encryptedData, res.iv)
+            },
+            fail: res => {
+                console.log(res)
+            }
+        })
+    },
     updateUserInfo: function(res) {
         console.log(res)
         app.globalData.userInfo = res.detail.userInfo
         this.setData({
             userInfo: res.detail.userInfo
         })
+        this.sendEncryptedData(res.encryptedData, res.iv)
+    },
+    sendEncryptedData: function (encryptedData, iv) {
         request({
             url: '/api/wx/user',
             data:{
-                encryptedData: res.encryptedData,
-                iv: res.iv
+                encryptedData: encryptedData,
+                iv: iv
             },
             success: function (res) {
                 console.log(res)
