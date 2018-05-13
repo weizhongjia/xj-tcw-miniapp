@@ -7,20 +7,15 @@ Page({
     data: {
         animate: true,
         placeholderText: "连接服务器中...",
-        messageArray: [{
-            id:'0',
-            type: 'self',
-            name: 'wang',
-            time: '2000-2-2',
-            message: 'zhongjiashigedashabi'
-        }, {
-            id:'1',
-            type: 'else',
-            name: 'wang',
-            avatarUrl:'',
-            time: '2000-2-2',
-            message: '确实是确实是确实是确实是确实是确实是确实是确实是确实是确实是确实是确实是确实是确实是确实是确实是确实是确实是'
-        }],
+        messageArray: [
+        //   {
+        //     id:'0',
+        //     type: 'self',
+        //     name: 'wang',
+        //     time: '2000-2-2',
+        //     message: 'zhongjiashigedashabi'
+        // }
+        ],
         socketOpen: false,
         inputValue: "",
         userInfo: {},
