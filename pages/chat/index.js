@@ -61,15 +61,16 @@ Page({
         });
         client.connect({'wx-group-token':app.globalData.token}, function (sessionId) {
             client.subscribe(chatConfig.subcribeUrl+'/'+self.data.roomId, function (body, headers) {
-                var data = JSON.parse(body.body);
-                console.log(data.data);
+                var data = JSON.parse(body.body).data;
+                console.log(data);
                 var newMessage = {
                     id: data.message.id,
                     type: 'other',
                     name: data.user.nikename,
                     time: 'message.sendTime',
-                    message: data.type === 'TEXT' ? 'data.message.detail' : ''
+                    message: data.message.type === 'TEXT' ? data.message.detail : ''
                 };
+                newMessage.type = data.user.openid === self.data.userInfo.openId ? 'self' : 'other';
                 var newArray = self.data.messageArray.concat(newMessage);
                 self.setData({
                     messageArray: newArray,
@@ -99,12 +100,12 @@ Page({
               time: '2000-2-2',
               message: msg
             }
-            client.send(chatConfig.sendMsgUrl, { priority: 9 }, JSON.stringify({type: 'TEXT', detail: msg}))
+            client.send(chatConfig.sendMsgUrl+'/'+self.data.roomId, { priority: 9 }, JSON.stringify({type: 'TEXT', detail: msg}))
 
-            this.setData({
-                messageArray: self.data.messageArray.concat(message),
-                num: lastnum+1
-            });
+            // this.setData({
+            //     messageArray: self.data.messageArray.concat(message),
+            //     num: lastnum+1
+            // });
         }
     },
     checkUserInfo: function (e) {
