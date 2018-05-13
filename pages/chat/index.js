@@ -62,6 +62,7 @@ Page({
         client.connect('user', 'pass', function (sessionId) {
             client.subscribe(chatConfig.subcribeUrl+'/'+self.data.roomId, function (body, headers) {
                 var data = JSON.parse(body.body);
+                console.log(data);
                 var newMessage = {
                     // id
                     id:'id',
@@ -99,7 +100,7 @@ Page({
               time: '2000-2-2',
               message: msg
             }
-            client.send(chatConfig.sendMsgUrl, { priority: 9 }, JSON.stringify({name: msg}))
+            client.send(chatConfig.sendMsgUrl, { priority: 9 }, JSON.stringify({type: 'TEXT', detail: msg}))
 
             this.setData({
                 messageArray: self.data.messageArray.concat(message),
@@ -128,7 +129,7 @@ Page({
         this.setData({
             userInfo: res.detail.userInfo
         })
-        this.sendEncryptedData(res.encryptedData, res.iv)
+        this.sendEncryptedData(res.detail.encryptedData, res.detail.iv)
     },
     sendEncryptedData: function (encryptedData, iv) {
         request({
