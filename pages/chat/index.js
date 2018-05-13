@@ -78,7 +78,7 @@ Page({
                     num: newArray[newArray.length-1].id
                 });
             });
-            client.send(chatConfig.sendMsgUrl+'/'+self.data.roomId, { priority: 9 }, JSON.stringify({name: 'zhongjia'}));
+            client.send(chatConfig.sendMsgUrl+'/'+self.data.roomId, { priority: 9 }, JSON.stringify({type: 'TEXT', detail: "zhongjia"}));
         })
     },
     send: function () {
