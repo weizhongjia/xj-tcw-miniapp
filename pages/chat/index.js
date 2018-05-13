@@ -23,7 +23,6 @@ Page({
         isLogin: false,
     },
     onLoad: function (options) {
-        const self = this;
         this.data.roomId = options.roomId;
         if (app.globalData.token) {
             this.checkUserInfo()
@@ -88,21 +87,10 @@ Page({
     },
     sendSocketMessage: function (msg) {
         var self = this;
-        let lastnum = self.data.messageArray[self.data.messageArray.length-1].id
         if (self.data.socketOpen) {
-            let message = {
-              id: lastnum+1,
-              type: 'self',
-              name: 'wang',
-              time: '2000-2-2',
-              message: msg
-            }
-            client.send(chatConfig.sendMsgUrl+'/'+self.data.roomId, { priority: 9 }, JSON.stringify({type: 'TEXT', detail: msg}))
-
-            // this.setData({
-            //     messageArray: self.data.messageArray.concat(message),
-            //     num: lastnum+1
-            // });
+            client.send(chatConfig.sendMsgUrl+'/'+self.data.roomId,
+                { priority: 9 },
+                JSON.stringify({type: 'TEXT', detail: msg}))
         }
     },
     checkUserInfo: function (e) {
@@ -133,6 +121,10 @@ Page({
             },
             success: function (res) {
                 console.log(res)
+                if (res.data.code !== 200) {
+                    wx.removeStorageSync('token')
+                    wx.showModal({title: '提示', content:'session过期，请退出小程序重新进入', showCancel:false})
+                }
                 app.globalData.userInfo = res.data.data
                 self.setData({
                     userInfo: res.data.data,
