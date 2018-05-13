@@ -76,7 +76,6 @@ Page({
                     num: newArray[newArray.length-1].id
                 });
             });
-            client.send(chatConfig.sendMsgUrl+'/'+self.data.roomId, { priority: 9 }, JSON.stringify({type: 'TEXT', detail: "zhongjia"}));
         })
     },
     send: function () {
@@ -134,12 +133,6 @@ Page({
             },
             success: function (res) {
                 console.log(res)
-                if (res.data.code !== 200) {
-                    wx.removeStorageSync('token')
-                    wx.reLaunch({
-                        url: '/pages/chat/index?roomId=' + self.roomId
-                    })
-                }
                 app.globalData.userInfo = res.data.data
                 self.setData({
                     userInfo: res.data.data,
