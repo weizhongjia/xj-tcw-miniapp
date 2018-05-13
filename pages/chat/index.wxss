@@ -92,7 +92,7 @@ float: left;
   border-radius: 10px;
   padding: 5px 4px 5px;
   background-color: #f2f3f7;
-  margin: 5px 0;
+  margin: 8px 0;
 }
 .placeholder-btn {
   color: #a0a1a5;

@@ -21,7 +21,7 @@ Page({
         userInfo: {},
         roomId: -1,
         isLogin: false,
-        focusHeight: '4px'
+        focusHeight: '8px'
     },
     onLoad: function (options) {
         this.data.roomId = options.roomId;
