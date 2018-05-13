@@ -42,6 +42,25 @@ float: left;
 .selfMessage .detailMessage {
   background-color: #7c7ce1;
   color: #fff;
+  z-index: 100;
+}
+.detailMessage::after {
+  content: '';
+  position: absolute;
+  top: 7px;
+  display: block;
+  height: 8px;
+  width: 8px;
+  transform: rotate(135deg);
+  border: 0
+}
+.selfMessage .detailMessage::after {
+  right: -5px;
+  background-color: #7c7ce1;
+}
+.otherMessage .detailMessage::after {
+  left: -5px;
+  background-color: #f3f3f3;
 }
 .otherMessage .detailMessage {
   background-color: #f3f3f3;
