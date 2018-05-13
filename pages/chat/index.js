@@ -111,10 +111,6 @@ Page({
         wx.getUserInfo({
             withCredentials: true,
             success: res => {
-                app.globalData.userInfo = res.userInfo
-                this.setData({
-                    userInfo: res.userInfo
-                })
                 this.sendEncryptedData(res.encryptedData, res.iv)
             },
             fail: res => {
@@ -124,13 +120,10 @@ Page({
     },
     updateUserInfo: function(res) {
         console.log(res)
-        app.globalData.userInfo = res.detail.userInfo
-        this.setData({
-            userInfo: res.detail.userInfo
-        })
         this.sendEncryptedData(res.detail.encryptedData, res.detail.iv)
     },
     sendEncryptedData: function (encryptedData, iv) {
+        let self = this
         request({
             url: '/api/wx/user',
             data:{
@@ -139,7 +132,10 @@ Page({
             },
             success: function (res) {
                 console.log(res)
-
+                app.globalData.userInfo = res.data.data
+                self.setData({
+                    userInfo: res.data.data
+                })
             }
         })
     },
