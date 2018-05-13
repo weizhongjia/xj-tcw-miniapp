@@ -49,17 +49,17 @@ float: left;
   position: absolute;
   top: 7px;
   display: block;
-  height: 8px;
-  width: 8px;
+  height: 10px;
+  width: 10px;
   transform: rotate(135deg);
   border: 0
 }
 .selfMessage .detailMessage::after {
-  right: -5px;
+  right: -4px;
   background-color: #7c7ce1;
 }
 .otherMessage .detailMessage::after {
-  left: -5px;
+  left: -4px;
   background-color: #f3f3f3;
 }
 .otherMessage .detailMessage {
@@ -105,8 +105,9 @@ float: left;
   width: 100vw;
 }
 .scroll-container {
+  padding-top: 5px;
   width: 100%;
-  height: calc(100% - 180rpx);
+  height: calc(100% - 53.25px);
   background: #fff;
   margin-bottom: -100px;
 }
