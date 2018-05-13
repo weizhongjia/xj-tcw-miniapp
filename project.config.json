@@ -20,8 +20,16 @@
 			"current": -1,
 			"list": []
 		},
-		"miniprogram": {
+		"plugin": {
 			"current": -1,
+			"list": []
+		},
+		"game": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 1,
 			"list": [
 				{
 					"id": -1,
@@ -29,6 +37,12 @@
 					"pathName": "pages/add/index",
 					"query": "",
 					"scene": "1008"
+				},
+				{
+					"id": -1,
+					"name": "第一个房间编译",
+					"pathName": "pages/chat/index",
+					"query": "roomId=1"
 				}
 			]
 		}

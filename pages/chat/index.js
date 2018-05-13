@@ -22,10 +22,12 @@ Page({
         }],
         socketOpen: false,
         inputValue: "",
-        userInfo: {}
+        userInfo: {},
+        roomId: -1
     },
     onLoad: function (options) {
         const self = this;
+        this.data.roomId = options.roomId;
         if (app.globalData.token) {
             this.checkUserInfo()
             this.initStompClient()
@@ -58,7 +60,7 @@ Page({
             })
         });
         client.connect('user', 'pass', function (sessionId) {
-            client.subscribe(chatConfig.subcribeUrl, function (body, headers) {
+            client.subscribe(chatConfig.subcribeUrl+'/'+self.data.roomId, function (body, headers) {
                 var data = JSON.parse(body.body);
                 var newMessage = {
                     // id
@@ -75,7 +77,7 @@ Page({
                     num: newArray[newArray.length-1].id
                 });
             });
-            client.send(chatConfig.sendMsgUrl, { priority: 9 }, JSON.stringify({name: 'zhongjia'}));
+            client.send(chatConfig.sendMsgUrl+'/'+self.data.roomId, { priority: 9 }, JSON.stringify({name: 'zhongjia'}));
         })
     },
     send: function () {
