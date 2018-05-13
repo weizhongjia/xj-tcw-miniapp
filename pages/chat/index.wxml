@@ -22,8 +22,8 @@
 
     <view class="bottomArea">
          <!-- <form bindreset="send">  -->
-         <form> 
-            <view class="inputArea">
+         <form wx:if="{{isLogin}}"> 
+            <view class="inputArea" >
                 <input type="text" placeholder="{{placeholderText}}" placeholder-class='placeholder-btn' class="message" bindinput="bindKeyInput" bindconfirm="send"  value="{{inputValue}}"/>
                 <view class='btn-group'>
                   <view class='emoj-btn' bindtap='showEmoj'>
@@ -36,6 +36,16 @@
             </view>
               <!-- <button size="default" type="primary" form-type="reset" class="sendButton">发送</button>   -->
         </form>
-         <!-- <button size="default" type="primary" open-type="getUserInfo" bindgetuserinfo="updateUserInfo" class="sendButton">登录</button>  -->
+        <view class='login-btn' wx:else>
+          <button size="default" type="default" open-type="getUserInfo" bindgetuserinfo="updateUserInfo" class="sendButton"  >请输入</button>
+          <view class='btn-group'>
+            <view class='emoj-btn' bindtap='showEmoj'>
+              <image src='/res/emoj.png'></image>
+            </view>
+            <view class='photo-btn'>
+              <image src='/res/photo.png'></image>
+            </view>
+          </view>        
+        </view>
     </view>
 </view>

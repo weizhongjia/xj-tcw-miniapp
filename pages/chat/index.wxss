@@ -113,3 +113,12 @@ float: left;
   display: flex;
   padding-left: 10px;
 }
+.login-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.login-btn button {
+  flex: 1;
+  /* border-radius: 10px; */
+}
