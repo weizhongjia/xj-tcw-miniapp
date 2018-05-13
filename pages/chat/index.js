@@ -21,6 +21,7 @@ Page({
         userInfo: {},
         roomId: -1,
         isLogin: false,
+        focusHeight: '4px'
     },
     onLoad: function (options) {
         const self = this;
@@ -150,5 +151,10 @@ Page({
     },
     showEmoj() {
       console.log()
+    },
+    focus(e) {
+      // this.setData({
+      //   focusHeight: '10px'
+      // })
     }
 });

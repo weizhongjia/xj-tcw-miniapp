@@ -79,20 +79,20 @@ float: left;
 }
 
 .bottomArea {
-  position: absolute;
+   position: absolute; 
   bottom: 0;
   left: 0;
   right: 0;
   background: #fff;
   border-top: 1px solid #f2f1f6;
-  padding: 8px 10px;
-
+  padding: 2px 10px;
 }
 .bottomArea input {
   background: white;
   border-radius: 10px;
-  padding: 5px 4px;
+  padding: 5px 4px 5px;
   background-color: #f2f3f7;
+  margin: 5px 0;
 }
 .placeholder-btn {
   color: #a0a1a5;
