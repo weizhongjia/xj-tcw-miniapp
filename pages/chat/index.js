@@ -23,7 +23,8 @@ Page({
         socketOpen: false,
         inputValue: "",
         userInfo: {},
-        roomId: -1
+        roomId: -1,
+        isLogin: false,
     },
     onLoad: function (options) {
         const self = this;
@@ -116,6 +117,9 @@ Page({
             },
             fail: res => {
                 console.log(res)
+                this.setData({
+                  isLogin: false,
+                })
             }
         })
     },
@@ -135,12 +139,13 @@ Page({
                 console.log(res)
                 app.globalData.userInfo = res.data.data
                 self.setData({
-                    userInfo: res.data.data
+                    userInfo: res.data.data,
+                    isLogin: true
                 })
             }
         })
     },
     showEmoj() {
-      console.log('待开发')
+      console.log()
     }
 });
