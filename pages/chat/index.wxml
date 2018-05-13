@@ -11,7 +11,7 @@
             <view class="otherMessage" wx:else>
                 <view class="nameInfo">
                 <!-- {{itemName.name+ " " }} -->
-                  <image src='/res/index.png' class='user-avatar'></image>
+                  <image src='{{itemName.avatarUrl}}' class='user-avatar'></image>
                 </view>
                 <view class="detailMessage">{{itemName.message}}</view>
             </view>

@@ -17,6 +17,7 @@ Page({
             id:'1',
             type: 'else',
             name: 'wang',
+            avatarUrl:'',
             time: '2000-2-2',
             message: '确实是确实是确实是确实是确实是确实是确实是确实是确实是确实是确实是确实是确实是确实是确实是确实是确实是确实是'
         }],
@@ -69,6 +70,7 @@ Page({
                     type: 'other',
                     name: data.user.nikename,
                     time: 'message.sendTime',
+                    avatarUrl: data.user.avatarurl,
                     message: data.message.type === 'TEXT' ? data.message.detail : ''
                 };
                 newMessage.type = data.user.openid === self.data.userInfo.openId ? 'self' : 'other';
