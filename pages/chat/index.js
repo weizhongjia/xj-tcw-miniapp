@@ -59,7 +59,7 @@ Page({
                 placeholderText: "连接服务器成功，请输入信息。"
             })
         });
-        client.connect('user', 'pass', function (sessionId) {
+        client.connect({'wx-group-token':app.globalData.token}, function (sessionId) {
             client.subscribe(chatConfig.subcribeUrl+'/'+self.data.roomId, function (body, headers) {
                 var data = JSON.parse(body.body);
                 console.log(data.data);
