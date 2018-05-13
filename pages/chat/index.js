@@ -139,6 +139,12 @@ Page({
             },
             success: function (res) {
                 console.log(res)
+                if (res.data.code !== 200) {
+                    wx.removeStorageSync('token')
+                    wx.reLaunch({
+                        url: '/pages/chat/index?roomId=' + self.roomId
+                    })
+                }
                 app.globalData.userInfo = res.data.data
                 self.setData({
                     userInfo: res.data.data,

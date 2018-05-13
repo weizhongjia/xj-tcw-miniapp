@@ -24,7 +24,22 @@ Stomp.clearInterval = function () { }
 const client = Stomp.over(ws);
 client.init = function (callback) {
     wx.connectSocket({
-        url: config.webSocketProtocol+config.host+'/ws'
+        url: config.webSocketProtocol+config.host+'/ws',
+        header:{
+            'Session-Id': 'xxxxxxxx'
+        },
+        success: res => {
+            console.log("open socket fail")
+            console.log(res)
+        },
+        fail: res => {
+            console.log("open socket fail")
+            console.log(res)
+        },
+        complete: res => {
+            console.log("open socket complete")
+            console.log(res)
+        }
     })
     wx.onSocketOpen(function (res) {
         console.log('WebSocket连接已打开！')

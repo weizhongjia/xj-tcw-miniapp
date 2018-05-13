@@ -8,6 +8,9 @@ App({
           that.login()
         } else {
           that.globalData.token = token
+            if (that.loginCallback){
+                that.loginCallback()
+            }
         }
       },
       fail: function () {
