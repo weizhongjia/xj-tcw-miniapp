@@ -64,15 +64,19 @@ float: left;
   bottom: 0;
   left: 0;
   right: 0;
-  background: #6376d8;
+  background: #fff;
+  border-top: 1px solid #f2f1f6;
+  padding: 8px 10px;
 
 }
 .bottomArea input {
   background: white;
-  margin: 5px;
-  border-radius: 5px;
-  margin-left: 5px;
-  margin-right: 5px;
+  border-radius: 10px;
+  padding: 5px 4px;
+  background-color: #f2f3f7;
+}
+.placeholder-btn {
+  color: #a0a1a5;
 }
 .item {
   margin-top: 10px;
@@ -86,4 +90,26 @@ float: left;
   height: calc(100% - 180rpx);
   background: #fff;
   margin-bottom: -100px;
+}
+.emoj-btn,.photo-btn {
+  width: 30px;
+  height: 30px;
+  margin-left: 10px;
+  overflow: hidden;
+}
+.emoj-btn image,.photo-btn image{
+  width: 30px;
+  height: 30px;
+}
+.inputArea {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.inputArea input {
+  flex: 1
+}
+.btn-group {
+  display: flex;
+  padding-left: 10px;
 }

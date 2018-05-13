@@ -1,7 +1,10 @@
 module.exports = {
     subcribeUrl: '/topic/room',
     sendMsgUrl: '/app/send/text',
-    httpProtocol: 'http://',
-    webSocketProtocol: 'ws://',
-    host: 'localhost:8080'
+    // httpProtocol: 'http://',
+    httpProtocol: 'https://',
+    // webSocketProtocol: 'ws://',
+    webSocketProtocol: 'wss://',
+    // host: 'localhost:8080'
+    host: 'group.mrourou.com'
 }

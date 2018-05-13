@@ -62,14 +62,13 @@ Page({
         client.connect('user', 'pass', function (sessionId) {
             client.subscribe(chatConfig.subcribeUrl+'/'+self.data.roomId, function (body, headers) {
                 var data = JSON.parse(body.body);
-                console.log(data);
+                console.log(data.data);
                 var newMessage = {
-                    // id
-                    id:'id',
+                    id: data.message.id,
                     type: 'other',
-                    name: 'wang',
-                    time: '2000-2-2',
-                    message: data.content
+                    name: data.user.nikename,
+                    time: 'message.sendTime',
+                    message: data.type === 'TEXT' ? 'data.message.detail' : ''
                 };
                 var newArray = self.data.messageArray.concat(newMessage);
                 self.setData({
@@ -143,5 +142,8 @@ Page({
 
             }
         })
+    },
+    showEmoj() {
+      console.log('待开发')
     }
 });
