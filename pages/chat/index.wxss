@@ -10,34 +10,26 @@
   clear:both;
   visibility:hidden
 }
+
+.selfMessage .nameInfo {
+  margin-right: 10px;
+}
+.otherMessage .nameInfo {
+  margin-left: 10px;
+}
+
 .nameInfo {
   display: inline-block;
   font-size: 10px;
   width: 80rpx;
   height: 80rpx;
+  border-radius: 50%;
   overflow: hidden;
 }
 .nameInfo .user-avatar {
   width: 80rpx;
   height: 80rpx;
 }
-/* .selfMessage .nameInfo {
-  position: absolute;
-  right: 0px;
-}
-.selfMessage .detailMessage {
-  position: absolute;
-  right: 90rpx;
-} */
-/* .otherMessage .nameInfo {
-  position: absolute;
-  left: 0px;
-}
-.otherMessage .detailMessage {
-  position: absolute;
-  left: 90rpx;
-} */
-
 .selfMessage view {
 float: right;
 }
@@ -47,18 +39,24 @@ float: left;
 .selfMessage nameInfo {
   text-align: right;
 }
-.detailMessage {
-  max-width: 590rpx;
-  font-size: 14px;
+.selfMessage .detailMessage {
+  background-color: #7c7ce1;
   color: #fff;
-  background-color:#0fdd4b;
+}
+.otherMessage .detailMessage {
+  background-color: #f3f3f3;
+  color: #3c3c3c;
+}
+.detailMessage {
+  max-width: 560rpx;
+  font-size: 13px;
   border-radius: 5px;
-  padding: 3px;
+  padding: 8px;
   display: inline-block;
   position: relative;
   top: 4px;
-  margin-left: 4px;
-  margin-right: 4px;
+  margin-left: 8px;
+  margin-right: 8px;
 }
 
 .bottomArea {
