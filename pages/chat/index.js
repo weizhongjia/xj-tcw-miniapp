@@ -20,7 +20,7 @@ Page({
         inputValue: "",
         userInfo: {},
         roomId: -1,
-        isLogin: false,
+        isLogin: false, //判断是否登录，显示/隐藏登录btn
         focusHeight: '8px'
     },
     onLoad: function (options) {
@@ -36,18 +36,15 @@ Page({
         }
     },
     onUnload: function () {
+        // 关闭socket
         wx.closeSocket();
-    },
-    setNum(data) {
-        this.setData({
-            num: data[data.length-1].id
-        })
     },
     bindKeyInput: function (e) {
         this.setData({
             inputValue: e.detail.value
         });
     },
+    // 连接websocket聊天 接受广播信息
     initStompClient: function () {
         const self = this;
         client.init(() => {
@@ -69,7 +66,7 @@ Page({
                     message: data.message.type === 'TEXT' ? data.message.detail : ''
                 };
                 newMessage.type = data.user.openid === self.data.userInfo.openId ? 'self' : 'other';
-                var newArray = self.data.messageArray.concat(newMessage);
+                var newArray = [...self.data.messageArray,newMessage];
                 self.setData({
                     messageArray: newArray,
                     placeholderText: "请输入信息",
@@ -86,6 +83,7 @@ Page({
           });
         }
     },
+    // 发送websocket信息
     sendSocketMessage: function (msg) {
         var self = this;
         if (self.data.socketOpen) {
@@ -96,22 +94,27 @@ Page({
     },
     checkUserInfo: function (e) {
         wx.getUserInfo({
+            // 带上登录信息
             withCredentials: true,
             success: res => {
+                // 成功获取用户信息
                 this.sendEncryptedData(res.encryptedData, res.iv)
             },
             fail: res => {
                 console.log(res)
+                // 显示登录按钮，引导登录
                 this.setData({
                   isLogin: false,
                 })
             }
         })
     },
+    // 手动授权登录
     updateUserInfo: function(res) {
         console.log(res)
         this.sendEncryptedData(res.detail.encryptedData, res.detail.iv)
     },
+    // 获取用户信息
     sendEncryptedData: function (encryptedData, iv) {
         let self = this
         request({
@@ -123,6 +126,7 @@ Page({
             success: function (res) {
                 console.log(res)
                 if (res.data.code !== 200) {
+                    // 不成功删掉token让其重新进入
                     wx.removeStorageSync('token')
                     wx.showModal({title: '提示', content:'session过期，请退出小程序重新进入', showCancel:false})
                 }
