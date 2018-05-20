@@ -8,3 +8,10 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
+.clearfix::after {
+  display: block;
+  content: '';
+  height: 0;
+  visibility: hidden;
+  clear: both;
+}

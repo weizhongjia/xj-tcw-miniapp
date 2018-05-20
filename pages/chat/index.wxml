@@ -1,9 +1,9 @@
 <view class="pageContainer">
     <!-- <view class="topArea"> -->
-    <scroll-view scroll-y="{{animate}}" scroll-with-animation="{{animate}}" class="scroll-container" scroll-top="9999999999" scroll-into-view="msg{{num}}">
+    <scroll-view scroll-y="{{animate}}" scroll-with-animation="{{animate}}" class="scroll-container"  scroll-into-view="msg{{num}}">
         <view wx:for="{{messageArray}}" wx:for-index="idx" wx:for-item="itemName" wx:key='itemName' class='item' id="msg{{itemName.id}}">
         <!--自己  -->
-            <view class="selfMessage" wx:if="{{itemName.type == 'self'}}">
+            <view class="selfMessage clearfix" wx:if="{{itemName.type == 'self'}}">
                 <view class="nameInfo">
                   <image src="{{userInfo.avatarUrl}}" class='user-avatar'></image>
                 </view>
@@ -11,7 +11,7 @@
                 <image src="{{itemName.message}}"  wx:else class='detailImage' mode='scaleToFill'></image>
             </view>
             <!--别人  -->
-            <view class="otherMessage" wx:else>
+            <view class="otherMessage clearfix" wx:else>
                 <view class="nameInfo">
                 <!-- {{itemName.name+ " " }} -->
                   <image src='{{itemName.avatarUrl}}' class='user-avatar'></image>
