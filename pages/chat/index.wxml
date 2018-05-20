@@ -2,18 +2,22 @@
     <!-- <view class="topArea"> -->
     <scroll-view scroll-y="{{animate}}" scroll-with-animation="{{animate}}" class="scroll-container" scroll-top="9999999999" scroll-into-view="msg{{num}}">
         <view wx:for="{{messageArray}}" wx:for-index="idx" wx:for-item="itemName" wx:key='itemName' class='item' id="msg{{itemName.id}}">
+        <!--自己  -->
             <view class="selfMessage" wx:if="{{itemName.type == 'self'}}">
                 <view class="nameInfo">
                   <image src="{{userInfo.avatarUrl}}" class='user-avatar'></image>
                 </view>
-                <view class="detailMessage">{{itemName.message}}</view>
+                <view class="detailMessage" wx:if="{{itemName.isText}}">{{itemName.message}}</view>
+                <image src="{{itemName.message}}"  wx:else class='detailImage' mode='scaleToFill'></image>
             </view>
+            <!--别人  -->
             <view class="otherMessage" wx:else>
                 <view class="nameInfo">
                 <!-- {{itemName.name+ " " }} -->
                   <image src='{{itemName.avatarUrl}}' class='user-avatar'></image>
                 </view>
-                <view class="detailMessage">{{itemName.message}}</view>
+                <view class="detailMessage" wx:if="{{itemName.isText}}">{{itemName.message}}</view>
+                <image src="{{itemName.message}}" wx:else class='detailImage' mode='scaleToFill'></image>
             </view>
         </view>
     <!-- </view> -->
@@ -24,12 +28,13 @@
          <!-- <form bindreset="send">  -->
          <form wx:if="{{isLogin}}"> 
             <view class="inputArea" >
+            <!--点击完成按钮时触发  -->
                 <input type="text" placeholder="{{placeholderText}}" placeholder-class='placeholder-btn' class="message" bindinput="bindKeyInput" bindconfirm="send"  value="{{inputValue}}" bindfocus='focus' style="margin-bottom:{{focusHeight}}"/>
                 <view class='btn-group'>
                   <view class='emoj-btn' bindtap='showEmoj'>
                     <image src='/res/emoj.png'></image>
                   </view>
-                  <view class='photo-btn'>
+                  <view class='photo-btn' bindtap='showPhone'>
                     <image src='/res/photo.png'></image>
                   </view>
                 </view>
@@ -39,13 +44,17 @@
         <view class='login-btn' wx:else>
           <button size="default" type="default" open-type="getUserInfo" bindgetuserinfo="updateUserInfo" class="sendButton"  >请输入</button>
           <view class='btn-group'>
+          <!-- //emoj -->
             <view class='emoj-btn' bindtap='showEmoj'>
               <image src='/res/emoj.png'></image>
             </view>
-            <view class='photo-btn'>
+            <!-- //拍照 -->
+            <view class='photo-btn' bindtap='showPhone'>
               <image src='/res/photo.png'></image>
             </view>
           </view>        
         </view>
     </view>
+    <!--gift组件  -->
+    <gift-component wx:if="{{showGift}}" bindclose='close'></gift-component>
 </view>

@@ -1,0 +1,49 @@
+/* components/gift-cont.wxss */
+.gift-cont {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+.gift-dialog {
+  background: #fff;
+  width: 100%;
+  position: absolute;
+  top: 200rpx;
+  bottom: 0px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.gift-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.detail {
+  color: #666;
+  font-size: 12px;
+  line-height: 20px;
+}
+/*礼物列表  */
+
+.gift-list-cont {
+  display: flex; 
+  white-space: nowrap; 
+}
+.gift-item {
+  display: inline-block; 
+  width: 100px;
+  text-align: center;
+}
+.gift-item image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+.a {
+  display: inline;
+  width: 400px;
+}

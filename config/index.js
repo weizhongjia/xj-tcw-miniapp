@@ -6,5 +6,6 @@ module.exports = {
     // webSocketProtocol: 'ws://',
     webSocketProtocol: 'wss://',
     // host: 'localhost:8080'
-    host: 'group.mrourou.com'
+    host: 'group.mrourou.com',
+    uploadHost: 'res.mrourou.com',
 }

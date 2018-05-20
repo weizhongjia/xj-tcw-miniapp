@@ -77,7 +77,18 @@ float: left;
   margin-left: 8px;
   margin-right: 8px;
 }
+/*  图片 */
+.detailImage {
+  width: 150rpx;
+  height: 200rpx;
+  border-radius: 2rpx;
+}
+.selfMessage .detailImage {
 
+}
+.otherMessage .detailImage {
+
+}
 .bottomArea {
    position: absolute; 
   bottom: 0;

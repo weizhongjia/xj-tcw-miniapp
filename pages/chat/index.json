@@ -1,3 +1,5 @@
 {
-  
+  "usingComponents": {
+    "gift-component": "/components/gift-cont"
+  }
 }

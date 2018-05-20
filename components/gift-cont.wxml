@@ -1,0 +1,47 @@
+<!--components/gift-cont.wxml-->
+<view class='gift-cont'>
+  <view class='gift-dialog'>
+    <view class='gift-title'>
+      <text>赠送礼物</text>
+      <text bindtap='closeDialog'>X</text>
+    </view>
+    <!--礼物列表  -->
+    <text class='detail'>礼物</text>
+    <!-- <view class='gift-list-cont'>
+    </view> -->
+    <scroll-view scroll-x="true" class='gift-list-cont' >
+        <view class='gift-item'>
+          <image src='./../res/jiaofu.jpg'></image>  
+          <view>大飞机</view>
+          <text>0.02</text>
+        </view>
+        <view class='gift-item'>
+          <image src='./../res/jiaofu.jpg'></image>        
+          <view>大保健</view>
+          <text>200</text>
+        </view>
+        <view class='gift-item'>
+          <image src='./../res/jiaofu.jpg'></image>  
+          <view>一条龙</view>
+          <text>20000</text>
+        </view>
+        <view class='gift-item'>
+          <image src='./../res/jiaofu.jpg'></image>  
+          <view>一条龙</view>
+          <text>20000</text>
+        </view>
+        <view class='gift-item'>
+          <image src='./../res/jiaofu.jpg'></image>  
+          <view>一条龙</view>
+          <text>20000</text>
+        </view>
+        <view class='gift-item'>
+          <image src='./../res/jiaofu.jpg'></image>  
+          <view>一条龙</view>
+          <text>20000</text>
+        </view>
+    </scroll-view> 
+    <text  class='detail'>礼物数量</text>
+  
+  </view>
+</view>

@@ -21,7 +21,8 @@ Page({
         userInfo: {},
         roomId: -1,
         isLogin: false, //判断是否登录，显示/隐藏登录btn
-        focusHeight: '8px'
+        focusHeight: '8px',
+        showGift: true, //显示礼物组件
     },
     onLoad: function (options) {
         this.data.roomId = options.roomId;
@@ -57,13 +58,15 @@ Page({
             client.subscribe(chatConfig.subcribeUrl+'/'+self.data.roomId, function (body, headers) {
                 var data = JSON.parse(body.body).data;
                 console.log(data);
+                // this.handleMessage(data.message)
                 var newMessage = {
                     id: data.message.id,
                     type: 'other',
+                    isText: data.message.type === 'TEXT' ? true : false, 
                     name: data.user.nikename,
                     time: 'message.sendTime',
                     avatarUrl: data.user.avatarurl,
-                    message: data.message.type === 'TEXT' ? data.message.detail : ''
+                    message:  data.message.detail 
                 };
                 newMessage.type = data.user.openid === self.data.userInfo.openId ? 'self' : 'other';
                 var newArray = [...self.data.messageArray,newMessage];
@@ -77,19 +80,23 @@ Page({
     },
     send: function () {
         if (this.data.inputValue !== "") {
-          this.sendSocketMessage(this.data.inputValue);
+          this.sendSocketMessage({ type: 'TEXT', detail: this.data.inputValue });
           this.setData({
             inputValue: ""
           });
         }
     },
     // 发送websocket信息
-    sendSocketMessage: function (msg) {
+    // @param {
+    //    type: '',
+    //    detail:
+    // }
+    sendSocketMessage: function (obj) {
         var self = this;
         if (self.data.socketOpen) {
             client.send(chatConfig.sendMsgUrl+'/'+self.data.roomId,
                 { priority: 9 },
-                JSON.stringify({type: 'TEXT', detail: msg}))
+                JSON.stringify(obj))
         }
     },
     checkUserInfo: function (e) {
@@ -139,11 +146,85 @@ Page({
         })
     },
     showEmoj() {
-      console.log()
+    },
+    //调用图片拍照功能
+    showPhone() {
+      let that = this
+      wx.chooseImage({
+        count: 1, // 默认9 暂时支持一张
+        sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+        sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+        success: function (res) {
+          // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+          var tempFilePaths = res.tempFilePaths
+          // 将文件上传至阿里云
+          console.log(tempFilePaths)
+
+          that.uploadImage(tempFilePaths)
+        },
+        fail() {
+          // wx.showModal({
+          //   title: '提示',
+          //   content: '调用失败，请稍后重试',
+          //   success: function (res) {
+          //     if (res.confirm) {
+          //       console.log('用户点击确定')
+          //     } else if (res.cancel) {
+          //       console.log('用户点击取消')
+          //     }
+          //   }
+          // })
+        }
+      })
+    },
+    // 拿token
+    uploadImage(tempFilePaths) {
+      let that = this
+      request({
+        url:'/api/wx/aliyun/token', 
+        method:'GET',
+        success: function (res) {
+          let token = res.data.data.securityToken
+          that.uploadAliyun(token, tempFilePaths)
+        },
+      })
+    },
+    //上传阿里云
+    uploadAliyun(token, tempFilePaths) {
+      let that = this
+      wx.uploadFile({
+        url: chatConfig.httpProtocol + chatConfig.uploadHost, 
+        header: { 'content-type':'multipart/form-data'},
+        filePath: tempFilePaths[0], //暂时只支持上传一张
+        name: 'file',
+        formData: {
+          name: 'tempFilePaths[0]',
+          key: '',
+          policy:'',
+          OSSAccessKeyId:'',
+          success_action_status:'200',
+          signature:'',
+        },
+        success: function (res) {
+          var data = res.data
+          console.log(data)
+          
+          // if() {
+            // this.sendSocketMessage(type:'IMAGE',detail: data.)
+          // }
+        }
+      })
     },
     focus(e) {
       // this.setData({
       //   focusHeight: '10px'
       // })
+    },
+    // 监听子组件close 关闭gift-cont
+    close(val) {
+      console.log(val)
+      this.setData({
+        showGift: false
+      })
     }
 });
