@@ -42,6 +42,8 @@
         </view>
     </scroll-view> 
     <text  class='detail'>礼物数量</text>
-  
+    <input type='number' bindinput="bindKeyInput" placeholder="礼物数量" confirm-type='done'/>
+    <input type='number' bindinput="bindKeyInput" placeholder="祝福语" confirm-type='done'/>
+    <button type="primary" size="default"   bindtap="pay"> 确认支付祝福 </button>
   </view>
 </view>

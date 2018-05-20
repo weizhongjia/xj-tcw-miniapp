@@ -24,5 +24,18 @@ Component({
       var myEventOption = {} // 触发事件的选项
       this.triggerEvent('close', myEventDetail, myEventOption)
     },
+    pay() {
+      wx.requestPayment({
+        'timeStamp': '',
+        'nonceStr': '',
+        'package': 'prepay_id=1232131221',
+        'signType': 'MD5',
+        'paySign': '',
+        'success': function (res) {
+        },
+        'fail': function (res) {
+        }
+      })
+    }
   }
 })

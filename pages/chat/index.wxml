@@ -56,5 +56,7 @@
         </view>
     </view>
     <!--gift组件  -->
+    <view class='gift-icon' bindtap='showGiftComponent'>礼物</view>
     <gift-component wx:if="{{showGift}}" bindclose='close'></gift-component>
+
 </view>

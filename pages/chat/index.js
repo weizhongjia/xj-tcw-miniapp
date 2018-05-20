@@ -242,5 +242,11 @@ Page({
       this.setData({
         showGift: false
       })
+    },
+    showGiftComponent() {
+      console.log('2222')
+      this.setData({
+        showGift: true
+      })
     }
 });
