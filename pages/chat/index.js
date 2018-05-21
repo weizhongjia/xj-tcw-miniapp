@@ -22,7 +22,7 @@ Page({
         roomId: -1,
         isLogin: false, //判断是否登录，显示/隐藏登录btn
         focusHeight: '8px',
-        showGift: false, //显示礼物组件
+        showGift: true, //显示礼物组件
     },
     onLoad: function (options) {
         this.data.roomId = options.roomId;

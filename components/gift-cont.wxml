@@ -10,7 +10,7 @@
     <!-- <view class='gift-list-cont'>
     </view> -->
     <scroll-view scroll-x="true" class='gift-list-cont' >
-        <view class='gift-item'>
+        <view class='gift-item active'>
           <image src='./../res/jiaofu.jpg'></image>  
           <view>大飞机</view>
           <text>0.02</text>
@@ -42,8 +42,15 @@
         </view>
     </scroll-view> 
     <text  class='detail'>礼物数量</text>
-    <input type='number' bindinput="bindKeyInput" placeholder="礼物数量" confirm-type='done'/>
-    <input type='number' bindinput="bindKeyInput" placeholder="祝福语" confirm-type='done'/>
-    <button type="primary" size="default"   bindtap="pay"> 确认支付祝福 </button>
+    <view class='gift-num'>
+      <text bindtap='minus'>-</text>
+      <input type='number' bindinput="bindKeyInput" value='{{num}}' placeholder="礼物数量" confirm-type='done'/>
+      <text bindtap='plus'>+</text>
+    </view> 
+    <text  class='detail'>祝福语</text>
+    <view class='wish'>
+      <input type='text' bindinput="bindwishInput" value='{{wish}}' placeholder="请输入祝福语，30字以内" confirm-type='done'/>
+    </view>
+    <button type="primary" size="default"   bindtap="pay"  bindinput="pay"> 确认支付祝福 </button>
   </view>
 </view>
