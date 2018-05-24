@@ -15,8 +15,11 @@
   top: 350rpx;
   bottom: 0px;
   padding: 10px;
+  padding-top: 5px;
   box-sizing: border-box;
   transition: all 0.3s;
+  border-radius: 10px;
+  
 }
 .gift-title {
   display: flex;
@@ -107,4 +110,9 @@
   border-radius: 3px;
   padding: 10rpx;
   padding-left: 15px;
+}
+
+.close-icon {
+  width: 80rpx;
+  height: 80rpx;
 }
