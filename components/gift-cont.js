@@ -12,7 +12,7 @@ Component({
    */
   data: {
     num: 1,
-    wish:'',
+    wish:'恭喜恭喜~',
     activeIndex:0,
     giftArr: [{
       imgURL: '../res/003.png',
@@ -61,14 +61,12 @@ Component({
       if (this.data.num ==1) {
         return 
       }
-      let num = this.data.num - 1
       this.setData({
-        num: num
+          num: + this.data.num - 1
       });
     },
     plus() {
-      let num = this.data.num + 1
-      console.log(num)
+      let num = +this.data.num + 1
       this.setData({
         num: num
       });
@@ -85,7 +83,7 @@ Component({
       wx.requestPayment({
         'timeStamp': '',
         'nonceStr': '',
-        'package': 'prepay_id=1232131221',
+        'package': 'prepay_id=',
         'signType': 'MD5',
         'paySign': '',
         'success': function (res) {

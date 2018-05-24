@@ -48,10 +48,18 @@
   height: 50px;
   border-radius: 50%;
   border: 1px solid #999999;
-
+}
+ .gift-item .checked-img {
+  display: block;
+  width: 25rpx;
+  height: 25rpx;
+  position: absolute;
+  right: 33rpx;
+  top: 0;
+  border: 0;
 }
 .active {
-  color: rgba(255, 83, 77,1);
+  color: red;
 }
 .active image {
   border-color: rgba(255, 83, 77,1);
@@ -98,4 +106,5 @@
   border: 1px solid #999;
   border-radius: 3px;
   padding: 10rpx;
+  padding-left: 15px;
 }
