@@ -41,6 +41,7 @@ App({
             url: 'https://group.mrourou.com/api/wx/user/_login?code=' + res.code,
             method: 'POST',
             success: response => {
+              console.log('...')
               console.log(response)
               // 设置token
               wx.setStorageSync('token', response.data.data)

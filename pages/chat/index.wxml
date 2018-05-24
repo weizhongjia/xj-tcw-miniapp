@@ -22,7 +22,11 @@
         </view>
     <!-- </view> -->
     </scroll-view>
-
+    <image src="../../res/left-top.png" alt="" class="left-top-img shake-up"></image>
+    <image src="../../res/lb.png" alt="" class="left-bottom-img shake-up1"></image>
+    <image src="../../res/rb.png" alt="" class="right-bottom-img shake-up1"></image>
+    <image src="../../res/rb2.png" alt="" class="right-bottom-img2 shake-up"></image>
+    <image src="../../res/entry-circle.png" alt="" class="ertry-circle-img shake-up1"></image>
 
     <view class="bottomArea">
          <!-- <form bindreset="send">  -->

@@ -12,7 +12,27 @@ Component({
    */
   data: {
     num: 1,
-    wish:''
+    wish:'',
+    activeIndex:0,
+    giftArr: [{
+      imgURL: '../res/003.png',
+      name: '打飞机',
+      price:'0.01'
+    }, {
+      imgURL: '../res/003.png',
+      name: '小飞机',
+      price: '0.1'
+      }, {
+        imgURL: '../res/003.png',
+        name: '打飞机',
+        price: '1.00'
+    }, {
+      imgURL: '../res/003.png',
+      name: '打飞机',
+      price: '10.00'
+    }],
+    // 默认应该是第一个的单价
+    unitPrice: 0.01
   },
 
   /**
@@ -29,6 +49,13 @@ Component({
       this.setData({
         num: e.detail.value
       });
+    },
+    changeActiveItem(val) {
+      // 无法在wxml中传值
+      this.setData({
+        activeIndex: val.currentTarget.dataset.ind,
+        unitPrice: val.currentTarget.dataset.price
+      })
     },
     minus() {
       if (this.data.num ==1) {
@@ -52,6 +79,9 @@ Component({
       });
     },
     pay() {
+      // 计算总价
+      let total = this.data.unitPrice * this.data.num
+      console.log(total)
       wx.requestPayment({
         'timeStamp': '',
         'nonceStr': '',

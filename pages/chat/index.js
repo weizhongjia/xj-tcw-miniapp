@@ -159,8 +159,6 @@ Page({
           // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
           var tempFilePaths = res.tempFilePaths
           // 将文件上传至阿里云
-          console.log(tempFilePaths)
-
           that.requestToken(tempFilePaths)
         },
         fail() {
@@ -196,7 +194,6 @@ Page({
     uploadAliyun(token, tempFilePaths) {
       let that = this
       let { endPoint,expire, ossAccessKeyId, policy, signature } = token
-      console.log(tempFilePaths[0])
       //去掉微信中路径
       let filename = tempFilePaths[0].replace('wxfile://', '')
       // 过期返回
@@ -222,6 +219,7 @@ Page({
           signature,
         },
         success: function (res) {
+          console.log('上传阿里云成功')
           // 在微信开发工具中filename改为下面
           // filename = 'http://tmp/' + filename
           that.sendSocketMessage({ type: 'IMAGE', detail: `${chatConfig.httpProtocol}${chatConfig.uploadHost}/${filename}` })

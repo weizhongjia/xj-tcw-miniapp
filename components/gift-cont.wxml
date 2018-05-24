@@ -10,35 +10,10 @@
     <!-- <view class='gift-list-cont'>
     </view> -->
     <scroll-view scroll-x="true" class='gift-list-cont' >
-        <view class='gift-item active'>
-          <image src='./../res/jiaofu.jpg'></image>  
-          <view>大飞机</view>
-          <text>0.02</text>
-        </view>
-        <view class='gift-item'>
-          <image src='./../res/jiaofu.jpg'></image>        
-          <view>大保健</view>
-          <text>200</text>
-        </view>
-        <view class='gift-item'>
-          <image src='./../res/jiaofu.jpg'></image>  
-          <view>一条龙</view>
-          <text>20000</text>
-        </view>
-        <view class='gift-item'>
-          <image src='./../res/jiaofu.jpg'></image>  
-          <view>一条龙</view>
-          <text>20000</text>
-        </view>
-        <view class='gift-item'>
-          <image src='./../res/jiaofu.jpg'></image>  
-          <view>一条龙</view>
-          <text>20000</text>
-        </view>
-        <view class='gift-item'>
-          <image src='./../res/jiaofu.jpg'></image>  
-          <view>一条龙</view>
-          <text>20000</text>
+        <view class='gift-item {{activeIndex==index ? "active" : ""}}' wx:for="{{giftArr}}"  wx:key="index" bindtap='changeActiveItem' data-ind='{{index}}' data-price='{{item.price}}'>
+          <image src='{{item.imgURL}}'></image>  
+          <view>{{item.name}}</view>
+          <text>{{item.price}}</text>
         </view>
     </scroll-view> 
     <text  class='detail'>礼物数量</text>

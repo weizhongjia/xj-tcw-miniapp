@@ -168,3 +168,39 @@ float: left;
   border: 1px solid #666;
   border-radius: 50%;
 }
+/* .................................. */
+.left-top-img {
+    width: 69rpx;
+    height: 72rpx;
+    position: absolute;
+    top: 129rpx;
+    left: 67rpx;
+}
+.left-bottom-img {
+    width: 22rpx;
+    height: 22rpx;
+    position: absolute;
+    left: 75rpx;
+    top: 480rpx;
+}
+.right-bottom-img {
+    position: absolute;
+    width: 24rpx;
+    height: 24rpx;
+    top: 188rpx;
+    right: 99.9rpx;
+}
+.right-bottom-img2 {
+    position: absolute;
+    width: 36rpx;
+    height: 32rpx;
+    right: 28rpx;
+    top: 520px;
+}
+.ertry-circle-img {
+    position: absolute;
+    width: 41rpx;
+    height: 40rpx;
+    right: 30rpx;
+    bottom: 220px;
+}

@@ -16,6 +16,7 @@
   bottom: 0px;
   padding: 10px;
   box-sizing: border-box;
+  transition: all 0.3s;
 }
 .gift-title {
   display: flex;
