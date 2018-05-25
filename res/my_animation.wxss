@@ -17,29 +17,23 @@
     animation-iteration-count:1, infinite;
     /*animation-fill-mode:forwards, forwards;*/
 }
-.fly-all2 {
-    animation-name:flyAll2, shakeUp;
+.fly-all1 {
+/*    animation-name:flyAll1, shakeUp;
     animation-duration:1s, 4s;
     animation-timing-function:cubic-bezier(0,0,0.58,1), cubic-bezier(0.42,0,0.58,1);
     animation-delay:0, 1s;
     animation-iteration-count:1, infinite;
-    animation-fill-mode:forwards, forwards;
+    animation-fill-mode:forwards, forwards;*/
+    animation: fallIn 1.5s 0.4s ease-out backwards, shakeUp 4s 1s linear infinite alternate;
+}
+.fly-all2 {
+    animation: fallIn 1.5s 0.6s ease-out backwards, shakeUpRotote 4s 2s linear infinite alternate;
 }
 .fly-all3 {
-    animation-name:flyAll3, shakeUp2;
-    animation-duration:1s, 4s;
-    animation-timing-function:cubic-bezier(0,0,0.58,1), cubic-bezier(0.42,0,0.58,1);
-    animation-delay:0, 1s;
-    animation-iteration-count:1, infinite;
-    animation-fill-mode:forwards, forwards;
+    animation: fallIn 1.5s 0.8s ease-out backwards, shakeUpRotote 4s 0.8s linear infinite alternate;
 }
 .fly-all4 {
-    animation-name:flyAll4, shakeUp2;
-    animation-duration:1s, 4s;
-    animation-timing-function:cubic-bezier(0,0,0.58,1), cubic-bezier(0.42,0,0.58,1);
-    animation-delay:0, 3s;
-    animation-iteration-count:1, infinite;
-    animation-fill-mode:forwards, forwards;
+    animation: fallIn 1.5s 1.1s ease-out backwards, shakeUp 4s 4s linear infinite alternate;
 }
 @keyframes rotate {
     0% {
@@ -115,15 +109,17 @@
         transform: translateY(0rem);
     } 
 }
-@keyframes shakeUp2 {
+@keyframes shakeUpRotote {
     0% {
-        transform: translateY(0rem) ;
+        transform: translateY(0rem) rotate(0);
+        transform-origin: center;
     }
     50% {
-        transform: translateY(-30rpx);
+        transform: translateY(-0.3rem) rotate(0.5turn);
     }
     100% {
-        transform: translateY(0rem);
+        transform: translateY(0rem) rotate(-0.5turn);
+        transform-origin: center;
     } 
 }
 @keyframes flyAll1 {
@@ -166,4 +162,20 @@
     top: 7.333333rem;
     } 
 }
-
+/*开始动画，从上掉下来  */
+@keyframes fallIn {
+    0% {
+        transform: translateY(-4.26667rem);
+        opacity: 0;
+    }
+    30% {
+        transform: translateY(1.8rem);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-0.21333rem);
+    }
+    100% {
+        transform: translateY(0rem);
+    }
+}
