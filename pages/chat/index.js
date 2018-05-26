@@ -25,7 +25,7 @@ Page({
         showGift: true, //显示礼物组件
     },
     onLoad: function (options) {
-        this.data.roomId = options.roomId;
+        this.data.roomId = options.roomId || 1;
         if (app.globalData.token) {
             this.checkUserInfo()
             this.initStompClient()
