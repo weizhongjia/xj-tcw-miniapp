@@ -9,7 +9,7 @@
     <!-- <view class='gift-list-cont'>
     </view> -->
     <scroll-view scroll-x="true" class='gift-list-cont' >
-        <view class='gift-item {{activeIndex==index ? "active" : ""}}' wx:for="{{giftArr}}"  wx:key="index" bindtap='changeActiveItem' data-ind='{{index}}' data-price='{{item.price}}'>
+        <view class='gift-item {{activeIndex==index ? "active" : ""}}' wx:for="{{giftArr}}"  wx:key="index" bindtap='changeActiveItem' data-ind='{{index}}' data-price='{{item.price}}' data-giftId='{{item.giftId}}'>
           <image src='{{item.imgURL}}'></image>  
            <image src='../res/checked.png'  class='checked-img' wx:if='{{activeIndex ==index}}'></image> 
           <view>{{item.name}}</view>

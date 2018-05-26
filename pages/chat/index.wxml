@@ -63,6 +63,6 @@
     <view class='gift-icon' bindtap='showGiftComponent'>
       <image src='./../../res/gift.png'></image>
     </view>
-    <gift-component wx:if="{{showGift}}" bindclose='close'></gift-component>
+    <gift-component wx:if="{{showGift}}" bindclose='close' roomId='{{roomId}}'></gift-component>
 
 </view>
