@@ -21,6 +21,7 @@
   transition: all 0.5s;
   border-radius: 10px;
 }
+
 .gift-title {
   display: flex;
   align-items: center;
@@ -46,12 +47,13 @@
   font-size: 12px;
   position: relative;
 }
-.gift-item image {
+.gift-item .gift-img {
   width: 50px;
   height: 50px;
   border-radius: 50%;
   border: 1px solid #999999;
 }
+
  .gift-item .checked-img {
   display: block;
   width: 25rpx;
@@ -115,4 +117,11 @@
 .close-icon {
   width: 80rpx;
   height: 80rpx;
+}
+/*模拟vue transition  */
+.enter {
+    opacity: 0
+}
+.tran {
+    transition: opacity 5s linear;
 }
