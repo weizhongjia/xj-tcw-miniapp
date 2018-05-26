@@ -1,9 +1,9 @@
 <view class="pageContainer">
     <!-- <view class="topArea"> -->
-    <scroll-view scroll-y="{{animate}}" scroll-with-animation="{{animate}}" class="scroll-container" scroll-top="9999999999" scroll-into-view="msg{{num}}">
+    <scroll-view scroll-y="{{animate}}" scroll-with-animation="{{animate}}" class="scroll-container"  scroll-into-view="msg{{num}}">
         <view wx:for="{{messageArray}}" wx:for-index="idx" wx:for-item="itemName" wx:key='itemName' class='item' id="msg{{itemName.id}}">
         <!--自己  -->
-            <view class="selfMessage" wx:if="{{itemName.type == 'self'}}">
+            <view class="selfMessage clearfix" wx:if="{{itemName.type == 'self'}}">
                 <view class="nameInfo">
                   <image src="{{userInfo.avatarUrl}}" class='user-avatar'></image>
                 </view>
@@ -11,7 +11,7 @@
                 <image src="{{itemName.message}}"  wx:else class='detailImage' mode='scaleToFill'></image>
             </view>
             <!--别人  -->
-            <view class="otherMessage" wx:else>
+            <view class="otherMessage clearfix" wx:else>
                 <view class="nameInfo">
                 <!-- {{itemName.name+ " " }} -->
                   <image src='{{itemName.avatarUrl}}' class='user-avatar'></image>
@@ -22,7 +22,11 @@
         </view>
     <!-- </view> -->
     </scroll-view>
-
+    <image src="../../res/left-top.png" alt="" class="left-top-img fly-all1"></image>
+    <image src="../../res/lb.png" alt="" class="left-bottom-img fly-all2"></image>
+    <image src="../../res/rb.png" alt="" class="right-bottom-img fly-all3"></image>
+    <image src="../../res/rb2.png" alt="" class="right-bottom-img2 fly-all4"></image>
+    <image src="../../res/entry-circle.png" alt="" class="ertry-circle-img fly-all1"></image>
 
     <view class="bottomArea">
          <!-- <form bindreset="send">  -->
@@ -56,5 +60,9 @@
         </view>
     </view>
     <!--gift组件  -->
+    <view class='gift-icon' bindtap='showGiftComponent'>
+      <image src='./../../res/gift.png'></image>
+    </view>
     <gift-component wx:if="{{showGift}}" bindclose='close'></gift-component>
+
 </view>

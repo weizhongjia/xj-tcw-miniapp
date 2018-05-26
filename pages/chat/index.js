@@ -22,7 +22,7 @@ Page({
         roomId: -1,
         isLogin: false, //判断是否登录，显示/隐藏登录btn
         focusHeight: '8px',
-        showGift: true, //显示礼物组件
+        showGift: false, //显示礼物组件
     },
     onLoad: function (options) {
         this.data.roomId = options.roomId || 1;
@@ -57,6 +57,7 @@ Page({
         client.connect({'wx-group-token':app.globalData.token}, function (sessionId) {
             client.subscribe(chatConfig.subcribeUrl+'/'+self.data.roomId, function (body, headers) {
                 var data = JSON.parse(body.body).data;
+                console.log('接收');
                 console.log(data);
                 // this.handleMessage(data.message)
                 var newMessage = {
@@ -158,9 +159,7 @@ Page({
           // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
           var tempFilePaths = res.tempFilePaths
           // 将文件上传至阿里云
-          console.log(tempFilePaths)
-
-          that.uploadImage(tempFilePaths)
+          that.requestToken(tempFilePaths)
         },
         fail() {
           // wx.showModal({
@@ -178,40 +177,55 @@ Page({
       })
     },
     // 拿token
-    uploadImage(tempFilePaths) {
+    requestToken(tempFilePaths) {
       let that = this
       request({
-        url:'/api/wx/aliyun/token', 
+        url: '/api/wx/aliyun/form', 
         method:'GET',
         success: function (res) {
-          let token = res.data.data.securityToken
-          that.uploadAliyun(token, tempFilePaths)
+          if (res.data.code =200) {
+            console.log(res.data.data)
+            that.uploadAliyun(res.data.data, tempFilePaths)
+          }
         },
       })
     },
     //上传阿里云
     uploadAliyun(token, tempFilePaths) {
       let that = this
+      let { endPoint,expire, ossAccessKeyId, policy, signature } = token
+      //去掉微信中路径
+      let filename = tempFilePaths[0].replace('wxfile://', '')
+      // 过期返回
+      if (expire*1000 < new Date().getTime()) {
+        wx.showToast({
+          title: '验证过期',
+          icon: 'success',
+          duration: 2000
+        })
+        return
+      }
       wx.uploadFile({
-        url: chatConfig.httpProtocol + chatConfig.uploadHost, 
+        url: endPoint, 
         header: { 'content-type':'multipart/form-data'},
         filePath: tempFilePaths[0], //暂时只支持上传一张
         name: 'file',
         formData: {
-          name: 'tempFilePaths[0]',
-          key: '',
-          policy:'',
-          OSSAccessKeyId:'',
+          name: tempFilePaths[0],
+          key: filename ,
+          policy,
+          ossAccessKeyId,
           success_action_status:'200',
-          signature:'',
+          signature,
         },
         success: function (res) {
-          var data = res.data
-          console.log(data)
-          
-          // if() {
-            // this.sendSocketMessage(type:'IMAGE',detail: data.)
-          // }
+          console.log('上传阿里云成功')
+          // 在微信开发工具中filename改为下面
+          // filename = 'http://tmp/' + filename
+          that.sendSocketMessage({ type: 'IMAGE', detail: `${chatConfig.httpProtocol}${chatConfig.uploadHost}/${filename}` })
+        },
+        fail: function(res) {
+          console.log(res)
         }
       })
     },
@@ -225,6 +239,12 @@ Page({
       console.log(val)
       this.setData({
         showGift: false
+      })
+    },
+    showGiftComponent() {
+      console.log('2222')
+      this.setData({
+        showGift: true
       })
     }
 });

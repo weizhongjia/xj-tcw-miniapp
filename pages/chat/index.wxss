@@ -79,14 +79,17 @@ float: left;
 }
 /*  图片 */
 .detailImage {
-  width: 150rpx;
-  height: 200rpx;
+  width: 180rpx;
+  height: 250rpx;
   border-radius: 2rpx;
 }
 .selfMessage .detailImage {
-
+ float: right;
+ margin-right: 15rpx;
 }
 .otherMessage .detailImage {
+ float: left;
+ margin-left: 15rpx;
 
 }
 .bottomArea {
@@ -109,7 +112,8 @@ float: left;
   color: #a0a1a5;
 }
 .item {
-  margin-top: 10px;
+   /* margin-top: 10px;  */
+   padding-top: 10rpx;
 }
 .pageContainer{
   height: 100vh;
@@ -152,4 +156,54 @@ float: left;
 .login-btn button {
   flex: 1;
   /* border-radius: 10px; */
+}
+/*gift-icon  */
+.gift-icon {
+  position: fixed;
+  right: 10px;
+  bottom: 130px;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  border-radius: 50%;
+}
+.gift-icon image {
+  width: 100%;
+  height: 100%;
+}
+/* .................................. */
+.left-top-img {
+    width: 69rpx;
+    height: 72rpx;
+    position: absolute;
+    top: 129rpx;
+    left: 67rpx;
+}
+.left-bottom-img {
+    width: 22rpx;
+    height: 22rpx;
+    position: absolute;
+    left: 75rpx;
+    top: 480rpx;
+}
+.right-bottom-img {
+    position: absolute;
+    width: 24rpx;
+    height: 24rpx;
+    top: 188rpx;
+    right: 99.9rpx;
+}
+.right-bottom-img2 {
+    position: absolute;
+    width: 36rpx;
+    height: 32rpx;
+    right: 28rpx;
+    top: 520px;
+}
+.ertry-circle-img {
+    position: absolute;
+    width: 41rpx;
+    height: 40rpx;
+    right: 30rpx;
+    bottom: 220px;
 }

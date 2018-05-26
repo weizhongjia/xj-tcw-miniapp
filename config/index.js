@@ -8,4 +8,5 @@ module.exports = {
     // host: 'localhost:8080'
     host: 'group.mrourou.com',
     uploadHost: 'res.mrourou.com',
+    imgURL:''
 }

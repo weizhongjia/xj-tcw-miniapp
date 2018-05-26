@@ -1,4 +1,6 @@
 /**app.wxss**/
+@import './res/my_animation.wxss';
+
 .container {
   height: 100%;
   display: flex;
@@ -8,3 +10,10 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
+.clearfix::after {
+  display: block;
+  content: '';
+  height: 0;
+  visibility: hidden;
+  clear: both;
+}
