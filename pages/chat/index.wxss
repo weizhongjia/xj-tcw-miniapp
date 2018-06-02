@@ -173,6 +173,17 @@ float: left;
   width: 100%;
   height: 100%;
 }
+/*红包  */
+.hb-icon {
+  position: fixed;
+  right: 10px;
+  bottom: 170px;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  border-radius: 50%;
+  border: 1px solid red;
+}
 /* .................................. */
 .left-top-img {
     width: 69rpx;

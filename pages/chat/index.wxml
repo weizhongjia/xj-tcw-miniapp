@@ -85,4 +85,10 @@
     </view>
     <gift-component wx:if="{{showGift}}" bindclose='close' giftArr="{{giftArr}}" bindsendGift='sendGift' showGift='{{showGift}}' roomId='{{roomId}}'></gift-component>
 
+    <!--红包组件  -->
+    <view class='hb-icon' bindtap='showHBComponent'>
+      <!-- <image src='./../../res/gift.png'></image> -->
+      红包
+    </view>
+    <hb-component wx:if="{{showHB}}" bindcloseHB='closeHB' bindsendHB='sendHB'></hb-component>
 </view>

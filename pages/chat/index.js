@@ -24,6 +24,7 @@ Page({
     isLogin: false, //判断是否登录，显示/隐藏登录btn
     focusHeight: '8px',
     showGift: false, //显示礼物组件
+    showHB: false,
     indicatorDots: true, //显示dots
     // emojiArr: [["\ud83d\ude02", "\u{1f004}","\u{1f443}",],[],[]],
     emojiArr: emojiArr,
@@ -283,6 +284,22 @@ Page({
       // requestAnimationFrame(function () {
       //   box.setAttribute('class', 'box mov');
       // })
+  },
+  // 监听子组件close 关闭gift-cont
+  closeHB(val) {
+    console.log(val)
+    this.setData({
+      showHB: false
+    })
+  },
+  showHBComponent() {
+    this.setData({
+      showHB: true
+    })
+    // var alert = document.getElementById('box');
+    // requestAnimationFrame(function () {
+    //   box.setAttribute('class', 'box mov');
+    // })
   },
   /*
    *监听子组件sendGift事件，触发发送礼物
