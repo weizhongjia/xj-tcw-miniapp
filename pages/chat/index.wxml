@@ -7,8 +7,13 @@
                 <view class="nameInfo">
                   <image src="{{userInfo.avatarUrl}}" class='user-avatar'></image>
                 </view>
-                <view class="detailMessage" wx:if="{{itemName.isText}}">{{itemName.message}}</view>
-                <image src="{{itemName.message}}"  wx:else class='detailImage' mode='scaleToFill'></image>
+                <view class="detailMessage" wx:if="{{itemName.isType =='TEXT'}}">{{itemName.message}}</view>
+                <image src="{{itemName.message}}" wx:elif="{{itemName.isType =='IMAGE'}}" class='detailImage' mode='scaleToFill'></image>
+                <view class=" detailMessage detailGift" wx:else>
+                    送出{{itemName.message.giftNumber}}个 {{itemName.message.giftName
+                    }}
+                    <image src='{{itemName.message.giftAvatar}}'></image>
+                </view>
             </view>
             <!--别人  -->
             <view class="otherMessage clearfix" wx:else>
@@ -16,8 +21,12 @@
                 <!-- {{itemName.name+ " " }} -->
                   <image src='{{itemName.avatarUrl}}' class='user-avatar'></image>
                 </view>
-                <view class="detailMessage" wx:if="{{itemName.isText}}">{{itemName.message}}</view>
-                <image src="{{itemName.message}}" wx:else class='detailImage' mode='scaleToFill'></image>
+                <view class="detailMessage" wx:if="{{itemName.isType =='TEXT'}}">{{itemName.message}}</view>
+                <image src="{{itemName.message}}" wx:elif="{{itemName.isType =='IMAGE'}}" class='detailImage' mode='scaleToFill'></image>
+                <view class=" detailMessage detailGift" wx:else>
+                    送出{{itemName.message.giftMessageDetail.giftNumber}}个 {{itemName.message.giftMessageDetail.giftName
+                    }}
+                </view>
             </view>
         </view>
     <!-- </view> -->
@@ -30,7 +39,7 @@
 
     <view class="bottomArea">
          <!-- <form bindreset="send">  -->
-         <form wx:if="{{isLogin}}"> 
+         <form wx:if="{{isLogin}}">
             <view class="inputArea" >
             <!--点击完成按钮时触发  -->
                 <input type="text" placeholder="{{placeholderText}}" placeholder-class='placeholder-btn' class="message" bindinput="bindKeyInput" bindconfirm="send"  value="{{inputValue}}" bindfocus='focus' style="margin-bottom:{{focusHeight}}"/>
@@ -43,7 +52,18 @@
                   </view>
                 </view>
             </view>
-              <!-- <button size="default" type="primary" form-type="reset" class="sendButton">发送</button>   -->
+            <!-- emoji -->
+            <view class='emoji-container {{showEmoji ? "show-emoji" : ""}}'>
+              <swiper indicator-dots="{{indicatorDots}}" indicator-active-color='{{indicatorActiveColor}}'>
+                  <swiper-item  wx:for="{{emojiArr}}" wx:key="{{index}}">
+                    <view class='emoji-cont'>
+                      <view  class='emoji-icon' wx:for="{{emojiArr[index]}}" wx:for-index="idx" wx:key="{{idx}}" wx:for-item="itemName" data-emoji='{{itemName}}' bindtap='addEmoji'>
+                        {{itemName}}
+                      </view>
+                    </view>
+                  </swiper-item>
+              </swiper>
+            </view>
         </form>
         <view class='login-btn' wx:else>
           <button size="default" type="default" open-type="getUserInfo" bindgetuserinfo="updateUserInfo" class="sendButton"  >请输入</button>
@@ -56,13 +76,13 @@
             <view class='photo-btn' bindtap='showPhone'>
               <image src='/res/photo.png'></image>
             </view>
-          </view>        
+          </view>
         </view>
     </view>
     <!--gift组件  -->
     <view class='gift-icon' bindtap='showGiftComponent'>
       <image src='./../../res/gift.png'></image>
     </view>
-    <gift-component wx:if="{{showGift}}" bindclose='close' bindsendGift='sendGift' showGift='{{showGift}}' roomId='{{roomId}}'></gift-component>
+    <gift-component wx:if="{{showGift}}" bindclose='close' giftArr="{{giftArr}}" bindsendGift='sendGift' showGift='{{showGift}}' roomId='{{roomId}}'></gift-component>
 
 </view>

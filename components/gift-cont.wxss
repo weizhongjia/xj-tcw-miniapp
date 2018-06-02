@@ -37,11 +37,12 @@
 /*礼物列表  */
 
 .gift-list-cont {
-  display: flex; 
-  white-space: nowrap; 
+  display: flex;
+  /* height: 85px; */
+  white-space: nowrap;
 }
 .gift-item {
-  display: inline-block; 
+  display: inline-block;
   width: 80px;
   text-align: center;
   font-size: 12px;
@@ -82,7 +83,7 @@
   text-align: center;
   border: 1px solid #999;
   border-radius: 3px;
-  width: 300rpx;  
+  width: 300rpx;
   overflow: hidden;
   display: flex;
   vertical-align: middle;
@@ -113,11 +114,12 @@
   padding: 10rpx;
   padding-left: 15px;
 }
-
 .close-icon {
   width: 80rpx;
   height: 80rpx;
 }
+
+
 /*模拟vue transition  */
 .enter {
     opacity: 0

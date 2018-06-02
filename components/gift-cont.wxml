@@ -9,19 +9,19 @@
     <!-- <view class='gift-list-cont'>
     </view> -->
     <scroll-view scroll-x="true" class='gift-list-cont' >
-        <view class='gift-item {{activeIndex==index ? "active" : ""}}' wx:for="{{giftArr}}"  wx:key="index" bindtap='changeActiveItem' data-ind='{{index}}' data-price='{{item.price}}' data-giftId='{{item.giftId}}'>
-          <image src='{{item.imgURL}}' class='gift-img'></image>  
-           <image src='../res/checked.png'  class='checked-img' wx:if='{{activeIndex ==index}}'></image> 
+        <view class='gift-item {{activeIndex==index ? "active" : ""}}' wx:for="{{giftArr}}"  wx:key="index" bindtap='changeActiveItem' data-ind='{{index}}' data-giftobj='{{item}}'>
+          <image src='{{item.avatar}}' class='gift-img'></image>
+           <image src='../res/checked.png'  class='checked-img' wx:if='{{activeIndex ==index}}'></image>
           <view>{{item.name}}</view>
-          <text>￥{{item.price}}</text>
+          <text>￥{{item.price / 100}}</text>
         </view>
-    </scroll-view> 
+    </scroll-view>
     <view  class='detail'>礼物数量</view>
     <view class='gift-num'>
       <text bindtap='minus'>-</text>
       <input type='number' bindinput="bindKeyInput" value='{{num}}' placeholder="礼物数量" confirm-type='done'/>
       <text bindtap='plus'>+</text>
-    </view> 
+    </view>
     <view  class='detail'>祝福语</view>
     <view class='wish'>
       <input type='text' bindinput="bindwishInput" value='{{wish}}' placeholder="请输入祝福语，30字以内" confirm-type='done'/>
