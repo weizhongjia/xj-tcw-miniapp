@@ -1,0 +1,21 @@
+<!--components/hb-cont.wxml-->
+<view class='hb-cont'>
+  <view class='overlay'></view>
+  <view class='model'>
+	<view class='header'>
+		<view class='header-t'>拼手气红包</view>
+		<view class='header-close'><image src='./../../res/icon_close.png' class='close-icon' bindtap='closeDialog'></image></view>
+	</view>
+	<view class='hb-input'>
+		 <input type="digit" placeholder="总金额" adjust-position='true' bindinput='bindcost' value="{{cost}}"  />
+	</view>
+	<text class='hb-text'>每人抽到的金额随机</text>
+	<view class='hb-input'>
+		<input type="number" placeholder="红包个数" adjust-position='false' bindinput='bindnum' value='{{number}}'/>
+	</view>
+	<view class='hb-input'>
+		<input type="text" placeholder="留言: 20个字以内" maxlength='20'bindinput='bindmessage'/>
+	</view>
+	<button type="primary" bindtap="submit"> 确定支付 </button>
+  </view>
+</view>

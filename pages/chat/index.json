@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "gift-component": "/components/gift-cont",
-    "hb-component": "/components/hb-cont"
+    "gift-component": "/components/gift-cont/gift-cont",
+    "hb-component": "/components/hb-cont/hb-cont",
+    "openhb-component": "/components/openHB-cont/openHB-cont"
   }
 }

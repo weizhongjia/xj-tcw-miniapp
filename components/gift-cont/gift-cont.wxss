@@ -20,6 +20,7 @@
   box-sizing: border-box;
   transition: all 0.5s;
   border-radius: 10px;
+  z-index: 2000;
 }
 
 .gift-title {

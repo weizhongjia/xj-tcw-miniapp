@@ -101,7 +101,7 @@ float: left;
   background: #fff;
   border-top: 1px solid #f2f1f6;
   padding: 2px 10px;
-  z-index: 2000;
+  z-index: 1000;
 }
 .bottomArea input {
   background: white;
@@ -177,12 +177,13 @@ float: left;
 .hb-icon {
   position: fixed;
   right: 10px;
-  bottom: 170px;
-  width: 40px;
-  height: 40px;
+  bottom: 175px;
+  width: 36px;
+  height: 45px;
   text-align: center;
-  border-radius: 50%;
-  border: 1px solid red;
+  background-image: url("http://msh.mrourou.com/addons/meepo_xianchang/template/mobile/app/images/common/images_old/right_hb.png");
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 /* .................................. */
 .left-top-img {
@@ -253,5 +254,42 @@ float: left;
     width: 30px;
     height: 30px;
     border-radius: 50%;
+}
 
+
+/*红包样式*/
+.detailHB {
+  background-color:#e25f5f!important;
+
+  /*padding-bottom: 20px;*/
+  box-sizing: border-box;
+  margin-bottom: 4px;
+  background: url("http://msh.mrourou.com/addons/meepo_xianchang/template/mobile/app/images/common/images_old/right_hb.png");
+  background-repeat: no-repeat;
+  background-size: 30px;
+  opacity: .8;
+  min-width: 500rpx;
+  z-index: 10;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.otherMessage .detailHB {
+    padding-right: 60px;
+    background-position: 400rpx ;
+    color: #fff;
+
+}
+.selfMessage .detailHB {
+    padding-left: 60px;
+    background-position: 20px ;
+}
+.detailHB::after {
+  background-color:#e25f5f!important;
+}
+
+.detailHB .hb-bottom {
+  display: block;
+  height: 25px;
+  line-height: 25px;
+  font-size: 16px;
 }

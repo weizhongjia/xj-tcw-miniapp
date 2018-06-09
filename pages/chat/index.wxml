@@ -9,10 +9,14 @@
                 </view>
                 <view class="detailMessage" wx:if="{{itemName.isType =='TEXT'}}">{{itemName.message}}</view>
                 <image src="{{itemName.message}}" wx:elif="{{itemName.isType =='IMAGE'}}" class='detailImage' mode='scaleToFill'></image>
-                <view class=" detailMessage detailGift" wx:else>
+                <view class=" detailMessage detailGift" wx:elif="{{itemName.isType =='GIFT'}}" >
                     送出{{itemName.message.giftNumber}}个 {{itemName.message.giftName
                     }}
                     <image src='{{itemName.message.giftAvatar}}'></image>
+                </view>
+                <view class='detailMessage detailHB' wx:else data-order='' bindtap='openHB'>
+                  <text class='hb-message'>{{itemName.message.message}}</text>
+                  <text class='hb-bottom'>红包来啦!</text>
                 </view>
             </view>
             <!--别人  -->
@@ -23,9 +27,13 @@
                 </view>
                 <view class="detailMessage" wx:if="{{itemName.isType =='TEXT'}}">{{itemName.message}}</view>
                 <image src="{{itemName.message}}" wx:elif="{{itemName.isType =='IMAGE'}}" class='detailImage' mode='scaleToFill'></image>
-                <view class=" detailMessage detailGift" wx:else>
+                <view class=" detailMessage detailGift" wx:elif="{{itemName.isType =='GIFT'}}" >
                     送出{{itemName.message.giftMessageDetail.giftNumber}}个 {{itemName.message.giftMessageDetail.giftName
                     }}
+                </view>
+                <view class='detailMessage detailHB' wx:else data-order='' bindtap='openHB'>
+                  <text class='hb-message'>{{itemName.message.message}}</text>
+                  <text class='hb-bottom'>红包来啦!</text>
                 </view>
             </view>
         </view>
@@ -88,7 +96,8 @@
     <!--红包组件  -->
     <view class='hb-icon' bindtap='showHBComponent'>
       <!-- <image src='./../../res/gift.png'></image> -->
-      红包
     </view>
-    <hb-component wx:if="{{showHB}}" bindcloseHB='closeHB' bindsendHB='sendHB'></hb-component>
+    <hb-component wx:if="{{showHB}}" bindcloseHB='closeHB' bindsendHB='sendHB' roomId='{{roomId}}'></hb-component>
+    <!--打开红包组件  -->
+    <openhb-component wx:if="{{showopenHBComp}}" bindcloseopenHB='closeopenHB' roomId='{{roomId}}'></openhb-component>
 </view>

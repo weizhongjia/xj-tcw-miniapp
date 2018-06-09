@@ -8,14 +8,23 @@ Page({
   data: {
     animate: true,
     placeholderText: "连接服务器中...",
-    messageArray: [
-      //   {
-      //     id:'0',
-      //     type: 'self',
-      //     name: 'wang',
-      //     time: '2000-2-2',
-      //     message: 'zhongjiashigedashabi'
-      // }
+    messageArray: [{
+            id: 1,
+            type: 'self',
+            isType: 'HB', //'TEXT' 'IMAGE' 'GIFT' 'HB'
+            name: '王猛',
+            time: 'message.sendTime',
+            avatarUrl: '',
+            message: {message:'恭喜发财恭喜'}
+          },{
+            id: 1,
+            type: 'other',
+            isType: 'HB', //'TEXT' 'IMAGE' 'GIFT' 'HB'
+            name: '王猛',
+            time: 'message.sendTime',
+            avatarUrl: '',
+            message: {message:'恭喜发财恭喜'}
+          },
     ],
     socketOpen: false,
     inputValue: "",
@@ -31,6 +40,7 @@ Page({
     indicatorActiveColor: '#e80000',
     showEmoji: false,
     giftArr: [], //传给父组件的礼物列表
+    showopenHBComp: false, //打开红包
   },
   onLoad: function(options) {
     this.data.roomId = options.roomId || 1;
@@ -91,11 +101,11 @@ Page({
             id: data.message.id,
             type: data.user.openid === self.data.userInfo.openId ?
               'self' : 'other',
-            isType: data.message.type, //'TEXT' 'IMAGE' 'GIFT'
+            isType: data.message.type, //'TEXT' 'IMAGE' 'GIFT' 
             name: data.user.nikename,
             time: 'message.sendTime',
             avatarUrl: data.user.avatarurl,
-            message: data.message.detail || data.message.giftMessageDetail
+            message: data.message.detail || data.message.giftMessageDetail || deta.message. HBMessageDetail
           };
           var newArray = [...self.data.messageArray, newMessage];
           self.setData({
@@ -305,7 +315,6 @@ Page({
    *监听子组件sendGift事件，触发发送礼物
    */
   sendGift(val) {
-    console.log(val)
     this.sendSocketMessage({
       type: 'GIFT',
       giftMessageDetail: val.detail
@@ -318,6 +327,23 @@ Page({
       inputValue: self.data.inputValue + emoji,
       showEmoji: false
     });
-
-  }
+  },
+  /*
+   *监听子组件sendHB事件，触发发送红包
+   */
+   sendHB(val) {
+    console.log(val)
+    this.sendSocketMessage({
+      type: 'HB',
+      HBMessageDetail: val.detail
+    });
+   },
+   /*
+   **openHB 打开红包
+   */
+   openHB() {
+    this.setData({
+      showopenHBComp: true,
+    })
+   }
 });

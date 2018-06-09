@@ -1,8 +1,0 @@
-<!--components/hb-cont.wxml-->
-<view class='hb-cont'>
-  <view class='overlay'></view>
-  <view class='model'>
-    <text>红包</text>
-    <text bindtap='close'>X</text>
-  </view>
-</view>

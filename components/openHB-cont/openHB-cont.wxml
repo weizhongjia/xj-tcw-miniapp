@@ -1,0 +1,27 @@
+<!--components/hb-cont/openHB-cont.wxml-->
+<view class='openhb-cont'>
+  <view class='overlay'></view>
+  <view class='model'>
+  	<view class='header-close'><image src='./../../res/icon_close.png' class='close-icon' bindtap='closeDialog'></image></view>
+  	<view class='header'>
+  		<image class='header-p' src='http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83erhVGNntElf4wd1YOZcXHnt9k6OcIjXSuLvDKMembE49YYlhLjdibknOFmX8bTGszPZXp19P80IC2w/132'></image>
+  	</view>
+  	<text class='hb-name'> <text class='strong'>阿森</text> 的红包</text>
+  	<text class='hb-message'> 恭喜发财，发红包啦</text>
+  	<view class='hb-total'>
+  		<text><text class='strong'>1</text>个红包共<text class='strong'>100元</text></text>
+  	</view>
+  	<view class='hb-bottom'>
+  		<view class='hb-item'>
+  			<view>
+  				图片
+  			</view>
+  			<view class='hb-item-name'>
+  				<view>王猛</view>
+  				<view>2035年1月1日</view>
+  			</view>
+  			<view>100元</view>
+  		</view>
+  	</view>
+  </view>
+</view>
