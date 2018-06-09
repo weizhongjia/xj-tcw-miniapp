@@ -345,5 +345,10 @@ Page({
     this.setData({
       showopenHBComp: true,
     })
+   },
+   closeopenHB() {
+    this.setData({
+      showopenHBComp: false,
+    })
    }
 });
