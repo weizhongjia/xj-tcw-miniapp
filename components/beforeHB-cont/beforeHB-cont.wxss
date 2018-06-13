@@ -1,0 +1,55 @@
+/* components/beforeHB-cont.wxss */
+.overlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+}
+.model {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  margin: auto;
+  width: 70%;
+  height: 350px;
+  background: #d3533d;
+  z-index: 2000;
+  /*padding: 15px;*/
+  box-sizing: border-box;
+  color: white;
+  font-size: 14px;
+}
+.top {
+  height: 45%;
+  width: 100%;
+  background: #db5443;
+  text-align: center;
+}
+.top .user-avatar {
+  margin-top: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.bottom {
+  width: 100%;
+  height: 40%;
+  text-align: center;
+}
+.model-bj {
+  width: 100%;
+  height: 100px;
+}
+.avatar {
+  z-index: 10;
+}
+.p {
+  padding-top:3px;
+}

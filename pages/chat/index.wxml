@@ -100,4 +100,6 @@
     <hb-component wx:if="{{showHB}}" bindcloseHB='closeHB' bindsendHB='sendHB' roomId='{{roomId}}'></hb-component>
     <!--打开红包组件  -->
     <openhb-component wx:if="{{showopenHBComp}}" bindcloseopenHB='closeopenHB' roomId='{{roomId}}'></openhb-component>
+    <!--弹出红包  -->
+    <beforehb-component ></beforehb-component>   
 </view>
