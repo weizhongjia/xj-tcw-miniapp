@@ -35,7 +35,12 @@ Component({
   bindcost(e) {
     let value = e.detail.value
     let reg = /^([1-9]\d*|0)(\.\d{0,2})?$/
-    if (value.match(reg)) {
+
+    if(!value) {
+      this.setData({
+        cost: value
+      })      
+    } else if (value.match(reg)) {
       this.setData({
         cost: value
       })

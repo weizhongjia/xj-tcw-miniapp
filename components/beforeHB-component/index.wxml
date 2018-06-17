@@ -6,11 +6,12 @@
     <view class='top'>
       <image src="{{avatarUrl}}" class='user-avatar'></image>
        <view class='p'><text>XXX</text> </view>
-       <view class='p'><text>发了一个大红包，价值连城</text> </view>
+       <view class='p' wx:if='{{isLeft}}'><text>发了一个大红包，价值连城</text> </view>
+       <view class='p' wx:else><text>红包发完啦~下次来早点哦~</text> </view>
     </view>
-    <image src='../../res/openhb2.png' class='model-bj'></image>
+    <image src='{{ isLeft ? bjImg : bjImg2}}' class='model-bj'></image>
     <view class='bottom'>
-      <view class='p'><text>看看大家的手气</text></view>
+      <view class='p'><text>看看大家的手气 > </text></view>
     </view>
   </view>
 </view>

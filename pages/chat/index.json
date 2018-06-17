@@ -1,8 +1,8 @@
 {
   "usingComponents": {
-    "gift-component": "/components/gift-cont/gift-cont",
-    "hb-component": "/components/hb-cont/hb-cont",
-    "openhb-component": "/components/openHB-cont/openHB-cont",
-    "beforehb-component": "/components/beforeHB-cont/beforeHB-cont"
+    "gift-component": "/components/gift-component/index",
+    "hb-component": "/components/hb-component/index",
+    "openhb-component": "/components/openHB-component/index",
+    "beforehb-component": "/components/beforeHB-component/index"
   }
 }

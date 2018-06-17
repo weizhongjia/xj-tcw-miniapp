@@ -28,8 +28,10 @@
                 <view class="detailMessage" wx:if="{{itemName.isType =='TEXT'}}">{{itemName.message}}</view>
                 <image src="{{itemName.message}}" wx:elif="{{itemName.isType =='IMAGE'}}" class='detailImage' mode='scaleToFill'></image>
                 <view class=" detailMessage detailGift" wx:elif="{{itemName.isType =='GIFT'}}" >
-                    送出{{itemName.message.giftMessageDetail.giftNumber}}个 {{itemName.message.giftMessageDetail.giftName
+                    送出{{itemName.message.giftNumber}}个 {{itemName.message.giftName
                     }}
+                    <image src='{{itemName.message.giftAvatar}}'></image>
+                    
                 </view>
                 <view class='detailMessage detailHB' wx:else data-order='' bindtap='openHB'>
                   <text class='hb-message'>{{itemName.message.message}}</text>
@@ -101,5 +103,5 @@
     <!--打开红包组件  -->
     <openhb-component wx:if="{{showopenHBComp}}" bindcloseopenHB='closeopenHB' roomId='{{roomId}}'></openhb-component>
     <!--弹出红包  -->
-    <beforehb-component ></beforehb-component>   
+    <beforehb-component wx:if="{{showBeforeHBComp}}"></beforehb-component>   
 </view>

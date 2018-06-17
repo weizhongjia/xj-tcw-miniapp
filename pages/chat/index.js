@@ -19,11 +19,11 @@ Page({
           },{
             id: 1,
             type: 'other',
-            isType: 'HB', //'TEXT' 'IMAGE' 'GIFT' 'HB'
+            isType: 'GIFT', //'TEXT' 'IMAGE' 'GIFT' 'HB'
             name: '王猛',
             time: 'message.sendTime',
             avatarUrl: '',
-            message: {message:'恭喜发财恭喜'}
+            message: {giftNumber:'2',giftName:'大保健',giftAvatar:'../../res/003.png'}
           },
     ],
     socketOpen: false,
@@ -41,6 +41,7 @@ Page({
     showEmoji: false,
     giftArr: [], //传给父组件的礼物列表
     showopenHBComp: false, //打开红包
+    showBeforeHBComp: true, //显示红包
   },
   onLoad: function(options) {
     this.data.roomId = options.roomId || 1;
