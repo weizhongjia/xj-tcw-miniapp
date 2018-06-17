@@ -19,8 +19,12 @@ const ws = {
     onopen: null,
     onmessage: null
 }
-Stomp.setInterval = function () { }
-Stomp.clearInterval = function () { }
+Stomp.setInterval = function (interval, f) {
+    return setInterval(f, interval);
+};
+Stomp.clearInterval = function (id) {
+    return clearInterval(id);
+};
 const client = Stomp.over(ws);
 client.init = function (callback) {
     wx.connectSocket({
