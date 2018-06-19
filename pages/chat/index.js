@@ -40,8 +40,8 @@ Page({
     indicatorActiveColor: '#e80000',
     showEmoji: false,
     giftArr: [], //传给父组件的礼物列表
-    showopenHBComp: false, //打开红包
-    showBeforeHBComp: true, //显示红包
+    showopenHBComp: true, //打开红包
+    showBeforeHBComp: false, //显示红包
   },
   onLoad: function(options) {
     this.data.roomId = options.roomId || 1;
@@ -344,7 +344,7 @@ Page({
    */
    openHB() {
     this.setData({
-      showopenHBComp: true,
+      showBeforeHBComp: true,
     })
    },
    closeopenHB() {

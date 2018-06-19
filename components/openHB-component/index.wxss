@@ -95,6 +95,12 @@
 .hb-item-name-2 {
   font-size: 12px;
 }
+.hb-num {
+  font-size: 26px;
+  text-align: center;
+  font-weight: 600;
+  color: #000;
+}
 /*.hb-item>view:last-child {
     border-bottom: 0;
 }*/

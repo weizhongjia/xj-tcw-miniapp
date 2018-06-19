@@ -77,7 +77,7 @@ Component({
   },
   submit() {
     this.vallidate()
-    this.requestHB()
+    this.getPayOrderInfo()
   },
   vallidate() {
     //判断金额
@@ -132,6 +132,76 @@ Component({
     }
     this.triggerEvent('sendHB', myEventDetail, myEventOption)
     this.closeDialog()
+  },
+      //请求订单信息
+  getPayOrderInfo() {
+    let that = this
+    request({
+      url: '/api/wx/pay/redpack/order',
+      data: {
+        // 'money': this.data.money,
+        // 'number': this.data.number,
+        //  'roomId': this.data.roomId
+        "money": 0,
+        "number": 0,
+        "roomId": 0
+      },
+      success(res) {
+        let data = res.data
+        if (data.code === 200) {
+          that.payAll(data.data)
+        } else {
+          wx.showToast({
+            title: '失败',
+            icon: 'success',
+            duration: 2000
+          })
+        }
+      },
+    })
+  },
+  payAll(val) {
+    let self = this
+    console.log(gift)
+    wx.requestPayment({
+      'timeStamp': val.timeStamp,
+      'nonceStr': val.nonceStr,
+      'package': val.ppackage,
+      'signType': val.signType,
+      'paySign': val.paySign,
+      'success': function (res) {
+        let  myEventDetail = {
+          money: this.data.cost,
+          number: this.data.number,
+          message: this.data.message,
+          roomId: this.data.roomId
+        } 
+        let myEventOption = {} 
+        self.triggerEvent('sendHB', myEventDetail,
+          myEventOption)
+
+        //关闭
+        self.closeDialog()
+      },
+      'fail': function (res) {
+        // 便于测试
+        let myEventDetail = {
+          money: this.data.cost,
+          number: this.data.number,
+          message: this.data.message,
+          roomId: this.data.roomId
+        }  
+        let myEventOption = {} 
+        self.triggerEvent('sendGift', myEventDetail,
+          myEventOption)
+        wx.showToast({
+          title: '支付失败',
+          icon: 'success',
+          duration: 2000
+        })
+        self.closeDialog()
+      }
+    })
   }
   }
 })

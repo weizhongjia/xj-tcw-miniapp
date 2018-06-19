@@ -8,6 +8,7 @@
   	</view>
   	<text class='hb-name'> <text class='strong'>阿森</text> 的红包</text>
   	<text class='hb-message'> 恭喜发财，发红包啦</text>
+    <view class='hb-num'> <text>0.01元</text></view>
   	<view class='hb-total'>
   		<text><text class='strong'>1</text>个红包共<text class='strong'>100元</text></text>
   	</view>
