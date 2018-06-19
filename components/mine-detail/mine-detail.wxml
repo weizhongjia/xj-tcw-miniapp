@@ -1,0 +1,12 @@
+
+<view class="box">
+  <view class="leftView">
+    <image class="leftImg" src="{{source}}" />
+  </view>
+  
+  <view class="rightView">
+    <text class="titleSty">{{title}}</text>
+    <text class="detailSty">{{detail}}</text>
+  </view>
+  
+</view>
