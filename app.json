@@ -1,7 +1,8 @@
 {
   "pages":[
-    "pages/chat/index",
     "pages/index/index",
+    "pages/chat/index",
+    
     "pages/mine/index",
     "pages/list/index"
   ],
@@ -10,5 +11,22 @@
     "navigationBarBackgroundColor": "#7c7ce1",
     "navigationBarTitleText": "婚礼进行时",
     "navigationBarTextStyle":"white"
+  },
+  "tabBar": {
+    "selectedColor": "rgb(24, 141, 0)",
+    "list": [
+      {
+        "pagePath": "pages/chat/index",
+        "text": "房间",
+        "iconPath": "res/room.png",
+        "selectedIconPath": "res/room1.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "我的",
+        "iconPath": "res/wo.png",
+        "selectedIconPath": "res/wo1.png"
+      }
+    ]
   }
 }

@@ -1,0 +1,31 @@
+.box {
+  box-sizing: border-box; 
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 15rpx;
+}
+.leftView {
+  flex: 1;
+  padding: 15rpx;  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.leftImg {
+  width: 60rpx;
+  height: 60rpx;
+}
+.rightView {
+  display: flex; 
+  flex: 4;
+  flex-direction: column;
+}
+
+.titleSty {
+  font-size: 25rpx;
+}
+
+.detailSty {
+  font-size: 20rpx;
+}

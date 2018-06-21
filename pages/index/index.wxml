@@ -14,6 +14,7 @@
 </view>
 -->
 
+<!-- 
 <view class="section" wx:for="{{groupList}}">
   <view class="zbs">
 
@@ -29,3 +30,45 @@
     
   </view>
 </view>
+-->
+
+
+<view class="mine-container">
+  <view class="mine-header">
+    <image class="userImg" src="/res/003.png"></image>
+    <text class="userName">delevent</text>
+  </view>
+  <view class="mine-content">
+    <view class="rowOne">
+      <mine-detail
+        class="rowOneLeft"
+        title="我的钱包"
+        detail="15.62元"
+        source="/res/about.png"
+      />
+      <view class="line" />
+
+      <mine-detail
+        class="rowOneRight"
+        title="提现"
+        detail="首先要关注公众号"
+        source="/res/about2.png"
+      />
+
+      
+    </view>
+    <view class="rowTwo">
+      <mine-detail
+        class="rowOneRight"
+        title="中奖记录"
+        detail="查看细节"
+        source="/res/gift.png"
+      />
+    </view>
+  </view>
+
+</view>
+
+
+
+
