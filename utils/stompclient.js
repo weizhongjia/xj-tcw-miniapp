@@ -14,10 +14,12 @@ function sendSocketMessage(msg) {
         socketMsgQueue.push(msg)
     }
 }
+function closeWebSocket() {
+    wx.closeSocket();
+}
 const ws = {
     send: sendSocketMessage,
-    onopen: null,
-    onmessage: null
+    close: closeWebSocket
 }
 Stomp.setInterval = function (interval, f) {
     return setInterval(f, interval);
@@ -27,24 +29,27 @@ Stomp.clearInterval = function (id) {
 };
 const client = Stomp.over(ws);
 client.init = function (callback) {
-    wx.connectSocket({
-        url: config.webSocketProtocol+config.host+'/ws',
-        header:{
-            'Session-Id': 'xxxxxxxx'
-        },
-        success: res => {
-            console.log("open socket fail")
-            console.log(res)
-        },
-        fail: res => {
-            console.log("open socket fail")
-            console.log(res)
-        },
-        complete: res => {
-            console.log("open socket complete")
-            console.log(res)
-        }
-    })
+    function openSocket() {
+        wx.connectSocket({
+            url: config.webSocketProtocol+config.host+'/ws',
+            header:{
+                'Session-Id': 'xxxxxxxx'
+            },
+            success: res => {
+                console.log("open socket fail")
+                console.log(res)
+            },
+            fail: res => {
+                console.log("open socket fail")
+                console.log(res)
+            },
+            complete: res => {
+                console.log("open socket complete")
+                console.log(res)
+            }
+        })
+    }
+    openSocket();
     wx.onSocketOpen(function (res) {
         console.log('WebSocket连接已打开！')
         socketOpen = true;
@@ -57,6 +62,10 @@ client.init = function (callback) {
         console.log('收到onmessage事件:', res)
         callback()
         ws.onmessage && ws.onmessage(res)
+    })
+    wx.onSocketClose(function () {
+        socketOpen = false;
+        openSocket();
     })
 }
 module.exports = client;
