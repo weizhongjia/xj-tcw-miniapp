@@ -94,3 +94,37 @@ font-size: 13px;
 .active image {
   border-color: rgba(255, 83, 77,1);
 }
+.showtime-image-border {
+  border: 1px solid #ddd;
+  padding: 6px;
+}
+.showtime-image {
+  width: 44px;
+  height: 42px;
+  display: inline-block;
+  background-size: 100%;
+  margin: 6px;
+  flex: 1;
+  border:1px solid #ddd;
+  padding:6px 8px;
+
+}
+.showtime-textarea {
+  border: solid 1px #ddd;
+  height: 100px;
+  padding: 10px 10px;
+  box-sizing: border-box;
+  font-size: 12px;
+  border-radius: 4px;
+}
+.showtime-input {
+  display: flex;
+  margin: 10px 0;
+}
+.showtime-button {
+  display: inline-block;
+  font-size: 12px;
+}
+.showtime-confirm {
+  background: linear-gradient(to right, #ff4bb4 0%,#ff4b6e 100%);
+}
