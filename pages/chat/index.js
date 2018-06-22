@@ -9,22 +9,22 @@ Page({
     animate: true,
     placeholderText: "连接服务器中...",
     messageArray: [{
-            id: 1,
-            type: 'self',
-            isType: 'HB', //'TEXT' 'IMAGE' 'GIFT' 'HB'
-            name: '王猛',
-            time: 'message.sendTime',
-            avatarUrl: '',
-            message: {message:'恭喜发财恭喜'}
-          },{
-            id: 1,
-            type: 'other',
-            isType: 'GIFT', //'TEXT' 'IMAGE' 'GIFT' 'HB'
-            name: '王猛',
-            time: 'message.sendTime',
-            avatarUrl: '',
-            message: {giftNumber:'2',giftName:'大保健',giftAvatar:'../../res/003.png'}
-          },
+        id: 1,
+        type: 'self',
+        isType: 'HB', //'TEXT' 'IMAGE' 'GIFT' 'HB'
+        name: '王猛',
+        time: 'message.sendTime',
+        avatarUrl: '',
+        message: {message:'恭喜发财恭喜'}
+      },{
+        id: 1,
+        type: 'other',
+        isType: 'GIFT', //'TEXT' 'IMAGE' 'GIFT' 'HB'
+        name: '王猛',
+        time: 'message.sendTime',
+        avatarUrl: '',
+        message: {giftNumber:'2',giftName:'大保健',giftAvatar:'../../res/003.png'}
+      },
     ],
     socketOpen: false,
     inputValue: "",
@@ -42,6 +42,7 @@ Page({
     giftArr: [], //传给父组件的礼物列表
     showopenHBComp: false, //打开红包
     showBeforeHBComp: false, //显示红包
+    showShowtimeModal: false
   },
   onLoad: function(options) {
     this.data.roomId = options.roomId || 1;
@@ -311,6 +312,16 @@ Page({
     // requestAnimationFrame(function () {
     //   box.setAttribute('class', 'box mov');
     // })
+  },
+  showShowtimeModal() {
+    this.setData({
+      showShowtimeModal: true
+    })
+  },
+  closeShowtimeModal() {
+    this.setData({
+      showShowtimeModal: false
+    })
   },
   /*
    *监听子组件sendGift事件，触发发送礼物

@@ -1,0 +1,25 @@
+<!--components/hb-cont.wxml-->
+<view class='hb-cont'>
+  <view class='overlay'></view>
+  <view class='model'>
+	<view class='header'>
+		<view class='header-t'>霸屏</view>
+		<view class='header-close'><image src='./../../res/icon_close.png' class='close-icon' bindtap='closeDialog'></image></view>
+	</view>
+	  <text class='hb-text'>霸屏时长</text>
+	  <scroll-view scroll-x="true" class='gift-list-cont' >
+		  <view class='gift-item {{activeIndex==index ? "active" : ""}}' wx:for="{{showtimeProduct}}"  wx:key="index" bindtap='changeActiveItem' data-ind='{{index}}' data-giftobj='{{item}}'>
+			  <view class="gift-img">{{item.time}}秒</view>
+			  <image src='../../res/checked.png'  class='checked-img' wx:if='{{activeIndex ==index}}'></image>
+			  <text>￥{{item.price / 100}}</text>
+		  </view>
+	  </scroll-view>
+	  <view>
+		  <textarea>
+
+		  </textarea>
+		  <image src=""></image>
+	  </view>
+	<button type="primary" bindtap="submit"> 确定支付 </button>
+  </view>
+</view>

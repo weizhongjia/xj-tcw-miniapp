@@ -3,6 +3,7 @@
     "gift-component": "/components/gift-component/index",
     "hb-component": "/components/hb-component/index",
     "openhb-component": "/components/openHB-component/index",
-    "beforehb-component": "/components/beforeHB-component/index"
+    "beforehb-component": "/components/beforeHB-component/index",
+    "showtime-modal": "/components/showtime-modal/index"
   }
 }

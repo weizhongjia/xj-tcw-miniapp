@@ -90,18 +90,18 @@
         </view>
     </view>
     <!--gift组件  -->
-    <view class='gift-icon' bindtap='showGiftComponent'>
-      <image src='./../../res/gift.png'></image>
-    </view>
+    <view class='right-icon gift-icon' bindtap='showGiftComponent'></view>
+    <!--红包组件  -->
+    <view class='right-icon hb-icon' bindtap='showHBComponent'></view>
+    <view class='right-icon showtime-icon' bindtap='showShowtimeModal'></view>
+
     <gift-component wx:if="{{showGift}}" bindclose='close' giftArr="{{giftArr}}" bindsendGift='sendGift' showGift='{{showGift}}' roomId='{{roomId}}'></gift-component>
 
-    <!--红包组件  -->
-    <view class='hb-icon' bindtap='showHBComponent'>
-      <!-- <image src='./../../res/gift.png'></image> -->
-    </view>
     <hb-component wx:if="{{showHB}}" bindcloseHB='closeHB' bindsendHB='sendHB' roomId='{{roomId}}'></hb-component>
     <!--打开红包组件  -->
     <openhb-component wx:if="{{showopenHBComp}}" bindcloseopenHB='closeopenHB' roomId='{{roomId}}'></openhb-component>
     <!--弹出红包  -->
-    <beforehb-component wx:if="{{showBeforeHBComp}}"></beforehb-component>   
+    <beforehb-component wx:if="{{showBeforeHBComp}}"></beforehb-component>
+
+    <showtime-modal wx:if="{{showShowtimeModal}}"></showtime-modal>
 </view>
