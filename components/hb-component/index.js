@@ -120,20 +120,9 @@ Component({
       return 
     }
   },
-  requestHB() {
-    //请求红包订单------> 请求支付接口-------> 请求websocket
-    let myEventDetail = {} 
-    let myEventOption = {}
-    myEventDetail = {
-      money: this.data.cost,
-      number: this.data.number,
-      message: this.data.message,
-      roomId: this.data.roomId
-    }
-    this.triggerEvent('sendHB', myEventDetail, myEventOption)
-    this.closeDialog()
-  },
-      //请求订单信息
+  //请求红包订单------> 请求支付接口-------> 请求websocket
+
+  //请求订单信息
   getPayOrderInfo() {
     let that = this
     request({
@@ -142,13 +131,14 @@ Component({
         // 'money': this.data.money,
         // 'number': this.data.number,
         //  'roomId': this.data.roomId
-        "money": 0,
-        "number": 0,
+        "money": 1,
+        "number": 1,
         "roomId": 0
       },
       success(res) {
         let data = res.data
         if (data.code === 200) {
+          // 订单请求成功之后，请求微信支付
           that.payAll(data.data)
         } else {
           wx.showToast({
@@ -162,38 +152,31 @@ Component({
   },
   payAll(val) {
     let self = this
-    console.log(gift)
+    console.log(val)
+    console.log(val.redpack)
     wx.requestPayment({
-      'timeStamp': val.timeStamp,
-      'nonceStr': val.nonceStr,
-      'package': val.ppackage,
-      'signType': val.signType,
-      'paySign': val.paySign,
+      'timeStamp': val.paymentDTO.timeStamp,
+      'nonceStr': val.paymentDTO.nonceStr,
+      'package': val.paymentDTO.ppackage,
+      'signType': val.paymentDTO.signType,
+      'paySign': val.paymentDTO.paySign,
       'success': function (res) {
-        let  myEventDetail = {
-          money: this.data.cost,
-          number: this.data.number,
-          message: this.data.message,
-          roomId: this.data.roomId
-        } 
+        // let  myEventDetail = {
+        //   money: this.data.cost,
+        //   number: this.data.number,
+        //   message: this.data.message,
+        //   roomId: this.data.roomId
+        // }
+    // 红包相关信息
+        let myEventDetail = val.redpack 
         let myEventOption = {} 
-        self.triggerEvent('sendHB', myEventDetail,
-          myEventOption)
-
-        //关闭
+        let message = self.data.message
+        self.triggerEvent('sendHB', {...myEventDetail,message},myEventOption)
         self.closeDialog()
       },
       'fail': function (res) {
         // 便于测试
-        let myEventDetail = {
-          money: this.data.cost,
-          number: this.data.number,
-          message: this.data.message,
-          roomId: this.data.roomId
-        }  
-        let myEventOption = {} 
-        self.triggerEvent('sendGift', myEventDetail,
-          myEventOption)
+
         wx.showToast({
           title: '支付失败',
           icon: 'success',

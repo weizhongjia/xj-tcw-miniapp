@@ -14,7 +14,7 @@
                     }}
                     <image src='{{itemName.message.giftAvatar}}'></image>
                 </view>
-                <view class='detailMessage detailHB' wx:else data-order='' bindtap='openHB'>
+                <view class='detailMessage detailHB' wx:else data-order='{{itemName.message}}' bindtap='openHB'>
                   <text class='hb-message'>{{itemName.message.message}}</text>
                   <text class='hb-bottom'>红包来啦!</text>
                 </view>
@@ -33,8 +33,8 @@
                     <image src='{{itemName.message.giftAvatar}}'></image>
                     
                 </view>
-                <view class='detailMessage detailHB' wx:else data-order='' bindtap='openHB'>
-                  <text class='hb-message'>{{itemName.message.message}}</text>
+                <view class='detailMessage detailHB' wx:else data-order='{{itemName.message}}' bindtap='openHB'>
+                  <text class='hb-message'>{{itemName.message.giftId}}</text>
                   <text class='hb-bottom'>红包来啦!</text>
                 </view>
             </view>

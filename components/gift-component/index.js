@@ -115,7 +115,7 @@ Component({
       getPayOrderInfo() {
         let that = this
         request({
-          url: '/api/wx/pay/unified/order',
+          url: '/api/wx/pay/gift/order',
           data: {
             // 'giftId': this.data.giftId,
             // 'number': this.data.num,

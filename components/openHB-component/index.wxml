@@ -1,4 +1,4 @@
-<!--components/hb-cont/openHB-cont.wxml-->
+////<!--components/hb-cont/openHB-cont.wxml-->
 <view class='openhb-cont'>
   <view class='overlay'></view>
   <view class='model'>

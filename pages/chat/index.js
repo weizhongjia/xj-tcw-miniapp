@@ -40,7 +40,7 @@ Page({
     indicatorActiveColor: '#e80000',
     showEmoji: false,
     giftArr: [], //传给父组件的礼物列表
-    showopenHBComp: true, //打开红包
+    showopenHBComp: false, //打开红包
     showBeforeHBComp: false, //显示红包
   },
   onLoad: function(options) {
@@ -334,6 +334,19 @@ Page({
    */
    sendHB(val) {
     console.log(val)
+    // "redpack": {
+    //   "costTime": 0,
+    //   "createTime": 1529569602139,
+    //   "giftId": 0,
+    //   "id": 100,
+    //   "number": 1,
+    //   "openid": "ozrMn43Gfh7MmWSJ03gF5uObyfzw",
+    //   "orderType": "REDPACK",
+    //   "outTradeNo": "1529569602139860013",
+    //   "price": 0,
+    //   "roomId": 0,
+    //   "totalMoney": 1
+    // }
     this.sendSocketMessage({
       type: 'HB',
       HBMessageDetail: val.detail
