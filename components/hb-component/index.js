@@ -20,6 +20,7 @@ Component({
     cost: null,
     number:null,
     message: null,
+    flag: false
   },
 
   /**
@@ -77,7 +78,7 @@ Component({
   },
   submit() {
     this.vallidate()
-    this.getPayOrderInfo()
+    this.data.flag && this.getPayOrderInfo()
   },
   vallidate() {
     //判断金额
@@ -90,7 +91,6 @@ Component({
       })
       return
     } 
-
     if (Number.isNaN((parseFloat(this.data.cost)))) {
       wx.showToast({
         title: '请输入数字',
@@ -119,6 +119,19 @@ Component({
       })     
       return 
     }
+    // 判断红包单价
+    if(this.data.cost/this.data.number < 0.01) {
+      wx.showToast({
+        title: '最少每人一分钱哦亲~',
+        icon: 'none',
+        image: './../../res/emoj.png',
+        duration: 2000
+      })     
+      return 
+    }    
+    this.setData({
+      flag: true
+    })  
   },
   //请求红包订单------> 请求支付接口-------> 请求websocket
 
@@ -128,12 +141,13 @@ Component({
     request({
       url: '/api/wx/pay/redpack/order',
       data: {
-        // 'money': this.data.money,
-        // 'number': this.data.number,
-        //  'roomId': this.data.roomId
-        "money": 1,
-        "number": 1,
-        "roomId": 0
+        'money': this.data.cost*100,
+        'number': this.data.number,
+        'roomId': this.data.roomId,
+        'blessing': this.data.message
+        // "money": 1,
+        // "number": 1,
+        // "roomId": 0
       },
       success(res) {
         let data = res.data
@@ -152,8 +166,6 @@ Component({
   },
   payAll(val) {
     let self = this
-    console.log(val)
-    console.log(val.redpack)
     wx.requestPayment({
       'timeStamp': val.paymentDTO.timeStamp,
       'nonceStr': val.paymentDTO.nonceStr,
@@ -168,15 +180,12 @@ Component({
         //   roomId: this.data.roomId
         // }
     // 红包相关信息
-        let myEventDetail = val.redpack 
+        let myEventDetail = val.order 
         let myEventOption = {} 
-        let message = self.data.message
-        self.triggerEvent('sendHB', {...myEventDetail,message},myEventOption)
+        self.triggerEvent('sendHB', myEventDetail,myEventOption)
         self.closeDialog()
       },
       'fail': function (res) {
-        // 便于测试
-
         wx.showToast({
           title: '支付失败',
           icon: 'success',
