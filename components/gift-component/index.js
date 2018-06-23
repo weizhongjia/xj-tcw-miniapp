@@ -141,13 +141,12 @@ Component({
       payAll(val) {
         let self = this
         let gift = self.data.giftArr[0]
-        console.log(gift)
         wx.requestPayment({
-          'timeStamp': val.timeStamp,
-          'nonceStr': val.nonceStr,
-          'package': val.ppackage,
-          'signType': val.signType,
-          'paySign': val.paySign,
+          'timeStamp': val.paymentDTO.timeStamp,
+          'nonceStr': val.paymentDTO.nonceStr,
+          'package': val.paymentDTO.ppackage,
+          'signType': val.paymentDTO.signType,
+          'paySign': val.paymentDTO.paySign,
           'success': function(res) {
             // 触发父组件事件
             let myEventDetail = {
@@ -167,18 +166,6 @@ Component({
             self.closeDialog()
           },
           'fail': function(res) {
-            let myEventDetail = {
-                giftId: self.data.giftId || gift.id,
-                giftName: self.data.giftName || gift.name,
-                giftAvatar: self.data.giftAvatar || gift.avatar,
-                giftGif: self.data.giftGif || gift.gif,
-                giftDes: self.data.wish,
-                giftNumber: self.data.num,
-                giftTime: self.data.costTime || gift.costTime
-              } // detail对象，提供给事件监听函数
-            let myEventOption = {} // 触发事件的选项
-            self.triggerEvent('sendGift', myEventDetail,
-              myEventOption)
             wx.showToast({
               title: '支付失败',
               icon: 'success',

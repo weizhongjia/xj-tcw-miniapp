@@ -17,3 +17,23 @@
   visibility: hidden;
   clear: both;
 }
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+
+.btn-red {
+  background: linear-gradient(to right, #ff4bb4 0%,#ff4b6e 100%);
+  color: #fff;
+}
+
+.border-left-red {
+  font-size: 16px;
+  height: 20px;
+  line-height: 20px;
+  margin-top: 10px;
+  padding-left: 5px;
+  border-left: 2px solid #ff4b69;
+}

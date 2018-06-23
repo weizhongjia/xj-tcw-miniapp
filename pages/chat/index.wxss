@@ -1,7 +1,7 @@
 
 .selfMessage, .otherMessage {
   position: relative;
-  overflow: auto;
+  /*overflow: auto;*/
 }
 .item::after,.item::before {
   content:".";

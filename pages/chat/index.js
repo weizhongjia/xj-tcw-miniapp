@@ -282,7 +282,7 @@ Page({
     // })
   },
   // 监听子组件close 关闭gift-cont
-  close(val) {
+  closeGift(val) {
     console.log(val)
     this.setData({
       showGift: false
@@ -375,5 +375,10 @@ Page({
     this.setData({
       showopenHBComp: false,
     })
-   }
+   },
+    closeBeforeHB() {
+    this.setData({
+      showBeforeHBComp: false,
+    })  
+    }
 });

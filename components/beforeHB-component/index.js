@@ -6,9 +6,14 @@ Component({
   properties: {
     isLeft: {
       type: Boolean,
-      value: false,
+      value: true,
       observer: function(newVal, oldVal) {}
-    }
+    },
+    roomId: {
+      type: String,
+      value: '',
+      observer: function(newVal, oldVal) {}
+    },
   },
 
   /**
@@ -24,7 +29,11 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+  closeDialog() {
+    let myEventDetail = {} 
+    let myEventOption = {} 
+    this.triggerEvent('closeBeforeHB', myEventDetail, myEventOption)
+  },
   },
   attached() {
 

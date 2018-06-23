@@ -1,4 +1,6 @@
 /* components/gift-cont.wxss */
+@import './../../app.wxss'
+
 .gift-cont {
   position: fixed;
   top: 0;
@@ -19,7 +21,7 @@
   padding-top: 5px;
   box-sizing: border-box;
   transition: all 0.5s;
-  border-radius: 10px;
+  border-radius: 3px;
   z-index: 2000;
 }
 
@@ -32,8 +34,8 @@
   color: #666;
   font-size: 12px;
   line-height: 20px;
-  padding-top: 20rpx;
-  padding-bottom: 20rpx;
+  padding-top: 5rpx;
+  padding-bottom: 5rpx;
 }
 /*礼物列表  */
 
@@ -95,6 +97,9 @@
   display: inline-block;
   width: 150rpx;
 }
+input {
+  font-size: 14px;
+}
 .gift-num input {
   background: rgba(245, 246, 135);
   display: inline-block;
@@ -128,3 +133,4 @@
 .tran {
     transition: opacity 5s linear;
 }
+

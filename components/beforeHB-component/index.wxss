@@ -23,6 +23,7 @@
   box-sizing: border-box;
   color: white;
   font-size: 14px;
+  border-radius: 5px;
 }
 .top {
   height: 45%;
@@ -54,4 +55,18 @@
 }
 .p {
   padding-top:3px;
+}
+
+.header-close {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  width: 30px;
+  height: 30px;
+  z-index: 1000;
+  opacity: .5;
+}
+.close-icon {
+  width: 100%;
+  height: 100%;
 }
