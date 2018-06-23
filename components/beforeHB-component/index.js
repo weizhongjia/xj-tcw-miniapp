@@ -1,12 +1,14 @@
 // components/beforeHB-cont.js
+const request = require('../../utils/request')
+
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-    isLeft: {
+      redpackLeft: {
       type: Boolean,
-      value: true,
+      value: false,
       observer: function(newVal, oldVal) {}
     },
     roomId: {
@@ -14,6 +16,16 @@ Component({
       value: '',
       observer: function(newVal, oldVal) {}
     },
+    redpackAvatarUrl: {
+      type: String,
+      value: '',
+      observer: function(newVal, oldVal) {}
+    },
+    redpackName: {
+      type: String,
+      value: '',
+      observer: function(newVal, oldVal) {}
+    }
   },
 
   /**
@@ -36,6 +48,6 @@ Component({
   },
   },
   attached() {
-
+    console.log(this.data.redpackAvatarUrl)
   }
 })

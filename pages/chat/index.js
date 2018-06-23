@@ -14,16 +14,20 @@ Page({
         isType: 'HB', //'TEXT' 'IMAGE' 'GIFT' 'HB'
         name: '王猛',
         time: 'message.sendTime',
-        avatarUrl: '',
-        message: {message:'恭喜发财恭喜'}
-      },{
-        id: 1,
-        type: 'other',
-        isType: 'GIFT', //'TEXT' 'IMAGE' 'GIFT' 'HB'
-        name: '王猛',
-        time: 'message.sendTime',
-        avatarUrl: '',
-        message: {giftNumber:'2',giftName:'大保健',giftAvatar:'../../res/003.png'}
+        avatarUrl: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83er9SswuAdicMomWoY4OCR4mc25ItVJPCreJ5R5Cwqt5ZnEhS5BI9Yt4iaKP7IJSOTjhxoovnZ64IU5g/132',
+        message: {costTime:0,
+          createTime:1529743936464,
+          giftId:0,
+          id:155,
+          number:1,
+          openid:"ozrMn43Gfh7MmWSJ03gF5uObyfzw",
+          orderType:"REDPACK",
+          outTradeNo:"1529743936464134756",
+          price:0,
+          roomId:1,
+          totalMoney:1,
+          blessing:'1'
+        }
       },
     ],
     socketOpen: false,
@@ -42,7 +46,10 @@ Page({
     giftArr: [], //传给父组件的礼物列表
     showopenHBComp: false, //打开红包
     showBeforeHBComp: false, //显示红包
-    showShowtimeModal: false
+    showShowtimeModal: false,
+    redpackLeft: false,
+    redpackAvatarUrl: '',
+    redpackName: '',
   },
   onLoad: function(options) {
     this.data.roomId = options.roomId || 1;
@@ -103,11 +110,11 @@ Page({
             id: data.message.id,
             type: data.user.openid === self.data.userInfo.openId ?
               'self' : 'other',
-            isType: data.message.type, //'TEXT' 'IMAGE' 'GIFT' 
+            isType: data.message.type, //'TEXT' 'IMAGE' 'GIFT' 'REDPACK'
             name: data.user.nikename,
             time: 'message.sendTime',
             avatarUrl: data.user.avatarurl,
-            message: data.message.detail || data.message.giftMessageDetail || deta.message. HBMessageDetail
+            message: data.message.detail || data.message.giftMessageDetail || data.message.orderDetail
           };
           var newArray = [...self.data.messageArray, newMessage];
           self.setData({
@@ -282,7 +289,7 @@ Page({
     // })
   },
   // 监听子组件close 关闭gift-cont
-  close(val) {
+  closeGift(val) {
     console.log(val)
     this.setData({
       showGift: false
@@ -329,7 +336,7 @@ Page({
   sendGift(val) {
     this.sendSocketMessage({
       type: 'GIFT',
-      giftMessageDetail: val.detail
+      orderDetail: val.detail
     });
   },
   addEmoji(e) {
@@ -345,28 +352,48 @@ Page({
    */
    sendHB(val) {
     console.log(val)
-    // "redpack": {
-    //   "costTime": 0,
-    //   "createTime": 1529569602139,
-    //   "giftId": 0,
-    //   "id": 100,
-    //   "number": 1,
-    //   "openid": "ozrMn43Gfh7MmWSJ03gF5uObyfzw",
-    //   "orderType": "REDPACK",
-    //   "outTradeNo": "1529569602139860013",
-    //   "price": 0,
-    //   "roomId": 0,
-    //   "totalMoney": 1
-    // }
     this.sendSocketMessage({
-      type: 'HB',
-      HBMessageDetail: val.detail
+      type: 'REDPACK',
+      orderDetail: val.detail
     });
    },
    /*
    **openHB 打开红包
    */
-   openHB() {
+  openHB(val) {
+    let order = val.currentTarget.dataset.order
+    let avatarUrl = val.currentTarget.dataset.avatarUrl
+    let name = val.currentTarget.dataset.name
+    console.log(val)
+    let redpackId = order.id
+    let redpackNum = order.number
+    let self = this
+    request({
+      url: `/api/wx/pay/repack/${redpackId}/position`,
+      method: 'GET',
+      success(res) {
+        // 红包位置
+        let position = res.data.data
+        console.log(res)
+        if ( position <= redpackNum-1) {
+          self.setData({
+            redpackLeft: true,
+            redpackAvatarUrl: avatarurl,
+            redpackName:name
+          }) 
+        } else {
+          // 红包已经抢完
+          self.setData({
+            redpackLeft: false,
+            redpackAvatarUrl: avatarUrl,
+            redpackName:name
+          })  
+        }
+        // self.setData({
+          
+        // })
+      }
+    })
     this.setData({
       showBeforeHBComp: true,
     })
@@ -381,11 +408,4 @@ Page({
       showBeforeHBComp: false,
     })  
     }
-   },
-
-  
-  /*
-   zbs: 我的按钮
-   */
-   
 });
