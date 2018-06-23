@@ -292,3 +292,9 @@ float: left;
   line-height: 25px;
   font-size: 16px;
 }
+.gift-wish {
+  display: inline-block;
+  width: 100%;
+  max-width:560rpx;
+  text-align: center;
+}
