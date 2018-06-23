@@ -1,3 +1,7 @@
 {
-  "navigationBarTitleText": "每周推荐"
+  "backgroundColor": "#eee",
+  "backgroundTextStyle": "light",
+  "usingComponents": {
+    "videoList-item": "/components/videoList-item/index"
+  }
 }

@@ -16,6 +16,14 @@ Page({
         time: 'message.sendTime',
         avatarUrl: '',
         message: {message:'恭喜发财恭喜'}
+      },{
+        id: 1,
+        type: 'other',
+        isType: 'GIFT', //'TEXT' 'IMAGE' 'GIFT' 'HB'
+        name: '王猛',
+        time: 'message.sendTime',
+        avatarUrl: '',
+        message: {giftNumber:'2',giftName:'大保健',giftAvatar:'../../res/003.png'}
       },
     ],
     socketOpen: false,
@@ -274,7 +282,7 @@ Page({
     // })
   },
   // 监听子组件close 关闭gift-cont
-  closeGift(val) {
+  close(val) {
     console.log(val)
     this.setData({
       showGift: false
@@ -373,4 +381,11 @@ Page({
       showBeforeHBComp: false,
     })  
     }
+   },
+
+  
+  /*
+   zbs: 我的按钮
+   */
+   
 });
