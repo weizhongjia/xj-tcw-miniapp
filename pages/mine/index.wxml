@@ -1,2 +1,6 @@
 
-<mine />
+<mine 
+  avatarUrl="{{userInfo.avatarUrl}}"
+  nickName="{{userInfo.nickName}}"
+  money="{{money}}"
+/>
