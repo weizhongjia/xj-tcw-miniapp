@@ -3,6 +3,7 @@ const chatConfig = require('../../config/index')
 const app = getApp()
 const request = require('../../utils/request')
 const emojiArr = require('../../config/emoji2.js') // emoji配置
+const utils = require('./../../utils/util')
 
 Page({
   data: {
@@ -18,7 +19,7 @@ Page({
         message: {costTime:0,
           createTime:1529743936464,
           giftId:0,
-          id:163,
+          id:168,
           number:1,
           openid:"ozrMn43Gfh7MmWSJ03gF5uObyfzw",
           orderType:"REDPACK",
@@ -52,6 +53,8 @@ Page({
     redpackName: '',
     redpackId:'', // 红包ID
     redpackPosition:'', //红包排队
+    redpackOrder: '',// 对应打开红包信息
+    redpackList:[], // 对应领取的红包列表
   },
   onLoad: function(options) {
     this.data.roomId = options.roomId || 1;
@@ -353,7 +356,6 @@ Page({
    *监听子组件sendHB事件，触发发送红包
    */
    sendHB(val) {
-    console.log(val)
     this.sendSocketMessage({
       type: 'REDPACK',
       orderDetail: val.detail
@@ -375,6 +377,8 @@ Page({
       success(res) {
         // 红包位置
         let position = res.data.data
+        // if (position = -1) {
+        // }
         if ( position <= redpackNum-1) {
           // 还有红包
           self.setData({
@@ -382,14 +386,17 @@ Page({
             redpackAvatarUrl: avatarUrl,
             redpackName:name,
             redpackId: redpackId,
-            redpackPosition:position
+            redpackPosition:position,
+            redpackOrder: order, // 将对应红包信息赋值给中间变量 redpackOrder 再传递给 beforeHB 和openHB
+            // showBeforeHBComp: true,
           }) 
         } else {
           // 红包已经抢完
           self.setData({
             redpackLeft: false,
             redpackAvatarUrl: avatarUrl,
-            redpackName:name
+            redpackName:name,
+            redpackOrder: order,
           })  
         }
       }
@@ -403,10 +410,13 @@ Page({
       showopenHBComp: false,
     })
    },
-   openHBList() {
-    console.log('2123113')
+   // 监听beforeHB 子组件事件，并将红包list信息传过来
+   openHBList(val) {
+    console.log(val)
+    let redpackList = val.detail.map(item => item.openTime = utils.formatTime(new Date(item.openTime)))
     this.setData({
       showopenHBComp: true,
+      redpackList: val.detail
     })    
    },
     closeBeforeHB() {

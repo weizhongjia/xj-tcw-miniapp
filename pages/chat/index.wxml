@@ -100,9 +100,9 @@
 
     <hb-component wx:if="{{showHB}}" bindcloseHB='closeHB' bindsendHB='sendHB' roomId='{{roomId}}'></hb-component>
     <!--打开红包组件  -->
-    <openhb-component wx:if="{{showopenHBComp}}" bindcloseopenHB='closeopenHB' roomId='{{roomId}}' redpackAvatarUrl="{{redpackAvatarUrl}}" redpackName='{{redpackName}}'></openhb-component>
+    <openhb-component wx:if="{{showopenHBComp}}" bindcloseopenHB='closeopenHB' roomId='{{roomId}}' redpackAvatarUrl="{{redpackAvatarUrl}}" redpackName='{{redpackName}}' redpackOrder="{{redpackOrder}}" redpackList='{{redpackList}}'></openhb-component>
     <!--弹出红包  -->
-    <beforehb-component wx:if="{{showBeforeHBComp}}" bindcloseBeforeHB='closeBeforeHB' roomId='{{roomId}}' redpackLeft="{{redpackLeft}}" redpackAvatarUrl="{{redpackAvatarUrl}}" redpackName='{{redpackName}}' redpackPosition='0' redpackId='{{redpackId}}' bindopenHBList='openHBList'></beforehb-component>
+    <beforehb-component wx:if="{{showBeforeHBComp}}" bindcloseBeforeHB='closeBeforeHB' roomId='{{roomId}}' redpackLeft="{{redpackLeft}}" redpackAvatarUrl="{{redpackAvatarUrl}}" redpackName='{{redpackName}}' redpackPosition='0' redpackId='{{redpackId}}' bindopenHBList='openHBList' redpackOrder="{{redpackOrder}}"></beforehb-component>
 
     <showtime-modal wx:if="{{showShowtimeModal}}"></showtime-modal>
 

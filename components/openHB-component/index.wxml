@@ -1,4 +1,4 @@
-////<!--components/hb-cont/openHB-cont.wxml-->
+<!--components/hb-cont/openHB-cont.wxml-->
 <view class='openhb-cont'>
   <view class='overlay'></view>
   <view class='model'>
@@ -7,21 +7,21 @@
   		<image class='header-p' src='{{redpackAvatarUrl}}'></image>
   	</view>
   	<text class='hb-name'> <text class='strong'>{{redpackName}}</text> 的红包</text>
-  	<text class='hb-message'> 恭喜发财，发红包啦</text>
-    <view class='hb-num'> <text>0.01元</text></view>
+  	<text class='hb-message'>{{redpackOrder.blessing}}</text>
+    <view class='hb-num'> <text>{{myMoney}} 元</text></view>
   	<view class='hb-total'>
-  		<text><text class='strong'>1</text>个红包共<text class='strong'>100元</text></text>
+  		<text><text class='strong'>{{redpackOrder.number}} </text>个红包共 <text class='strong'> {{redpackOrder.totalMoney / 100}} 元</text></text>
   	</view>
   	<view class='hb-bottom'>
-  		<view class='hb-item'>
-  			<view>
-  				图片
+  		<view class='hb-item' wx:for="{{redpackList}}"  wx:for-index="idx" wx:for-item="itemName" wx:key='idx'>
+  			<view class='item-list-img'>
+  				<image src='{{itemName.avatar}}'></image>
   			</view>
   			<view class='hb-item-name'>
-  				<view>王猛</view>
-  				<view>2035年1月1日</view>
+  				<view style='color: #000'>{{itemName.nickname}}</view>
+  				<view>{{itemName.openTime}}</view>
   			</view>
-  			<view>100元</view>
+  			<view>{{itemName.money /100}}元</view>
   		</view>
   	</view>
   </view>

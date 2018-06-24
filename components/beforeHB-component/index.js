@@ -36,7 +36,12 @@ Component({
             type: String,
             value: '',
             observer: function(newVal, oldVal) {}
-        }
+        },
+	    redpackOrder: {
+	      type: Object,
+	      value: {},
+	      observer: function(newVal, oldVal) {}
+	    }
     },
 
     /**
@@ -69,9 +74,9 @@ Component({
                 success(res) {
                 	console.log(res)
                 	// 
-                	self.triggerEvent('openHBList',{},{})
+                	self.triggerEvent('openHBList',res.data.data,{})
                 	self.closeDialog()
-                	
+
                 }
             })
         },
@@ -92,29 +97,6 @@ Component({
 	            })
 	        }.bind(this), 100)
         },
-        rotateAndScale: function() {
-            // 旋转同时放大
-            this.animation.rotate(45).scale(2, 2).step()
-            this.setData({
-                animationData: animation.export()
-            })
-        },
-        rotateThenScale: function() {
-            // 先旋转后放大
-            this.animation.rotate(45).step()
-            this.animation.scale(2, 2).step()
-            this.setData({
-                animationData: animation.export()
-            })
-        },
-        rotateAndScaleThenTranslate: function() {
-            // 先旋转同时放大，然后平移
-            this.animation.rotate(45).scale(2, 2).step()
-            this.animation.translate(100, 100).step({ duration: 1000 })
-            this.setData({
-                animationData: animation.export()
-            })
-        }
     },
 
     attached: function() {

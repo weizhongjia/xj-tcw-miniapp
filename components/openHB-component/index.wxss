@@ -96,7 +96,7 @@
   font-size: 12px;
 }
 .hb-num {
-  font-size: 26px;
+  font-size: 22px;
   text-align: center;
   font-weight: 600;
   color: #000;
@@ -104,3 +104,13 @@
 /*.hb-item>view:last-child {
     border-bottom: 0;
 }*/
+
+.item-list-img {
+  width: 45px;
+  height: 45px;
+}
+.item-list-img image {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
