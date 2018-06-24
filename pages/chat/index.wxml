@@ -13,9 +13,10 @@
                     送出{{itemName.message.giftNumber}}个 {{itemName.message.giftName
                     }}
                     <image src='{{itemName.message.giftAvatar}}'></image>
+                    <view class='gift-wish'>{{itemName.message.giftDes}}</view>
                 </view>
-                <view class='detailMessage detailHB' wx:else data-order='{{itemName.message}}' bindtap='openHB'>
-                  <text class='hb-message'>{{itemName.message.message}}</text>
+                <view class='detailMessage detailHB' wx:else data-order='{{itemName.message}}' bindtap='openHB' data-avatarUrl='{{itemName.avatarUrl}}' data-name='{{itemName.name}}'>
+                  <text class='hb-message'>{{itemName.message.blessing}}</text>
                   <text class='hb-bottom'>红包来啦!</text>
                 </view>
             </view>
@@ -31,10 +32,10 @@
                     送出{{itemName.message.giftNumber}}个 {{itemName.message.giftName
                     }}
                     <image src='{{itemName.message.giftAvatar}}'></image>
-                    
+                    <view class='gift-wish'>{{itemName.message.giftDes}}</view>
                 </view>
-                <view class='detailMessage detailHB' wx:else data-order='{{itemName.message}}' bindtap='openHB'>
-                  <text class='hb-message'>{{itemName.message.giftId}}</text>
+                <view class='detailMessage detailHB' wx:else data-order='{{itemName.message}}' bindtap='openHB' data-avatarUrl='{{itemName.avatarUrl}}' data-name='{{itemName.avatarUrl}}'>
+                  <text class='hb-message'>{{itemName.message.blessing}}</text>
                   <text class='hb-bottom'>红包来啦!</text>
                 </view>
             </view>
@@ -95,13 +96,21 @@
     <view class='right-icon hb-icon' bindtap='showHBComponent'></view>
     <view class='right-icon showtime-icon' bindtap='showShowtimeModal'></view>
 
-    <gift-component wx:if="{{showGift}}" bindclose='close' giftArr="{{giftArr}}" bindsendGift='sendGift' showGift='{{showGift}}' roomId='{{roomId}}'></gift-component>
+    <gift-component wx:if="{{showGift}}" bindclose='closeGift' giftArr="{{giftArr}}" bindsendGift='sendGift' showGift='{{showGift}}' roomId='{{roomId}}'></gift-component>
 
     <hb-component wx:if="{{showHB}}" bindcloseHB='closeHB' bindsendHB='sendHB' roomId='{{roomId}}'></hb-component>
     <!--打开红包组件  -->
     <openhb-component wx:if="{{showopenHBComp}}" bindcloseopenHB='closeopenHB' roomId='{{roomId}}'></openhb-component>
     <!--弹出红包  -->
-    <beforehb-component wx:if="{{showBeforeHBComp}}"></beforehb-component>
+    <beforehb-component wx:if="{{showBeforeHBComp}}" bindcloseBeforeHB='closeBeforeHB' roomId='{{roomId}}' redpackLeft="{{redpackLeft}}" redpackAvatarUrl="{{redpackAvatarUrl}}" redpackName='{{redpackName}}'></beforehb-component>
 
     <showtime-modal wx:if="{{showShowtimeModal}}"></showtime-modal>
+
+    <!-- zbs: 我的按钮 -->
+    <navigator class="mineView" url="../mine/index">
+      <image class="mineImg" src="/res/person.png" />
+      <text class="mineText">我的</text>
+    </navigator>
+
+
 </view>

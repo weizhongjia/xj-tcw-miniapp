@@ -1,4 +1,7 @@
 /* components/hb-cont.wxss */
+
+@import './../../app.wxss'
+
 .overlay {
   position: fixed;
   left: 0;
@@ -18,21 +21,14 @@
   z-index: 2000;
   padding: 15px;
   box-sizing: border-box;
-  border-radius: 10px;
+  border-radius: 3px;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
 }
-.header .header-t {
-  font-size: 16px;
-  height: 20px;
-  line-height: 20px;
-  margin-top: 10px;
-  padding-left: 5px;
-  border-left: 2px solid #ff4b69;
-}
+
 .header .header-close {
   width: 40px;
   height: 40px;
@@ -42,17 +38,24 @@
   height: 100%;
 }
 .hb-input input {
-border:1px solid #999;
-border-radius:3px;
-padding:10rpx;
-padding-left:15px;
-margin-top: 15px;
-margin-bottom: 15px;
-font-size: 13px;
+  border:1px solid #999;
+  border-radius:3px;
+  padding:10rpx;
+  padding-left:15px;
+  margin: 10px 0;
+  font-size: 13px;
+  position: relative;
+}
+.cost::after {
+  content: '元';
+  position: absolute;
+  right: 8px;
+  top: 10px;
 }
 .hb-text {
-    margin: 10px 0 0 0;
+    margin: 0;
     font-size: 12px;
+    line-height: 1em;
     color: #999;
     padding-left: 0px;
 }

@@ -2,7 +2,7 @@
 <view class='gift-cont'>
   <view class='gift-dialog tran {{showGift ? "": "enter"}}'>
     <view class='gift-title'>
-      <text>赠送礼物</text>
+      <text class='border-left-red'>赠送礼物</text>
      <image src='./../../res/icon_close.png' class='close-icon' bindtap='closeDialog'></image></view>
     <!--礼物列表  -->
     <view class='detail'>礼物</view>
@@ -26,6 +26,6 @@
     <view class='wish'>
       <input type='text' bindinput="bindwishInput" value='{{wish}}' placeholder="请输入祝福语，30字以内" confirm-type='done'/>
     </view>
-    <button type="primary" size="default"   bindtap="pay"  bindinput="pay"> 确认支付祝福 </button>
+    <button class="btn-red" size="default"   bindtap="pay"  bindinput="pay"> 确认支付祝福 </button>
   </view>
 </view>

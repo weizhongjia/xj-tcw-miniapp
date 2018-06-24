@@ -1,7 +1,0 @@
-{
-  "backgroundColor": "#eee",
-  "backgroundTextStyle": "light",
-  "usingComponents": {
-    "mine-detail": "/components/mine-detail/mine-detail"
-  }
-}

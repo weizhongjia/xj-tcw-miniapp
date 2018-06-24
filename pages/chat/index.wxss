@@ -1,7 +1,7 @@
 
 .selfMessage, .otherMessage {
   position: relative;
-  overflow: auto;
+  /*overflow: auto;*/
 }
 .item::after,.item::before {
   content:".";
@@ -291,4 +291,32 @@ float: left;
   height: 25px;
   line-height: 25px;
   font-size: 16px;
+}
+.gift-wish {
+  display: inline-block;
+  width: 100%;
+  max-width:560rpx;
+  text-align: center;
+}
+
+/* zbs: 我的按钮 */
+.mineView {
+  width: 150rpx;
+  height: 60rpx;
+  border-radius: 30rpx;
+   padding-left: 20rpx;
+  background-color: rgba(0, 0, 0, .3);
+  position: absolute;
+  top: 200rpx;
+  right: -60rpx;
+  display: flex;
+  align-items: center;
+}
+.mineImg {
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 10rpx;
+}
+.mineText {
+  font-size: 20rpx;
 }
