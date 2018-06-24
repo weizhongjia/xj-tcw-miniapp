@@ -4,9 +4,9 @@
   <view class='model'>
   	<view class='header-close'><image src='./../../res/icon_close.png' class='close-icon' bindtap='closeDialog'></image></view>
   	<view class='header'>
-  		<image class='header-p' src='http://thirdwx.qlogo.cn/mmopen/vi_32/DYAIOgq83erhVGNntElf4wd1YOZcXHnt9k6OcIjXSuLvDKMembE49YYlhLjdibknOFmX8bTGszPZXp19P80IC2w/132'></image>
+  		<image class='header-p' src='{{redpackAvatarUrl}}'></image>
   	</view>
-  	<text class='hb-name'> <text class='strong'>阿森</text> 的红包</text>
+  	<text class='hb-name'> <text class='strong'>{{redpackName}}</text> 的红包</text>
   	<text class='hb-message'> 恭喜发财，发红包啦</text>
     <view class='hb-num'> <text>0.01元</text></view>
   	<view class='hb-total'>

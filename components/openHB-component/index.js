@@ -9,6 +9,16 @@ Component({
       value: '',
       observer: function(newVal, oldVal) {}
     },
+    redpackAvatarUrl: {
+        type: String,
+        value: '',
+        observer: function(newVal, oldVal) {}
+    },
+    redpackName: {
+        type: String,
+        value: '',
+        observer: function(newVal, oldVal) {}
+    },
   },
 
   /**

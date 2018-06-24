@@ -18,7 +18,7 @@ Page({
         message: {costTime:0,
           createTime:1529743936464,
           giftId:0,
-          id:155,
+          id:163,
           number:1,
           openid:"ozrMn43Gfh7MmWSJ03gF5uObyfzw",
           orderType:"REDPACK",
@@ -50,6 +50,8 @@ Page({
     redpackLeft: false,
     redpackAvatarUrl: '',
     redpackName: '',
+    redpackId:'', // 红包ID
+    redpackPosition:'', //红包排队
   },
   onLoad: function(options) {
     this.data.roomId = options.roomId || 1;
@@ -373,12 +375,14 @@ Page({
       success(res) {
         // 红包位置
         let position = res.data.data
-        console.log(res)
         if ( position <= redpackNum-1) {
+          // 还有红包
           self.setData({
             redpackLeft: true,
             redpackAvatarUrl: avatarUrl,
-            redpackName:name
+            redpackName:name,
+            redpackId: redpackId,
+            redpackPosition:position
           }) 
         } else {
           // 红包已经抢完
@@ -388,9 +392,6 @@ Page({
             redpackName:name
           })  
         }
-        // self.setData({
-          
-        // })
       }
     })
     this.setData({
@@ -401,6 +402,12 @@ Page({
     this.setData({
       showopenHBComp: false,
     })
+   },
+   openHBList() {
+    console.log('2123113')
+    this.setData({
+      showopenHBComp: true,
+    })    
    },
     closeBeforeHB() {
     this.setData({
