@@ -1,7 +1,7 @@
 <!--components/beforeHB-cont.wxml-->
 <view class='openhb-cont'>
   <view class='overlay'></view>
-  <view class='model'>
+  <view class='model' animation="{{animationData}}">
     <!-- <image src='../../res/openhb.png' class='model-bj'></image> -->
     <view class='top'>
       <view class='header-close'><image src='./../../res/icon_close.png' class='close-icon' bindtap='closeDialog'></image></view>

@@ -362,9 +362,8 @@ Page({
    */
   openHB(val) {
     let order = val.currentTarget.dataset.order
-    let avatarUrl = val.currentTarget.dataset.avatarUrl
+    let avatarUrl = val.currentTarget.dataset.avatarurl
     let name = val.currentTarget.dataset.name
-    console.log(val)
     let redpackId = order.id
     let redpackNum = order.number
     let self = this
@@ -378,7 +377,7 @@ Page({
         if ( position <= redpackNum-1) {
           self.setData({
             redpackLeft: true,
-            redpackAvatarUrl: avatarurl,
+            redpackAvatarUrl: avatarUrl,
             redpackName:name
           }) 
         } else {
