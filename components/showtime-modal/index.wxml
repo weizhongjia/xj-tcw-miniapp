@@ -14,12 +14,19 @@
 			  <text>￥{{item.price / 100}}</text>
 		  </view>
 	  </scroll-view>
-	  <view>
-		  <textarea>
+	  <view class="showtime-input">
+		  <textarea class="showtime-textarea" placeholder="请不要发布广告涉黄等内容">
 
 		  </textarea>
-		  <image src=""></image>
+		  <view style="text-align: center">
+
+			  	<view class="showtime-image">
+					<image style="width: 42px;height:40px;" src="http://msh.mrourou.com/addons/meepo_xianchang/template/mobile/app/images/common/images_old/iconImImg.png"></image>
+				</view>
+			  <button class="showtime-button" type="primary">小视频霸屏</button>
+		  </view>
+
 	  </view>
-	<button type="primary" bindtap="submit"> 确定支付 </button>
+	<button class="showtime-confirm" type="primary" bindtap="submit"> 购买霸屏 </button>
   </view>
 </view>

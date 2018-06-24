@@ -16,5 +16,8 @@ Component({
       let myEventOption = {} // 触发事件的选项
       this.triggerEvent('closeShowtimeModal', myEventDetail, myEventOption)
     },
+    changeActiveItem() {
+
+    }
   }
 })
