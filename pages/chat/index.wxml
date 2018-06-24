@@ -105,4 +105,12 @@
     <beforehb-component wx:if="{{showBeforeHBComp}}" bindcloseBeforeHB='closeBeforeHB' roomId='{{roomId}}' redpackLeft="{{redpackLeft}}" redpackAvatarUrl="{{redpackAvatarUrl}}" redpackName='{{redpackName}}'></beforehb-component>
 
     <showtime-modal wx:if="{{showShowtimeModal}}"></showtime-modal>
+
+    <!-- zbs: 我的按钮 -->
+    <navigator class="mineView" url="../mine/index">
+      <image class="mineImg" src="/res/person.png" />
+      <text class="mineText">我的</text>
+    </navigator>
+
+
 </view>
