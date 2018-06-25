@@ -377,33 +377,46 @@ Page({
       success(res) {
         // 红包位置
         let position = res.data.data
-        // if (position = -1) {
-        // }
-        if ( position <= redpackNum-1) {
+        // TODO 判断 是否领取过
+        if (position = -1) {
+          // 说明已经领取过
+          self.requestRedpackList(redpackId)
+        } else if ( position <= redpackNum-1) {
           // 还有红包
           self.setData({
             redpackLeft: true,
-            redpackAvatarUrl: avatarUrl,
-            redpackName:name,
             redpackId: redpackId,
             redpackPosition:position,
-            redpackOrder: order, // 将对应红包信息赋值给中间变量 redpackOrder 再传递给 beforeHB 和openHB
-            // showBeforeHBComp: true,
+            showBeforeHBComp: true,
           }) 
         } else {
           // 红包已经抢完
           self.setData({
             redpackLeft: false,
-            redpackAvatarUrl: avatarUrl,
-            redpackName:name,
-            redpackOrder: order,
+            showBeforeHBComp: true,
           })  
         }
+        self.setData({
+          redpackAvatarUrl: avatarUrl,
+          redpackName:name,
+          redpackOrder: order, // 将对应红包信息赋值给中间变量 redpackOrder 再传递给 beforeHB 和openHB
+        }) 
       }
     })
-    this.setData({
-      showBeforeHBComp: true,
-    })
+
+   },
+   // 同一个人领取红包，直接调到红包列表
+   requestRedpackList(redpackId) {
+    let self = this
+    let position = -1;
+      request({
+          url: `/api/wx/pay/redpack/${redpackId}/open/${position}`,
+          method: 'GET',
+          success(res) {
+            console.log(res)
+            self.openHBList(res.data.data,'clicked')
+          }
+      })
    },
    closeopenHB() {
     this.setData({
@@ -411,12 +424,15 @@ Page({
     })
    },
    // 监听beforeHB 子组件事件，并将红包list信息传过来
-   openHBList(val) {
+   // 或者 同一个人红包第二次开启
+   openHBList(val,type) {
     console.log(val)
-    let redpackList = val.detail.map(item => item.openTime = utils.formatTime(new Date(item.openTime)))
+    let data = (type = 'clicked' ? val : val.detail) // clicked则是同一个人第二次打开，否则 直接是父组件的事件
+    console.log(data)
+    let redpackList = data.map(item => item.openTime = utils.formatTime(new Date(item.openTime)))
     this.setData({
       showopenHBComp: true,
-      redpackList: val.detail
+      redpackList: data  
     })    
    },
     closeBeforeHB() {
