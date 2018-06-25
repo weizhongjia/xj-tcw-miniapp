@@ -248,7 +248,6 @@ Page({
   },
   // 监听子组件close 关闭gift-cont
   closeHB(val) {
-    console.log(val)
     this.setData({
       showHB: false
     })
@@ -295,7 +294,6 @@ Page({
    *监听子组件sendHB事件，触发发送红包
    */
    sendHB(val) {
-    console.log(val)
     this.sendSocketMessage({
       type: 'REDPACK',
       orderDetail: val.detail
@@ -305,7 +303,6 @@ Page({
    **openHB 打开红包
    */
   openHB(val) {
-    console.log(val)
     let order = val.currentTarget.dataset.order
     let avatarUrl = val.currentTarget.dataset.avatarurl
     let name = val.currentTarget.dataset.name
@@ -368,7 +365,6 @@ Page({
    // 监听beforeHB 子组件事件，并将红包list信息传过来
    // 或者 同一个人红包第二次开启
    openHBList(val,type) {
-    debugger
     let data = (type === 'clicked' ? val : val.detail) // clicked则是同一个人第二次打开，否则 直接是父组件的事件
     let redpackList = data.map(item => item.openTime = utils.formatTime(new Date(item.openTime)))
     this.setData({
