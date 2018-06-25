@@ -81,7 +81,6 @@ Page({
       url: '/api/wx/gift',
       method: 'GET',
       success(res) {
-        console.log(res)
         self.setData({
           giftArr: res.data.data
         })
@@ -116,7 +115,7 @@ Page({
             type: data.user.openid === self.data.userInfo.openId ?
               'self' : 'other',
             isType: data.message.type, //'TEXT' 'IMAGE' 'GIFT' 'REDPACK'
-            name: data.user.nikename,
+            name: data.user.nickname,
             time: 'message.sendTime',
             avatarUrl: data.user.avatarurl,
             message: data.message.detail || data.message.giftMessageDetail || data.message.orderDetail
@@ -234,7 +233,6 @@ Page({
   },
   // 监听子组件close 关闭gift-cont
   closeGift(val) {
-    console.log(val)
     this.setData({
       showGift: false
     })
@@ -259,10 +257,6 @@ Page({
     this.setData({
       showHB: true
     })
-    // var alert = document.getElementById('box');
-    // requestAnimationFrame(function () {
-    //   box.setAttribute('class', 'box mov');
-    // })
   },
   showShowtimeModal() {
     this.setData({
@@ -301,6 +295,7 @@ Page({
    *监听子组件sendHB事件，触发发送红包
    */
    sendHB(val) {
+    console.log(val)
     this.sendSocketMessage({
       type: 'REDPACK',
       orderDetail: val.detail
@@ -310,6 +305,7 @@ Page({
    **openHB 打开红包
    */
   openHB(val) {
+    console.log(val)
     let order = val.currentTarget.dataset.order
     let avatarUrl = val.currentTarget.dataset.avatarurl
     let name = val.currentTarget.dataset.name
@@ -322,6 +318,7 @@ Page({
       success(res) {
         // 红包位置
         let position = res.data.data
+        console.log(res)
         // TODO 判断 是否领取过
         if (position == -1) {
           // 说明已经领取过
@@ -371,9 +368,8 @@ Page({
    // 监听beforeHB 子组件事件，并将红包list信息传过来
    // 或者 同一个人红包第二次开启
    openHBList(val,type) {
-    console.log(val)
-    let data = (type = 'clicked' ? val : val.detail) // clicked则是同一个人第二次打开，否则 直接是父组件的事件
-    console.log(data)
+    debugger
+    let data = (type === 'clicked' ? val : val.detail) // clicked则是同一个人第二次打开，否则 直接是父组件的事件
     let redpackList = data.map(item => item.openTime = utils.formatTime(new Date(item.openTime)))
     this.setData({
       showopenHBComp: true,

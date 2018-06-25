@@ -13,7 +13,7 @@
   		<text><text class='strong'>{{redpackOrder.number}} </text>个红包共 <text class='strong'> {{redpackOrder.totalMoney / 100}} 元</text></text>
   	</view>
   	<view class='hb-bottom'>
-  		<view class='hb-item' wx:for="{{redpackList}}"  wx:for-index="idx" wx:for-item="itemName" wx:key='idx'>
+  		<view class='hb-item' wx:if='{{redpackList}}' wx:for="{{redpackList}}"  wx:for-index="idx" wx:for-item="itemName" wx:key='idx'>
   			<view class='item-list-img'>
   				<image src='{{itemName.avatar}}'></image>
   			</view>

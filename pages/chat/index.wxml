@@ -39,7 +39,12 @@
                     <image src='{{itemName.message.giftAvatar}}'></image>
                     <view class='gift-wish'>{{itemName.message.giftDes}}</view>
                 </view>
-                <view class='detailMessage detailHB' wx:else data-order='{{itemName.message}}' bindtap='openHB' data-avatarUrl='{{itemName.avatarUrl}}' data-name='{{itemName.avatarUrl}}'>
+                <view class=" detailMessage detailGift" wx:elif="{{itemName.isType =='SHOWTIME'}}" >
+                    重金霸屏{{itemName.message.costTime}}秒:{{itemName.message.blessing}}
+                    <image wx:if="{{itemName.message.showtimeType === 'IMAGE'}}" src='{{itemName.message.showtimeSrc}}'></image>
+                    <video wx:if="{{itemName.message.showtimeType === 'VIDEO'}}" src='{{itemName.message.showtimeSrc}}'></video>
+                </view>
+                <view class='detailMessage detailHB' wx:else data-order='{{itemName.message}}' bindtap='openHB' data-avatarUrl='{{itemName.avatarUrl}}' data-name='{{itemName.name}}'>
                   <text class='hb-message'>{{itemName.message.blessing}}</text>
                   <text class='hb-bottom'>红包来啦!</text>
                 </view>
