@@ -15,6 +15,11 @@
                     <image src='{{itemName.message.giftAvatar}}'></image>
                     <view class='gift-wish'>{{itemName.message.giftDes}}</view>
                 </view>
+                <view class=" detailMessage detailGift" wx:elif="{{itemName.isType =='SHOWTIME'}}" >
+                    重金霸屏{{itemName.message.costTime}}秒:{{itemName.message.blessing}}
+                    <image wx:if="{{itemName.message.showtimeType === 'IMAGE'}}" src='{{itemName.message.showtimeSrc}}'></image>
+                    <video wx:if="{{itemName.message.showtimeType === 'VIDEO'}}" src='{{itemName.message.showtimeSrc}}'></video>
+                </view>
                 <view class='detailMessage detailHB' wx:else data-order='{{itemName.message}}' bindtap='openHB' data-avatarUrl='{{itemName.avatarUrl}}' data-name='{{itemName.name}}'>
                   <text class='hb-message'>{{itemName.message.blessing}}</text>
                   <text class='hb-bottom'>红包来啦!</text>
@@ -104,7 +109,7 @@
     <!--弹出红包  -->
     <beforehb-component wx:if="{{showBeforeHBComp}}" bindcloseBeforeHB='closeBeforeHB' roomId='{{roomId}}' redpackLeft="{{redpackLeft}}" redpackAvatarUrl="{{redpackAvatarUrl}}" redpackName='{{redpackName}}' redpackPosition='0' redpackId='{{redpackId}}' bindopenHBList='openHBList' redpackOrder="{{redpackOrder}}"></beforehb-component>
 
-    <showtime-modal wx:if="{{showShowtimeModal}}" bind:close="closeShowtimeModal"></showtime-modal>
+    <showtime-modal wx:if="{{showShowtimeModal}}" bind:close="closeShowtimeModal" bind:send="sendShowtime"></showtime-modal>
 
     <!-- zbs: 我的按钮 -->
     <navigator class="mineView" url="../mine/index">

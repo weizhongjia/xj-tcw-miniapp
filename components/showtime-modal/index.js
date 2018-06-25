@@ -30,7 +30,7 @@ Component({
     changeShowtimeType() {
       if(this.data.showtimeType === "IMAGE") {
         this.setData({
-          showtimeType:"MOVIE"
+          showtimeType:"VIDEO"
         })
       } else {
         this.setData({
@@ -65,78 +65,39 @@ Component({
 
       uploadFile(uploadConfig);
     },
-    submit() {
-      this.vallidate()
-      this.data.flag && this.getPayOrderInfo()
-    },
-    vallidate() {
-      //判断金额
-      if (!this.data.cost) {
-        wx.showToast({
-          title: '请输入总金额',
-          icon: 'none',
-          image: './../../res/emoj.png',
-          duration: 2000
-        })
-        return
-      }
-      if (Number.isNaN((parseFloat(this.data.cost)))) {
-        wx.showToast({
-          title: '请输入数字',
-          icon: 'none',
-          image: './../../res/emoj.png',
-          duration: 2000
-        })
-        return
-      }
-      // 判断个数
-      if (!this.data.number) {
-        wx.showToast({
-          title: '请输入红包个数',
-          icon: 'none',
-          image: './../../res/emoj.png',
-          duration: 2000
-        })
-        return
-      }
-      if(!this.data.message) {
-        wx.showToast({
-          title: '请输入留言',
-          icon: 'none',
-          image: './../../res/emoj.png',
-          duration: 2000
-        })
-        return
-      }
-      // 判断红包单价
-      if(this.data.cost/this.data.number < 0.01) {
-        wx.showToast({
-          title: '最少每人一分钱哦亲~',
-          icon: 'none',
-          image: './../../res/emoj.png',
-          duration: 2000
-        })
-        return
-      }
+    bindBlessInput(e) {
+      let value = e.detail.value
       this.setData({
-        flag: true
+        blessing:value
       })
+    },
+    submit() {
+      let obj = {};
+      if (this.data.showtimeType === 'VIDEO' && this.data.uploadedVideo) {
+        obj = {type: this.data.showtimeType, src: this.data.uploadedVideo}
+      }else if (this.data.showtimeType === 'IMAGE' && this.data.uploadedImage) {
+        obj = {type: this.data.showtimeType, src: this.data.uploadedImage}
+      }else {
+        obj = {type: "TEXT"}
+      }
+
+      this.getPayOrderInfo(obj)
     },
     //请求红包订单------> 请求支付接口-------> 请求websocket
 
     //请求订单信息
-    getPayOrderInfo() {
+    getPayOrderInfo(obj) {
       let that = this
+      let showtimePayment = this.data.showtimeProduct[this.data.activeIndex];
       request({
-        url: '/api/wx/pay/redpack/order',
+        url: '/api/wx/pay/showtime/order',
         data: {
-          'money': this.data.cost*100,
-          'number': this.data.number,
-          'roomId': this.data.roomId,
-          'blessing': this.data.message
-          // "money": 1,
-          // "number": 1,
-          // "roomId": 0
+          "blessing": this.data.blessing || "新婚快乐",
+          "price": showtimePayment.price,
+          "roomId": this.data.roomId,
+          "src": obj.src,
+          "time": showtimePayment.time,
+          "type": obj.type
         },
         success(res) {
           let data = res.data
@@ -171,7 +132,7 @@ Component({
           // 红包相关信息
           let myEventDetail = val.order
           let myEventOption = {}
-          self.triggerEvent('sendHB', myEventDetail,myEventOption)
+          self.triggerEvent('send', myEventDetail,myEventOption)
           self.closeDialog()
         },
         'fail': function (res) {

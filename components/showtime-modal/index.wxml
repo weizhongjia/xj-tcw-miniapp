@@ -15,7 +15,7 @@
 		  </view>
 	  </scroll-view>
 	  <view class="showtime-input">
-		  <textarea class="showtime-textarea" placeholder="请不要发布广告涉黄等内容">
+		  <textarea class="showtime-textarea" placeholder="新婚快乐" bindinput="bindBlessInput">
 
 		  </textarea>
 		  <view style="text-align: center" wx:if="{{showtimeType == 'IMAGE'}}">

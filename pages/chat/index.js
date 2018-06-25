@@ -274,6 +274,12 @@ Page({
       showShowtimeModal: false
     })
   },
+  sendShowtime(val) {
+    this.sendSocketMessage({
+      type:'SHOWTIME',
+      orderDetail:val.detail
+    })
+  },
   /*
    *监听子组件sendGift事件，触发发送礼物
    */
