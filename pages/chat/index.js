@@ -19,7 +19,7 @@ Page({
         message: {costTime:0,
           createTime:1529743936464,
           giftId:0,
-          id:168,
+          id:179,
           number:1,
           openid:"ozrMn43Gfh7MmWSJ03gF5uObyfzw",
           orderType:"REDPACK",
@@ -323,7 +323,7 @@ Page({
         // 红包位置
         let position = res.data.data
         // TODO 判断 是否领取过
-        if (position = -1) {
+        if (position == -1) {
           // 说明已经领取过
           self.requestRedpackList(redpackId)
         } else if ( position <= redpackNum-1) {
