@@ -8,7 +8,7 @@
 	</view>
 	  <text class='hb-text'>霸屏时长</text>
 	  <scroll-view scroll-x="true" class='gift-list-cont' >
-		  <view class='gift-item {{activeIndex==index ? "active" : ""}}' wx:for="{{showtimeProduct}}"  wx:key="index" bindtap='changeActiveItem' data-ind='{{index}}' data-giftobj='{{item}}'>
+		  <view class='gift-item {{activeIndex==index ? "active" : ""}}' wx:for="{{showtimeProduct}}"  wx:key="index" bindtap='changeActiveItem' data-ind='{{index}}'>
 			  <view class="gift-img">{{item.time}}秒</view>
 			  <image src='../../res/checked.png'  class='checked-img' wx:if='{{activeIndex ==index}}'></image>
 			  <text>￥{{item.price / 100}}</text>
@@ -18,12 +18,20 @@
 		  <textarea class="showtime-textarea" placeholder="请不要发布广告涉黄等内容">
 
 		  </textarea>
-		  <view style="text-align: center">
+		  <view style="text-align: center" wx:if="{{showtimeType == 'IMAGE'}}">
 
-			  	<view class="showtime-image">
+			  	<view class="showtime-image" bindtap="uploadShowtimeFile" data-type="image">
 					<image style="width: 42px;height:40px;" src="http://msh.mrourou.com/addons/meepo_xianchang/template/mobile/app/images/common/images_old/iconImImg.png"></image>
 				</view>
-			  <button class="showtime-button" type="primary">小视频霸屏</button>
+			  <button class="showtime-button"  type="primary" bindtap="changeShowtimeType">小视频霸屏</button>
+
+		  </view>
+		  <view style="text-align: center" wx:if="{{showtimeType == 'MOVIE'}}">
+
+			  <view class="showtime-image" bindtap="uploadShowtimeFile" data-type="movie">
+				  <image style="width: 42px;height:40px;" src="http://msh.mrourou.com/addons/meepo_xianchang/template/mobile/app/images/common/images_old/videoimg.png"></image>
+			  </view>
+			  <button class="showtime-button" type="primary" bindtap="changeShowtimeType">图片霸屏</button>
 		  </view>
 
 	  </view>

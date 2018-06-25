@@ -1,5 +1,5 @@
 // components/hb-cont.js
-const request = require('../../utils/request')
+const {request} = require('../../utils/request')
 
 Component({
   /**

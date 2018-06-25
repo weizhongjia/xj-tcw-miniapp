@@ -1,7 +1,7 @@
 const client = require('../../utils/stompclient')
 const chatConfig = require('../../config/index')
 const app = getApp()
-const request = require('../../utils/request')
+const {request, uploadFile} = require('../../utils/request')
 const emojiArr = require('../../config/emoji2.js') // emoji配置
 const utils = require('./../../utils/util')
 
@@ -212,81 +212,20 @@ Page({
       showEmoji: true
     })
   },
-  //调用图片拍照功能
-  showPhone() {
-    let that = this
-    wx.chooseImage({
+  uploadImage() {
+    let that = this;
+    uploadFile({
+      type: 'image',
       count: 1, // 默认9 暂时支持一张
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-      success: function(res) {
-        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-        var tempFilePaths = res.tempFilePaths
-          // 将文件上传至阿里云
-        that.requestToken(tempFilePaths)
-      },
-      fail() {}
-    })
-  },
-  // 拿token
-  requestToken(tempFilePaths) {
-    let that = this
-    request({
-      url: '/api/wx/aliyun/form',
-      method: 'GET',
-      success: function(res) {
-        if (res.data.code = 200) {
-          console.log(res.data.data)
-          that.uploadAliyun(res.data.data, tempFilePaths)
-        }
-      },
-    })
-  },
-  //上传阿里云
-  uploadAliyun(token, tempFilePaths) {
-    let that = this
-    let {
-      endPoint, expire, ossAccessKeyId, policy, signature
-    } = token
-    //去掉微信中路径
-    let filename = tempFilePaths[0].replace('wxfile://', '')
-      // 过期返回
-    if (expire * 1000 < new Date().getTime()) {
-      wx.showToast({
-        title: '验证过期',
-        icon: 'success',
-        duration: 2000
-      })
-      return
-    }
-    wx.uploadFile({
-      url: endPoint,
-      header: {
-        'content-type': 'multipart/form-data'
-      },
-      filePath: tempFilePaths[0], //暂时只支持上传一张
-      name: 'file',
-      formData: {
-        name: tempFilePaths[0],
-        key: filename,
-        policy,
-        ossAccessKeyId,
-        success_action_status: '200',
-        signature,
-      },
-      success: function(res) {
-        console.log('上传阿里云成功')
-          // 在微信开发工具中filename改为下面
-          // filename = 'http://tmp/' + filename
+      callback: function (fileSrc) {
         that.sendSocketMessage({
           type: 'IMAGE',
-          detail: `${chatConfig.httpProtocol}${chatConfig.uploadHost}/${filename}`
+          detail: fileSrc
         })
-      },
-      fail: function(res) {
-        console.log(res)
       }
-    })
+    });
   },
   focus(e) {
     // this.setData({

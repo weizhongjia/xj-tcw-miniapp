@@ -4,7 +4,7 @@
  *properties 接受父组件传来的roomId showGift(用于触发动画 TODO)  giftArr 礼物列表
  * triggerEvent close（父组件监听并关闭弹窗） sendGift（把支付订单信息传给父组件，并触发弹幕功能....因为发送信息时间在父组件）
  **/
-const request = require('../../utils/request')
+const {request} = require('../../utils/request')
 Component({
   /**
    * 组件的属性列表

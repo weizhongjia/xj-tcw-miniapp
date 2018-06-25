@@ -58,7 +58,7 @@
                   <view class='emoj-btn' bindtap='showEmoj'>
                     <image src='/res/emoj.png'></image>
                   </view>
-                  <view class='photo-btn' bindtap='showPhone'>
+                  <view class='photo-btn' bindtap='uploadImage'>
                     <image src='/res/photo.png'></image>
                   </view>
                 </view>
@@ -84,7 +84,7 @@
               <image src='/res/emoj.png'></image>
             </view>
             <!-- //拍照 -->
-            <view class='photo-btn' bindtap='showPhone'>
+            <view class='photo-btn' bindtap='uploadImage'>
               <image src='/res/photo.png'></image>
             </view>
           </view>
@@ -104,7 +104,7 @@
     <!--弹出红包  -->
     <beforehb-component wx:if="{{showBeforeHBComp}}" bindcloseBeforeHB='closeBeforeHB' roomId='{{roomId}}' redpackLeft="{{redpackLeft}}" redpackAvatarUrl="{{redpackAvatarUrl}}" redpackName='{{redpackName}}' redpackPosition='0' redpackId='{{redpackId}}' bindopenHBList='openHBList' redpackOrder="{{redpackOrder}}"></beforehb-component>
 
-    <showtime-modal wx:if="{{showShowtimeModal}}"></showtime-modal>
+    <showtime-modal wx:if="{{showShowtimeModal}}" bind:close="closeShowtimeModal"></showtime-modal>
 
     <!-- zbs: 我的按钮 -->
     <navigator class="mineView" url="../mine/index">
