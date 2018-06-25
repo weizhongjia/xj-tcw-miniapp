@@ -56,7 +56,7 @@ Component({
   filterData() {
     let myredpack;
     myredpack = this.data.redpackList.filter(item => item.openId = app.globalData.userInfo.openId)
-    myredpack.forEach( item => item.formatOpenTime = utils.formatTime(new Date(item.openTime)))
+    // myredpack.forEach( item => item.formatOpenTime = utils.formatTime(new Date(item.openTime)))
     console.log(myredpack)
     this.setData({
       myMoney: myredpack[0].money/100
