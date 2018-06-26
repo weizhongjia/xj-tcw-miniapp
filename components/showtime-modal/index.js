@@ -13,7 +13,7 @@ Component({
     activeIndex: 0,
     showtimeType: 'IMAGE',
     uploadedImage: '',
-    uploadedVideo: '',
+    uploadedVideo: ''
   },
   methods: {
     closeDialog() {
@@ -37,6 +37,48 @@ Component({
           showtimeType: "IMAGE"
         })
       }
+    },
+    uploadImage() {
+      const that = this;
+      wx.chooseImage({
+        count: 1, // 默认9 暂时支持一张
+        sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+        sourceType: ['camera'], // 可以指定来源是相册还是相机，默认二者都有
+        success: function(res) {
+          // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+          var tempFilePaths = res.tempFilePaths
+          // 将文件上传至阿里云
+          uploadFile(tempFilePaths[0], function (fileSrc) {
+            that.setData({
+              uploadedImage:fileSrc
+            })
+          })
+        },
+        fail() {
+          wx.showToast({
+            title: '上传失败',
+            icon: 'success',
+            duration: 2000
+          })
+        }
+      });
+    },
+    uploadVideo() {
+      const that = this;
+      wx.chooseVideo({
+        sourceType:['camera'],
+        success: function (res) {
+          uploadFile(res.tempFilePath, function (fileSrc) {
+            that.setData({
+              uploadedVideo:fileSrc,
+              videoInfo: {
+                duration: parseInt(res.duration),
+                thumbTempFilePath: res.thumbTempFilePath
+              }
+            })
+          })
+        }
+      });
     },
     uploadShowtimeFile(val) {
       let that = this;
@@ -88,7 +130,16 @@ Component({
     //请求订单信息
     getPayOrderInfo(obj) {
       let that = this
-      let showtimePayment = this.data.showtimeProduct[this.data.activeIndex];
+      let showtimePayment;
+      if(this.data.activeIndex === this.data.showtimeProduct.length) {
+        showtimePayment = {
+          time: this.data.videoInfo.duration,
+          price: 2 * this.data.videoInfo.duration
+        }
+      } else {
+        showtimePayment = this.data.showtimeProduct[this.data.activeIndex];
+      }
+
       request({
         url: '/api/wx/pay/showtime/order',
         data: {

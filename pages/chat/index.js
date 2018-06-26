@@ -213,17 +213,22 @@ Page({
   },
   uploadImage() {
     let that = this;
-    uploadFile({
-      type: 'image',
+    wx.chooseImage({
       count: 1, // 默认9 暂时支持一张
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-      callback: function (fileSrc) {
-        that.sendSocketMessage({
-          type: 'IMAGE',
-          detail: fileSrc
+      success: function(res) {
+        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+        var tempFilePaths = res.tempFilePaths
+        // 将文件上传至阿里云
+        uploadFile(tempFilePaths[0], function (fileSrc) {
+          that.sendSocketMessage({
+            type: 'IMAGE',
+            detail: fileSrc
+          })
         })
-      }
+      },
+      fail() {}
     });
   },
   focus(e) {
