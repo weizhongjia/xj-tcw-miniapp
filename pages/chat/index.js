@@ -60,7 +60,7 @@ Page({
     userInfo: {},
     roomId: -1,
     isLogin: false, //判断是否登录，显示/隐藏登录btn
-    focusHeight: '8px',
+    focusHeight: '',
     showGift: false, //显示礼物组件
     showHB: false,
     indicatorDots: true, //显示dots
@@ -84,6 +84,8 @@ Page({
     imgPosition: 'inherit',
     imgMargin: '15rpx',
     clickedImageIndex: null,
+    notSendBtn: true,
+    showKeyboard: false
   },
   onLoad: function(options) {
     this.data.roomId = options.roomId || 1;
@@ -117,8 +119,15 @@ Page({
     })
   },
   bindKeyInput: function(e) {
+    let btnFlag = this.data.notSendBtn;
+    if(e.detail.value) {
+      btnFlag = false;
+    }else {
+      btnFlag = true;
+    }
     this.setData({
-      inputValue: e.detail.value
+      inputValue: e.detail.value,
+      notSendBtn: btnFlag
     });
   },
   // 连接websocket聊天 接受广播信息
@@ -262,9 +271,31 @@ Page({
     });
   },
   focus(e) {
-    // this.setData({
-    //   focusHeight: '10px'
-    // })
+    console.log(e)
+    let btnFlag = this.data.notSendBtn;
+    if (e.detail.value !== '') {
+      btnFlag = false;
+    } else {
+      btnFlag = true;
+    }
+    this.setData({
+      //zbs: 红米note和ios有区别：苹果focusHeight设置为0， 红米设置为下面的
+      focusHeight: e.detail.height + 60 +  "px",
+      showKeyboard: true,
+      notSendBtn: btnFlag
+    })
+  },
+  blur(e) {
+    let btnFlag = this.data.notSendBtn;
+    if(e.detail.value !== '') {
+      btnFlag = false;
+    }else {
+      btnFlag = true;
+    }
+    this.setData({
+      showKeyboard: false,
+      notSendBtn: btnFlag
+    })
   },
   // 监听子组件close 关闭gift-cont
   closeGift(val) {
