@@ -59,7 +59,7 @@ Page({
     imgWidth: '300rpx',
     imgPosition: 'inherit',
     imgMargin: '15rpx',
-    inputFocus: false,
+    clickedImageIndex: null,
   },
   onLoad: function(options) {
     this.data.roomId = options.roomId || 1;
@@ -389,23 +389,17 @@ Page({
     })  
     },
     elargeImage(e) {
-      console.log(e)
-      let flag = this.data.imgWidth === '100vw'
-      if (!flag) {
+      let idx = e.currentTarget.dataset.idx
+      if (this.data.clickedImageIndex != idx) {
         this.setData({
-          imgWidth: '100vw',
-          imgHeight: '100vh',
-          imgPosition: 'fixed',
-          imgMargin: '0',
-        })
+          clickedImageIndex: idx
+        })       
       } else {
         this.setData({
-          imgWidth: '300rpx',
-          imgHeight: '300rpx',
-          imgPosition: 'inherit',
-          imgMargin: '15rpx'
+          clickedImageIndex: null
         })
       }
+
 
     }
 });

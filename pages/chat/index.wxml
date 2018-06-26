@@ -8,7 +8,7 @@
                   <image src="{{userInfo.avatarUrl}}" class='user-avatar'></image>
                 </view>
                 <view class="detailMessage" wx:if="{{itemName.isType =='TEXT'}}">{{itemName.message}}</view>
-                <image src="{{itemName.message}}" wx:elif="{{itemName.isType =='IMAGE'}}" class='detailImage' mode='scaleToFill' bindtap='elargeImage' style='height: {{imgHeight}};width: {{imgWidth}};top: 0;left: 0;z-index: 1001;margin-left: {{imgMargin}}'></image>
+                <image src="{{itemName.message}}" wx:elif="{{itemName.isType =='IMAGE'}}" class='detailImage {{clickedImageIndex ===idx ? "full-image": ""}}' mode='scaleToFill' bindtap='elargeImage'></image>
                 <view class=" detailMessage detailGift" wx:elif="{{itemName.isType =='GIFT'}}" >
                     送出{{itemName.message.giftNumber}}个 {{itemName.message.giftName
                     }}
@@ -33,7 +33,7 @@
                   <image src='{{itemName.avatarUrl}}' class='user-avatar'></image>
                 </view>
                 <view class="detailMessage" wx:if="{{itemName.isType =='TEXT'}}">{{itemName.message}}</view>
-                <image src="{{itemName.message}}" wx:elif="{{itemName.isType =='IMAGE'}}" class='detailImage' mode='scaleToFill' style='height: {{imgHeight}};width: {{imgWidth}};position: {{imgPosition}};top: 0;left: 0;z-index: 1001;margin-left: {{imgMargin}}' bindtap='elargeImage'></image>
+                <image src="{{itemName.message}}" wx:elif="{{itemName.isType =='IMAGE'}}" class='detailImage {{clickedImageIndex ===idx ? "full-image": ""}}' mode='scaleToFill'  bindtap='elargeImage' data-idx='{{idx}}'></image>
                 <view class=" detailMessage detailGift" wx:elif="{{itemName.isType =='GIFT'}}" >
                     送出{{itemName.message.giftNumber}}个 {{itemName.message.giftName
                     }}
