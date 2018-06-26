@@ -60,19 +60,20 @@
     <image src="../../res/rb2.png" alt="" class="right-bottom-img2 fly-all4"></image>
     <image src="../../res/entry-circle.png" alt="" class="ertry-circle-img fly-all1"></image>
 
-    <view class="bottomArea">
+    <view class="bottomArea" style="bottom: {{showKeyboard ? focusHeight : ''}}">
          <!-- <form bindreset="send">  -->
          <form wx:if="{{isLogin}}">
-            <view class="inputArea" >
+            <view class="inputArea">
             <!--点击完成按钮时触发  -->
-                <input type="text" placeholder="{{placeholderText}}" placeholder-class='placeholder-btn' class="message" bindinput="bindKeyInput" bindconfirm="send"  value="{{inputValue}}" bindfocus='focus' style="margin-bottom:{{focusHeight}}" focus='{{inputFocus}}'/>
+                <input type="text" placeholder="{{placeholderText}}" placeholder-class='placeholder-btn' class="message" bindinput="bindKeyInput" bindconfirm="send"  value="{{inputValue}}" bindfocus='focus' bindblur="blur" focus='{{inputFocus}}'/>
                 <view class='btn-group'>
                   <view class='emoj-btn' bindtap='showEmoj'>
                     <image src='/res/emoj.png'></image>
                   </view>
-                  <view class='photo-btn' bindtap='uploadImage'>
-                    <image src='/res/photo.png'></image>
+                  <view wx:if="{{notSendBtn}}" class='photo-btn'>
+                    <image bindtap='uploadImage' src='/res/photo.png'></image>
                   </view>
+                  <view wx:else class="sendBtn" bindtap="send">发 送</view>
                 </view>
             </view>
             <!-- emoji -->

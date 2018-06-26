@@ -254,12 +254,6 @@ float: left;
     margin: 20px;
     border-radius: 50%;
 }
-.detailGift video {
-  display:block;
-  width: 300rpx;
-  height: 400rpx;
-  margin-top: 20px;
-}
 
 
 /*红包样式*/
@@ -354,4 +348,21 @@ float: left;
   height: 100vh;
   margin: 0!important;
   z-index: 1001;
+}
+
+.sendBtn {
+  width: 40px;
+  height: 30px; 
+  background-color: #26aa28;
+  color: #fff;
+  font-size: 20rpx;
+  text-align: center;
+  line-height: 30px;
+  border-radius: 5px;
+  margin-left: 5px;
+}
+
+.showKeyboard {
+  position: absolute;
+  left: 0;
 }
