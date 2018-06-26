@@ -70,7 +70,7 @@ float: left;
   max-width: 560rpx;
   font-size: 13px;
   line-height: 13px;
-  border-radius: 5px;
+  border-radius: 10rpx;
   padding: 10px 8px;
   display: inline-block;
   position: relative;
@@ -80,8 +80,8 @@ float: left;
 }
 /*  图片 */
 .detailImage {
-  width: 180rpx;
-  height: 250rpx;
+  width: 300rpx; 
+  height: 300rpx; 
   border-radius: 2rpx;
 }
 .selfMessage .detailImage {
@@ -115,7 +115,7 @@ float: left;
 }
 .item {
    /* margin-top: 10px;  */
-   padding-top: 10rpx;
+   padding-top: 25rpx;
 }
 .pageContainer{
   height: 100vh;
@@ -258,7 +258,7 @@ float: left;
 
 /*红包样式*/
 .detailHB {
-  background-color:#e25f5f!important;
+  background-color:#fb9c46!important;
 
   /*padding-bottom: 20px;*/
   box-sizing: border-box;
@@ -290,7 +290,7 @@ float: left;
   display: block;
   height: 25px;
   line-height: 25px;
-  font-size: 16px;
+  font-size: 20rpx;
 }
 .gift-wish {
   display: inline-block;
@@ -320,3 +320,24 @@ float: left;
 .mineText {
   font-size: 20rpx;
 }
+/* zbs: 红包样式添加 */
+.hb-up-view {
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, .3);
+  width: 100%;
+  padding: 5rpx;
+  padding-left: 40rpx;
+  border-bottom-left-radius: 10rpx;
+  border-bottom-right-radius: 10rpx;
+}
+.hb-up-view>text {
+  color: #fff;
+  font-size: 18rpx;
+}
+.hb-message {
+  font-size: 22rpx;
+}
+

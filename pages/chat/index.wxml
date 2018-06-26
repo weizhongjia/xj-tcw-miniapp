@@ -22,7 +22,8 @@
                 </view>
                 <view class='detailMessage detailHB' wx:else data-order='{{itemName.message}}' bindtap='openHB' data-avatarUrl='{{itemName.avatarUrl}}' data-name='{{itemName.name}}'>
                   <text class='hb-message'>{{itemName.message.blessing}}</text>
-                  <text class='hb-bottom'>红包来啦!</text>
+                  <text class='hb-bottom'>领取红包</text>
+                  <view class="hb-up-view"><text>婚礼红包</text></view>
                 </view>
             </view>
             <!--别人  -->
@@ -46,7 +47,8 @@
                 </view>
                 <view class='detailMessage detailHB' wx:else data-order='{{itemName.message}}' bindtap='openHB' data-avatarUrl='{{itemName.avatarUrl}}' data-name='{{itemName.name}}'>
                   <text class='hb-message'>{{itemName.message.blessing}}</text>
-                  <text class='hb-bottom'>红包来啦!</text>
+                  <text class='hb-bottom'>领取红包</text>
+                  <view class="hb-up-view"><text>婚礼红包</text></view>
                 </view>
             </view>
         </view>

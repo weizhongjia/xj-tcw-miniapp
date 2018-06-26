@@ -1,15 +1,12 @@
 <scroll-view
-  bindscrolltolower="refreshVideo"
+  class="videoContainer"
 >
-  <videoList-item 
-    roomName="人"
-    author="阿健"
+  <!-- 暴露的属性有：roomImg、roomName、videoSrc、authorImg、author、btnIsShow  -->
+  <videoList-item
+    wx:for="{{MovieList}}"
+    roomName="{{item.name}}"
+    roomImg="{{item.imagePath}}"
+    author="{{item.comment}}"
+    btnIsShow="{{item.isHighlyRecommended}}"
   />
-  <videoList-item 
-    roomName="人"
-    author="阿健"
-  />
-  <videoList-item />
-  <videoList-item />
-  <videoList-item />
 </scroll-view>

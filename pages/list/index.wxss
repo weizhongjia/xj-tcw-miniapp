@@ -1,3 +1,6 @@
+.videoContainer {
+  background-color: #e8e8e8;
+}
 image{
   width: 200rpx;
   height: 200rpx;

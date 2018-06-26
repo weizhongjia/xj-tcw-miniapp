@@ -1,1 +1,7 @@
-{}
+{
+  "backgroundColor": "#eee",
+  "backgroundTextStyle": "light",
+  "usingComponents": {
+    "mine": "/components/mine/index"
+  }
+}

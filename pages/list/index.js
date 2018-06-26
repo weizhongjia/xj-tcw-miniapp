@@ -15,19 +15,17 @@ Page({
       },
       {
         name: '这个杀手不太冷',
-        comment: '最精彩的剧本，最真是的黑帮故事。',
+        comment: '法国故事。',
         imagePath: '/res/jiaofu.jpg',
-        isHighlyRecommended: true
+        isHighlyRecommended: false
       },
       {
         name: '功夫足球',
-        comment: '最精彩的剧本，最真是的黑帮故事。',
+        comment: '魔幻巨作。',
         imagePath: '/res/jiaofu.jpg',
         isHighlyRecommended: true
       },
-    ],
-    currentIndex: 0,
-    count:1,
+    ]
   },
 
   /**
@@ -88,10 +86,7 @@ Page({
    */
   onShareAppMessage: function () {
     console.log("转发")
-  },
-  func1: function(arg) {
-    this.setData({
-      count: this.data.count+1
-    })
   }
+
+
 })

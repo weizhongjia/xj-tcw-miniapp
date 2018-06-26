@@ -2,6 +2,7 @@
   "pages":[
     "pages/chat/index",
     "pages/list/index",
+    
     "pages/tabMine/index",
     "pages/mine/index"
   ],
