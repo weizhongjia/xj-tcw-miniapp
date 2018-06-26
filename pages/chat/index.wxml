@@ -21,8 +21,10 @@
                     <video wx:if="{{itemName.message.showtimeType === 'VIDEO'}}" src='{{itemName.message.showtimeSrc}}'></video>
                 </view>
                 <view class='detailMessage detailHB' wx:else data-order='{{itemName.message}}' bindtap='openHB' data-avatarUrl='{{itemName.avatarUrl}}' data-name='{{itemName.name}}'>
-                  <text class='hb-message'>{{itemName.message.blessing}}</text>
-                  <text class='hb-bottom'>领取红包</text>
+                  <view class="hb-content-container">
+                    <text class='hb-message'>{{itemName.message.blessing}}</text>
+                    <text class='hb-bottom'>领取红包</text>
+                  </view>
                   <view class="hb-up-view"><text>婚礼红包</text></view>
                 </view>
             </view>
@@ -46,8 +48,10 @@
                     <video wx:if="{{itemName.message.showtimeType === 'VIDEO'}}" src='{{itemName.message.showtimeSrc}}'></video>
                 </view>
                 <view class='detailMessage detailHB' wx:else data-order='{{itemName.message}}' bindtap='openHB' data-avatarUrl='{{itemName.avatarUrl}}' data-name='{{itemName.name}}'>
-                  <text class='hb-message'>{{itemName.message.blessing}}</text>
-                  <text class='hb-bottom'>领取红包</text>
+                  <view class="hb-content-container">
+                    <text class='hb-message'>{{itemName.message.blessing}}</text>
+                    <text class='hb-bottom'>领取红包</text>
+                  </view>
                   <view class="hb-up-view"><text>婚礼红包</text></view>
                 </view>
             </view>

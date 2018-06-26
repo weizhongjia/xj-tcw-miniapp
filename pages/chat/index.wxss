@@ -125,7 +125,7 @@ float: left;
   padding-top: 5px;
   width: 100%;
   height: calc(100% - 53.25px);
-  background: #fff;
+  background: #ebebeb;
   margin-bottom: -100px;
 }
 .emoj-btn,.photo-btn {
@@ -258,19 +258,22 @@ float: left;
 
 /*红包样式*/
 .detailHB {
-  background-color:#fb9c46!important;
+  background-color:#f89c46!important;
 
   /*padding-bottom: 20px;*/
   box-sizing: border-box;
   margin-bottom: 4px;
   background: url("http://msh.mrourou.com/addons/meepo_xianchang/template/mobile/app/images/common/images_old/right_hb.png");
   background-repeat: no-repeat;
-  background-size: 30px;
-  opacity: .8;
-  min-width: 500rpx;
+  background-size: 54rpx 60rpx;
+  background-position: 34rpx 34rpx !important;
+  min-width: 400rpx;
+  min-height: 156rpx;
+  width: 400rpx;
+  height: 156rpx;
   z-index: 10;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 34rpx;
+  padding-left: 105rpx !important;
 }
 .otherMessage .detailHB {
     padding-right: 60px;
@@ -287,9 +290,6 @@ float: left;
 }
 
 .detailHB .hb-bottom {
-  display: block;
-  height: 25px;
-  line-height: 25px;
   font-size: 20rpx;
 }
 .gift-wish {
@@ -304,10 +304,10 @@ float: left;
   width: 150rpx;
   height: 60rpx;
   border-radius: 30rpx;
-   padding-left: 20rpx;
-  background-color: rgba(0, 0, 0, .3);
+  padding-left: 20rpx;
+  background-color: #000;
   position: absolute;
-  top: 200rpx;
+  bottom: 500rpx;
   right: -60rpx;
   display: flex;
   align-items: center;
@@ -319,6 +319,7 @@ float: left;
 }
 .mineText {
   font-size: 20rpx;
+  color: #fff;
 }
 /* zbs: 红包样式添加 */
 .hb-up-view {
@@ -326,19 +327,22 @@ float: left;
   position: absolute;
   bottom: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, .3);
+  background-color: #fff;
   width: 100%;
   padding: 5rpx;
-  padding-left: 40rpx;
+  padding-left: 30rpx;
   border-bottom-left-radius: 10rpx;
   border-bottom-right-radius: 10rpx;
 }
 .hb-up-view>text {
-  color: #fff;
-  font-size: 18rpx;
+  color: #999;
+  font-size: 20rpx;
 }
 .hb-message {
-  font-size: 22rpx;
+  font-size: 26rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .full-image {
   position: fixed;
@@ -365,4 +369,13 @@ float: left;
 .showKeyboard {
   position: absolute;
   left: 0;
+}
+
+.hb-content-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 60rpx;
+  /* background-color: blue; */
 }
