@@ -1,0 +1,26 @@
+
+<!-- 暴露的属性有：roomImg、roomName、videoSrc、authorImg、author、btnIsShow  -->
+<view class="videoRow">
+  <view class="rowTop">
+    <view class="topLeft">
+      <image class="imgSty" src="{{roomImg}}" />
+      <text class="textSty">{{roomName}}</text>
+    </view>
+    <view wx:if="{{btnIsShow}}" class="topRight">
+      <button class="textSty" size="mini" plain>进入房间</button>
+    </view>
+    
+  </view>
+  <view class="rowMain">
+      <video 
+        id="myVideo" 
+        src="{{videoSrc}}" 
+        class="video"
+      />
+
+  </view>
+  <view class="rowBottom">
+    <image class="imgSty" src="{{authorImg}}" />
+    <text class="textSty author">{{author}}</text>
+  </view>
+</view>

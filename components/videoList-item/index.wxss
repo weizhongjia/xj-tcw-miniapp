@@ -1,0 +1,61 @@
+.videoRow {
+   background-color: #fff; 
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+  margin-bottom: 10rpx;
+}
+/*公共样式类 */
+.textSty {
+  font-size: 28rpx;
+}
+.imgSty {
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  margin-right: 10rpx;
+}
+
+/* 头部  */
+.rowTop {
+  /* background-color: yellow; */
+  margin-bottom: 20rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.topLeft {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.topRight {
+  position: absolute;
+  right: 20rpx;
+}
+
+
+/* 中部视频  */
+.rowMain {
+   /* background-color: blue;  */
+   width: 100%;
+   height: 300rpx;
+}
+.video {
+  width: 100%;
+  height: 300rpx;
+}
+
+
+/* 底部  */
+.rowBottom {
+  /* background-color: green; */
+  margin-top: 20rpx;
+  padding-left: 20rpx;
+  display: flex;
+  align-items: center;
+}
+.author {
+  color: red;
+}

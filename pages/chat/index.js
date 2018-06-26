@@ -401,5 +401,10 @@ Page({
       }
 
 
+    },
+
+    /*zbs: 下拉刷新  */
+    pullDownRefresh() {
+      console.log("下拉刷新");
     }
 });
