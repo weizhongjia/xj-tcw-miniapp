@@ -30,6 +30,30 @@ Page({
           blessing:'1'
         }
       },
+      {
+        id: 2,
+        type: 'self',
+        isType: 'SHOWTIME', //'TEXT' 'IMAGE' 'GIFT' 'HB'
+        name: '王猛',
+        time: 'message.sendTime',
+        avatarUrl: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83er9SswuAdicMomWoY4OCR4mc25ItVJPCreJ5R5Cwqt5ZnEhS5BI9Yt4iaKP7IJSOTjhxoovnZ64IU5g/132',
+        message: {costTime:0,
+          createTime:1529743936464,
+          giftId:0,
+          id:179,
+          number:1,
+          openid:"ozrMn43Gfh7MmWSJ03gF5uObyfzw",
+          orderType:"REDPACK",
+          outTradeNo:"1529743936464134756",
+          price:0,
+          roomId:1,
+          totalMoney:1,
+          blessing:'新婚快乐',
+          showtimeType:'VIDEO',
+          showtimeSrc:'https://res.mrourou.com/http://tmp/wx47cff4eafcfd4568.o6zAJs9hE4PAyyqv59qYQuYEeyiE.P80hQ7efTZSc809bba2942d789442c0ab761906cdaf1.mp4'
+        }
+      },
+
     ],
     socketOpen: false,
     inputValue: "",
