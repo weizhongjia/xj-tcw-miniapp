@@ -1,7 +1,7 @@
 <!--components/hb-cont.wxml-->
 <view class='hb-cont'>
   <view class='overlay'></view>
-  <view class='model'>
+  <view class='model' animation="{{animationData}}">
 	<view class='header'>
 		<view class='border-left-red'>拼手气红包</view>
 		<view class='header-close'><image src='./../../res/icon_close.png' class='close-icon' bindtap='closeDialog'></image></view>

@@ -46,8 +46,8 @@ Component({
     giftTime: null,
     costTime: null,
   },
-  created() {
-
+  attached() {
+    this.animation()
   },
   /**
    * 组件的方法列表
@@ -178,6 +178,25 @@ Component({
 
           }
         })
+      },
+      animation() {
+        var animation = wx.createAnimation({  
+            duration: 200,  
+            timingFunction: "linear",  
+            delay: 0  
+        })  
+        this.animation = animation  
+        animation.translateY(300).step({duration: 0})  
+        this.setData({  
+            animationData: animation.export(),  
+            //showModalStatus: true  
+        })  
+        setTimeout(function () {  
+            animation.translateY(0).step()  
+            this.setData({  
+                animationData: animation.export()  
+            })  
+        }.bind(this), 10) 
       }
   }
 })

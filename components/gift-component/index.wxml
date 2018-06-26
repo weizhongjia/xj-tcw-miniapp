@@ -1,6 +1,6 @@
 <!--components/gift-cont.wxml-->
 <view class='gift-cont'>
-  <view class='gift-dialog tran {{showGift ? "": "enter"}}'>
+  <view class='gift-dialog tran {{showGift ? "": "enter"}}' animation="{{animationData}}">
     <view class='gift-title'>
       <text class='border-left-red'>赠送礼物</text>
      <image src='./../../res/icon_close.png' class='close-icon' bindtap='closeDialog'></image></view>
