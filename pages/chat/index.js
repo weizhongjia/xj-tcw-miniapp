@@ -113,7 +113,7 @@ Page({
           var newMessage = {
             id: data.message.id,
             type: data.user.openid === self.data.userInfo.openId ?
-              'self' : 'other',
+              'other' : 'other',
             isType: data.message.type, //'TEXT' 'IMAGE' 'GIFT' 'REDPACK'
             name: data.user.nickname,
             time: 'message.sendTime',
