@@ -55,6 +55,11 @@ Page({
     redpackPosition:'', //红包排队
     redpackOrder: '',// 对应打开红包信息
     redpackList:[], // 对应领取的红包列表
+    imgHeight: '300rpx',
+    imgWidth: '300rpx',
+    imgPosition: 'inherit',
+    imgMargin: '15rpx',
+    inputFocus: false,
   },
   onLoad: function(options) {
     this.data.roomId = options.roomId || 1;
@@ -136,7 +141,8 @@ Page({
         detail: this.data.inputValue
       });
       this.setData({
-        inputValue: ""
+        inputValue: "",
+        inputFocus: true
       });
     }
   },
@@ -381,5 +387,25 @@ Page({
     this.setData({
       showBeforeHBComp: false,
     })  
+    },
+    elargeImage(e) {
+      console.log(e)
+      let flag = this.data.imgWidth === '100vw'
+      if (!flag) {
+        this.setData({
+          imgWidth: '100vw',
+          imgHeight: '100vh',
+          imgPosition: 'fixed',
+          imgMargin: '0',
+        })
+      } else {
+        this.setData({
+          imgWidth: '300rpx',
+          imgHeight: '300rpx',
+          imgPosition: 'inherit',
+          imgMargin: '15rpx'
+        })
+      }
+
     }
 });

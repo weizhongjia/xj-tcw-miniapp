@@ -8,7 +8,7 @@
                   <image src="{{userInfo.avatarUrl}}" class='user-avatar'></image>
                 </view>
                 <view class="detailMessage" wx:if="{{itemName.isType =='TEXT'}}">{{itemName.message}}</view>
-                <image src="{{itemName.message}}" wx:elif="{{itemName.isType =='IMAGE'}}" class='detailImage' mode='scaleToFill'></image>
+                <image src="{{itemName.message}}" wx:elif="{{itemName.isType =='IMAGE'}}" class='detailImage' mode='scaleToFill' bindtap='elargeImage' style='height: {{imgHeight}};width: {{imgWidth}};top: 0;left: 0;z-index: 1001;margin-left: {{imgMargin}}'></image>
                 <view class=" detailMessage detailGift" wx:elif="{{itemName.isType =='GIFT'}}" >
                     送出{{itemName.message.giftNumber}}个 {{itemName.message.giftName
                     }}
@@ -33,7 +33,7 @@
                   <image src='{{itemName.avatarUrl}}' class='user-avatar'></image>
                 </view>
                 <view class="detailMessage" wx:if="{{itemName.isType =='TEXT'}}">{{itemName.message}}</view>
-                <image src="{{itemName.message}}" wx:elif="{{itemName.isType =='IMAGE'}}" class='detailImage' mode='scaleToFill'></image>
+                <image src="{{itemName.message}}" wx:elif="{{itemName.isType =='IMAGE'}}" class='detailImage' mode='scaleToFill' style='height: {{imgHeight}};width: {{imgWidth}};position: {{imgPosition}};top: 0;left: 0;z-index: 1001;margin-left: {{imgMargin}}' bindtap='elargeImage'></image>
                 <view class=" detailMessage detailGift" wx:elif="{{itemName.isType =='GIFT'}}" >
                     送出{{itemName.message.giftNumber}}个 {{itemName.message.giftName
                     }}
@@ -65,7 +65,7 @@
          <form wx:if="{{isLogin}}">
             <view class="inputArea" >
             <!--点击完成按钮时触发  -->
-                <input type="text" placeholder="{{placeholderText}}" placeholder-class='placeholder-btn' class="message" bindinput="bindKeyInput" bindconfirm="send"  value="{{inputValue}}" bindfocus='focus' style="margin-bottom:{{focusHeight}}"/>
+                <input type="text" placeholder="{{placeholderText}}" placeholder-class='placeholder-btn' class="message" bindinput="bindKeyInput" bindconfirm="send"  value="{{inputValue}}" bindfocus='focus' style="margin-bottom:{{focusHeight}}" focus='{{inputFocus}}'/>
                 <view class='btn-group'>
                   <view class='emoj-btn' bindtap='showEmoj'>
                     <image src='/res/emoj.png'></image>
