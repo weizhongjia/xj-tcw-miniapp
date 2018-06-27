@@ -37,7 +37,7 @@ Component({
     activeIndex: 0,
     // giftArr: [],
     // roomId:-1,
-    giftId: 1,
+    giftId: null,
     giftName: null,
     giftAvatar: null,
     giftGif: null,
@@ -67,7 +67,6 @@ Component({
       // 选择礼物
       changeActiveItem(val) {
         // 无法在wxml中传值
-        console.log(val)
         let giftObj = val.currentTarget.dataset.giftobj
         this.setData({
           activeIndex: val.currentTarget.dataset.ind,
@@ -114,13 +113,17 @@ Component({
       //请求订单信息
       getPayOrderInfo() {
         let that = this
+        let giftFirst = that.data.giftArr[0]
         request({
           url: '/api/wx/pay/gift/order',
           data: {
-            'giftId': this.data.giftId,
+            'giftId': this.data.giftId || giftFirst.id,
             'number': this.data.num,
              'roomId': this.data.roomId,
-             'blessing': this.data.wish
+             'blessing': this.data.wish ,
+             'gif': this.data.giftGif || giftFirst.gif,
+             'avatar': this.data.giftAvatar || giftFirst.avatar,
+             'name': this.data.giftName || giftFirst.name, 
             // 'giftId': 1,
             // 'number': 1,
             // 'roomId': 1
