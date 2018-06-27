@@ -69,6 +69,8 @@ Page({
     indicatorActiveColor: '#e80000',
     showEmoji: false,
     giftArr: [], //传给父组件的礼物列表
+    giftMap: null, //gift列表转换成map
+    giftLikeMap: {}, //类map
     showopenHBComp: false, //打开红包
     showBeforeHBComp: false, //显示红包
     showShowtimeModal: false,
@@ -112,8 +114,18 @@ Page({
       url: '/api/wx/gift',
       method: 'GET',
       success(res) {
+        let data = res.data.data
+        // let map = new Map()
+        let mapLike = {}
+        // data.forEach(item =>{
+        //   map.set(item.id,item)
+        // })
+        data.forEach( item => {
+          mapLike[item.id] = item
+        })
         self.setData({
-          giftArr: res.data.data
+          giftArr: data,
+          giftLikeMap: mapLike
         })
       }
     })
@@ -343,6 +355,7 @@ Page({
    *监听子组件sendGift事件，触发发送礼物
    */
   sendGift(val) {
+    // const {avatar,des,name} = this.data.giftArr.filter( item => item.giftId == val.detail.giftId)
     this.sendSocketMessage({
       type: 'GIFT',
       orderDetail: val.detail

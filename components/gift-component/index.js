@@ -37,7 +37,7 @@ Component({
     activeIndex: 0,
     // giftArr: [],
     // roomId:-1,
-    giftId: null,
+    giftId: 1,
     giftName: null,
     giftAvatar: null,
     giftGif: null,
@@ -168,6 +168,19 @@ Component({
             self.closeDialog()
           },
           'fail': function(res) {
+                        let myEventDetail = val.order
+            // myEventDetail = {
+            //     giftId: self.data.giftId || gift.id,
+            //     giftName: self.data.giftName || gift.name,
+            //     giftAvatar: self.data.giftAvatar || gift.avatar,
+            //     giftGif: self.data.giftGif || gift.gif,
+            //     giftDes: self.data.wish,
+            //     giftNumber: self.data.num,
+            //     giftTime: self.data.costTime || gift.costTime
+            //   } // detail对象，提供给事件监听函数
+            let myEventOption = {} // 触发事件的选项
+            self.triggerEvent('sendGift', myEventDetail,
+              myEventOption)
             wx.showToast({
               title: '支付失败',
               icon: 'success',

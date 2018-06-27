@@ -10,10 +10,10 @@
                 <view class="detailMessage" wx:if="{{itemName.isType =='TEXT'}}">{{itemName.message}}</view>
                 <image src="{{itemName.message}}" wx:elif="{{itemName.isType =='IMAGE'}}" class='detailImage {{clickedImageIndex ===idx ? "full-image": ""}}' mode='scaleToFill' bindtap='elargeImage'></image>
                 <view class=" detailMessage detailGift" wx:elif="{{itemName.isType =='GIFT'}}" >
-                    送出{{itemName.message.giftNumber}}个 {{itemName.message.giftName
+                    送出{{itemName.message.number}}个 {{giftLikeMap[itemName.message.giftId].name
                     }}
-                    <image src='{{itemName.message.giftAvatar}}'></image>
-                    <view class='gift-wish'>{{itemName.message.giftDes}}</view>
+                    <image src='{{giftLikeMap[itemName.message.giftId].avatar}}'></image>
+                    <view class='gift-wish'>{{itemName.message.blessing}}</view>
                 </view>
                 <view class=" detailMessage detailGift" wx:elif="{{itemName.isType =='SHOWTIME'}}" >
                     重金霸屏{{itemName.message.costTime}}秒:{{itemName.message.blessing}}
@@ -37,10 +37,10 @@
                 <view class="detailMessage" wx:if="{{itemName.isType =='TEXT'}}">{{itemName.message}}</view>
                 <image src="{{itemName.message}}" wx:elif="{{itemName.isType =='IMAGE'}}" class='detailImage {{clickedImageIndex ===idx ? "full-image": ""}}' mode='scaleToFill'  bindtap='elargeImage' data-idx='{{idx}}'></image>
                 <view class=" detailMessage detailGift" wx:elif="{{itemName.isType =='GIFT'}}" >
-                    送出{{itemName.message.giftNumber}}个 {{itemName.message.giftName
+                    送出{{itemName.message.number}}个 {{giftLikeMap[itemName.message.giftId].name
                     }}
-                    <image src='{{itemName.message.giftAvatar}}'></image>
-                    <view class='gift-wish'>{{itemName.message.giftDes}}</view>
+                    <image src='{{giftLikeMap[itemName.message.giftId].avatar}}'></image>
+                    <view class='gift-wish'>{{itemName.message.blessing}}</view>
                 </view>
                 <view class=" detailMessage detailGift" wx:elif="{{itemName.isType =='SHOWTIME'}}" >
                     重金霸屏{{itemName.message.costTime}}秒:{{itemName.message.blessing}}
