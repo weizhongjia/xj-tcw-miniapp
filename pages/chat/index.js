@@ -10,8 +10,9 @@ Page({
     animate: true,
     placeholderText: "连接服务器中...",
     messageArray: [{
-        id: 1,
+        id: 800,
         type: 'other',  //self other
+        type: 'self',
         isType: 'HB', //'TEXT' 'IMAGE' 'GIFT' 'HB'
         name: '王猛',
         time: 'message.sendTime',
@@ -53,7 +54,30 @@ Page({
           showtimeSrc:'https://res.mrourou.com/http://tmp/wx47cff4eafcfd4568.o6zAJs9hE4PAyyqv59qYQuYEeyiE.P80hQ7efTZSc809bba2942d789442c0ab761906cdaf1.mp4'
         }
       },
-
+      {
+        id: 2,
+        type: 'self',
+        isType: 'SHOWTIME', //'TEXT' 'IMAGE' 'GIFT' 'HB'
+        name: '王猛',
+        time: 'message.sendTime',
+        avatarUrl: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83er9SswuAdicMomWoY4OCR4mc25ItVJPCreJ5R5Cwqt5ZnEhS5BI9Yt4iaKP7IJSOTjhxoovnZ64IU5g/132',
+        message: {
+          costTime: 0,
+          createTime: 1529743936464,
+          giftId: 0,
+          id: 179,
+          number: 1,
+          openid: "ozrMn43Gfh7MmWSJ03gF5uObyfzw",
+          orderType: "REDPACK",
+          outTradeNo: "1529743936464134756",
+          price: 0,
+          roomId: 1,
+          totalMoney: 1,
+          blessing: '新婚快乐',
+          showtimeType: 'VIDEO',
+          showtimeSrc: 'https://res.mrourou.com/http://tmp/wx47cff4eafcfd4568.o6zAJs9hE4PAyyqv59qYQuYEeyiE.P80hQ7efTZSc809bba2942d789442c0ab761906cdaf1.mp4'
+        }
+      },
     ],
     socketOpen: false,
     inputValue: "",
@@ -86,8 +110,10 @@ Page({
     imgPosition: 'inherit',
     imgMargin: '15rpx',
     clickedImageIndex: null,
-    notSendBtn: true,
-    showKeyboard: false
+    notSendBtn: true, //zbs: 是不是发送按钮
+    showKeyboard: false, //zbs: 键盘是否显示
+    pullDownId: 500, //zbs: 记录messageArray第一项的id值，下拉刷新时候用到
+    doRefresh: true, //zbs: 什么时候刷新
   },
   onLoad: function(options) {
     this.data.roomId = options.roomId || 1;
@@ -103,6 +129,12 @@ Page({
     // 请求礼物列表
     // 放到成功回调之后
     // this.requestGiftList()
+  },
+  onShow: function() {
+    this.setData({
+      pullDownId: this.data.messageArray[0].id
+    })
+
   },
   onUnload: function() {
     // 关闭socket
@@ -292,7 +324,7 @@ Page({
     }
     this.setData({
       //zbs: 红米note和ios有区别：苹果focusHeight设置为0， 红米设置为下面的
-      focusHeight: e.detail.height + 60 +  "px",
+      focusHeight: e.detail.height + "px",
       showKeyboard: true,
       notSendBtn: btnFlag
     })
@@ -473,6 +505,40 @@ Page({
 
     /*zbs: 下拉刷新  */
     pullDownRefresh() {
-      console.log("下拉刷新");
+      var that = this;
+      if(this.data.doRefresh) {
+        that.data.doRefresh = false;
+        request({
+          url: `/api/wx/message/1/before/${that.data.pullDownId}/10`,
+          method: 'GET',
+          success(res) {
+            // console.log("success进来了")
+            var appendArr = res.data.data.map((item, key) => ({
+              id: item.message.id,
+              type: 'other',
+              isType: item.message.type, //'TEXT' 'IMAGE' 'GIFT' 'REDPACK'
+              name: item.user.nickname,
+              time: item.message.sendTime,
+              avatarUrl: item.user.avatarurl,
+              message: item.message.detail || item.message.orderDetail,
+            }));
+
+            var newArr = appendArr.concat(that.data.messageArray);
+            // console.log(newArr);
+            that.setData({
+              messageArray: newArr,
+              pullDownId: newArr[0].id,
+              doRefresh: true
+            })
+
+            //限制下拉刷新的间隔时间
+            /* 
+            setTimeout(() => {
+              that.data.doRefresh = true;
+            }, 2000)
+            */
+          }
+        })
+      }  
     }
 });
