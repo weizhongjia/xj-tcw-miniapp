@@ -11,7 +11,7 @@ Page({
     placeholderText: "连接服务器中...",
     messageArray: [{
         id: 1,
-        type: 'self',
+        type: 'other',  //self other
         isType: 'HB', //'TEXT' 'IMAGE' 'GIFT' 'HB'
         name: '王猛',
         time: 'message.sendTime',

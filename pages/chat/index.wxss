@@ -286,7 +286,7 @@ float: left;
     background-position: 20px ;
 }
 .detailHB::after {
-  background-color:#e25f5f!important;
+  background-color:#f89c46!important;
 }
 
 .detailHB .hb-bottom {
