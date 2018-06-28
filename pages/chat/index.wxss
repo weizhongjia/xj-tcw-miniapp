@@ -254,6 +254,12 @@ float: left;
     margin: 20px;
     border-radius: 50%;
 }
+.detailGift video {
+  display:block;
+  width: 300rpx;
+  height: 400rpx;
+  margin-top: 20px;
+}
 
 
 /*红包样式*/
