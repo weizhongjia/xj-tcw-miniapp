@@ -120,6 +120,7 @@ float: left;
 .pageContainer{
   height: 100vh;
   width: 100vw;
+  overflow: hidden;
 }
 .scroll-container {
   padding-top: 5px;
@@ -312,7 +313,7 @@ float: left;
   border-radius: 30rpx;
   padding-left: 20rpx;
   background-color: #000;
-  position: absolute;
+  position: fixed;
   bottom: 500rpx;
   right: -60rpx;
   display: flex;
