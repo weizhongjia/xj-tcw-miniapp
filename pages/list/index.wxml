@@ -4,9 +4,11 @@
   <!-- 暴露的属性有：roomImg、roomName、videoSrc、authorImg、author、btnIsShow  -->
   <videoList-item
     wx:for="{{MovieList}}"
-    roomName="{{item.name}}"
+    roomName="{{item.roomName}}"
     roomImg="{{item.imagePath}}"
-    author="{{item.comment}}"
+    author="{{item.nickName}}"
     btnIsShow="{{item.isHighlyRecommended}}"
+    videoSrc="{{item.showtimeSrc}}"
   />
 </scroll-view>
+<button wx:if="{{!isLogin}}" size="default" type="default" open-type="getUserInfo" bindgetuserinfo="updateUserInfo" class="sendButton"  >请输入</button>

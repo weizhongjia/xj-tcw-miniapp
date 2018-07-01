@@ -39,7 +39,7 @@
 					"scene": "1008"
 				},
 				{
-					"id": -1,
+					"id": 1,
 					"name": "第一个房间编译",
 					"pathName": "pages/chat/index",
 					"query": "roomId=1"

@@ -1,8 +1,7 @@
 {
   "pages":[
-    "pages/chat/index",
     "pages/list/index",
-    
+    "pages/chat/index",
     "pages/tabMine/index",
     "pages/mine/index"
   ],
