@@ -33,7 +33,7 @@ Page({
       },
       {
         id: 2,
-        type: 'self',
+        type: 'other',
         isType: 'SHOWTIME', //'TEXT' 'IMAGE' 'GIFT' 'HB'
         name: '王猛',
         time: 'message.sendTime',
@@ -53,31 +53,7 @@ Page({
           showtimeType:'VIDEO',
           showtimeSrc:'https://res.mrourou.com/http://tmp/wx47cff4eafcfd4568.o6zAJs9hE4PAyyqv59qYQuYEeyiE.P80hQ7efTZSc809bba2942d789442c0ab761906cdaf1.mp4'
         }
-      },
-      {
-        id: 2,
-        type: 'self',
-        isType: 'SHOWTIME', //'TEXT' 'IMAGE' 'GIFT' 'HB'
-        name: '王猛',
-        time: 'message.sendTime',
-        avatarUrl: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83er9SswuAdicMomWoY4OCR4mc25ItVJPCreJ5R5Cwqt5ZnEhS5BI9Yt4iaKP7IJSOTjhxoovnZ64IU5g/132',
-        message: {
-          costTime: 0,
-          createTime: 1529743936464,
-          giftId: 0,
-          id: 179,
-          number: 1,
-          openid: "ozrMn43Gfh7MmWSJ03gF5uObyfzw",
-          orderType: "REDPACK",
-          outTradeNo: "1529743936464134756",
-          price: 0,
-          roomId: 1,
-          totalMoney: 1,
-          blessing: '新婚快乐',
-          showtimeType: 'VIDEO',
-          showtimeSrc: 'https://res.mrourou.com/http://tmp/wx47cff4eafcfd4568.o6zAJs9hE4PAyyqv59qYQuYEeyiE.P80hQ7efTZSc809bba2942d789442c0ab761906cdaf1.mp4'
-        }
-      },
+      }
     ],
     socketOpen: false,
     inputValue: "",
@@ -114,6 +90,12 @@ Page({
     showKeyboard: false, //zbs: 键盘是否显示
     pullDownId: 500, //zbs: 记录messageArray第一项的id值，下拉刷新时候用到
     doRefresh: true, //zbs: 什么时候刷新
+    systemInfo: null,
+    videoId: ""
+    
+  },
+  onReady: function () {
+    this.videoContext = wx.createVideoContext('myVideo')
   },
   onLoad: function(options) {
     this.data.roomId = options.roomId || 1;
@@ -126,14 +108,20 @@ Page({
         this.initStompClient()
       }
     }
+    this.setData({
+      pullDownId: this.data.messageArray[0].id
+    })
     // 请求礼物列表
     // 放到成功回调之后
     // this.requestGiftList()
   },
   onShow: function() {
-    this.setData({
-      pullDownId: this.data.messageArray[0].id
-    })
+    try {
+      var res = wx.getSystemInfoSync();
+      this.data.systemInfo = res;
+    } catch (e) {
+      console.log("获取信息失败")
+    }
 
   },
   onUnload: function() {
@@ -315,7 +303,9 @@ Page({
     });
   },
   focus(e) {
-    console.log(e)
+    // console.log(e);
+    const {platform} = this.data.systemInfo;
+    console.log(platform);
     let btnFlag = this.data.notSendBtn;
     if (e.detail.value !== '') {
       btnFlag = false;
@@ -324,10 +314,11 @@ Page({
     }
     this.setData({
       //zbs: 红米note和ios有区别：苹果focusHeight设置为0， 红米设置为下面的
-      focusHeight: e.detail.height + "px",
+      focusHeight: platform == 'ios' ? "" : e.detail.height + "px",
       showKeyboard: true,
       notSendBtn: btnFlag
     })
+    console.log(this.data.focusHeight);
   },
   blur(e) {
     let btnFlag = this.data.notSendBtn;
@@ -540,5 +531,21 @@ Page({
           }
         })
       }  
+    },
+
+    /*zbs: 视频组件的处理*/
+    videoPlay(e) {
+      this.setData({
+        videoId: e.currentTarget.dataset.id
+      })
+      this.videoContext.play()
+
+    },
+
+    videoEnd(){
+      console.log("视频结束");
+      this.setData({
+        videoId: ""
+      })
     }
 });

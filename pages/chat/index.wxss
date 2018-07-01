@@ -386,3 +386,46 @@ float: left;
   height: 60rpx;
   /* background-color: blue; */
 }
+
+#baPing {
+  /* background-color: red; */
+  display: flex; 
+  flex-direction: column;
+}
+.baPingText {
+  margin-bottom: 30rpx;
+}
+.baPingImg {
+  width: 500rpx;
+  height: 375rpx;
+}
+.baPingVideo {
+  background-color: #000;
+  position: relative;
+  width: 500rpx;
+  height: 375rpx;
+}
+.baPingVideo>video {
+  width: 100%;
+  height: 90%;
+}
+.model-btn{
+	position:absolute;
+  left:50%;
+  top:50%;
+  transform: translate(-50%, -50%);
+  width:100rpx;
+  height:100rpx;
+  border-radius:50%;
+  /* background-color: red; */
+}
+.play-icon{
+    /* margin:28rpx 42rpx; */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-top:26rpx solid transparent;
+    border-left:36rpx solid #fff;
+    border-bottom:22rpx solid transparent;
+}

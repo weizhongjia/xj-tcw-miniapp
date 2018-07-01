@@ -42,10 +42,31 @@
                     <image src='{{giftLikeMap[itemName.message.giftId].avatar}}'></image>
                     <view class='gift-wish'>{{itemName.message.blessing}}</view>
                 </view>
-                <view class=" detailMessage detailGift" wx:elif="{{itemName.isType =='SHOWTIME'}}" >
-                    重金霸屏{{itemName.message.costTime}}秒:{{itemName.message.blessing}}
-                    <image wx:if="{{itemName.message.showtimeType === 'IMAGE'}}" src='{{itemName.message.showtimeSrc}}'></image>
-                    <video wx:if="{{itemName.message.showtimeType === 'VIDEO'}}" src='{{itemName.message.showtimeSrc}}'></video>
+                <view id="baPing" class=" detailMessage detailGift" wx:elif="{{itemName.isType =='SHOWTIME'}}" >
+                    <text class="baPingText">重金霸屏{{itemName.message.costTime}}秒:{{itemName.message.blessing}}</text>
+                    <image wx:if="{{itemName.message.showtimeType === 'IMAGE'}}" src='{{itemName.message.showtimeSrc}}' class="baPingImg" mode="aspectFit"></image>
+                    <view
+                      wx:if="{{itemName.message.showtimeType === 'VIDEO'}}"
+                      class="baPingVideo" 
+                      data-id="{{itemName.id}}"
+                      bindtap="videoPlay"
+                    >
+                      <video 
+                        wx:if="{{videoId == itemName.id}}" 
+                        id="myVideo"
+                        src='{{itemName.message.showtimeSrc}}'
+                        bindended="videoEnd"
+                      >
+                      </video>
+
+                      <view wx:else>
+                        <view class="model-btn">
+                          <view class="play-icon"></view>
+                        </view>
+                      </view>
+
+                    </view>
+                    
                 </view>
                 <view class='detailMessage detailHB' wx:else data-order='{{itemName.message}}' bindtap='openHB' data-avatarUrl='{{itemName.avatarUrl}}' data-name='{{itemName.name}}'>
                   <view class="hb-content-container">
