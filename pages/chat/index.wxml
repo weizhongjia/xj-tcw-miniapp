@@ -50,16 +50,10 @@
                       class="baPingVideo" 
                       data-id="{{itemName.id}}"
                       bindtap="videoPlay"
+                      data-src="{{itemName.message.showtimeSrc}}"
                     >
-                      <video 
-                        wx:if="{{videoId == itemName.id}}" 
-                        id="myVideo"
-                        src='{{itemName.message.showtimeSrc}}'
-                        bindended="videoEnd"
-                      >
-                      </video>
 
-                      <view wx:else>
+                      <view>
                         <view class="model-btn">
                           <view class="play-icon"></view>
                         </view>
@@ -150,5 +144,8 @@
       <text class="mineText">我的</text>
     </navigator>
 
-
+    <view wx:if="{{videoSrc}}" class="holderVideoContainer">
+      <video bindpause="videoEnd" bindended="videoEnd" id="myVideo" src="{{videoSrc}}" class="holderVideo" />
+    </view>
+    
 </view>
