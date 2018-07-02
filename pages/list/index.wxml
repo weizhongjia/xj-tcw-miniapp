@@ -7,7 +7,7 @@
     roomName="{{item.roomName}}"
     roomImg="{{item.imagePath}}"
     author="{{item.nickName}}"
-    btnIsShow="{{item.isHighlyRecommended}}"
+    btnIsShow="{{item.roomEntered}}"
     videoSrc="{{item.showtimeSrc}}"
   />
 </scroll-view>

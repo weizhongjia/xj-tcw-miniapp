@@ -1,4 +1,4 @@
-const request = require('../../utils/request')
+const {request} = require('../../utils/request')
 
 Component({
 
@@ -21,7 +21,19 @@ Component({
   data: {
     
   },
-  
+  ready: function () {
+    const self = this;
+    request({
+      url: '/api/wx/pay/account',
+      method: "GET",
+      success: function(res) {
+        console.log(res)
+        self.setData({
+          money: res.data.data / 100
+        })
+      }
+    })
+  },
   methods: {
 
   },
