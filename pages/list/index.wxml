@@ -5,10 +5,8 @@
   <videoList-item
     wx:for="{{MovieList}}"
     roomName="{{item.roomName}}"
-    roomImg="{{item.imagePath}}"
     author="{{item.nickName}}"
     btnIsShow="{{item.roomEntered}}"
     videoSrc="{{item.showtimeSrc}}"
   />
 </scroll-view>
-<button wx:if="{{!isLogin}}" size="default" type="default" open-type="getUserInfo" bindgetuserinfo="updateUserInfo" class="sendButton"  >请输入</button>
