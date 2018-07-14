@@ -94,7 +94,7 @@ float: left;
 
 }
 .bottomArea {
-   position: absolute; 
+  position: fixed; 
   bottom: 0;
   left: 0;
   right: 0;
@@ -125,7 +125,7 @@ float: left;
 .scroll-container {
   padding-top: 5px;
   width: 100%;
-  height: calc(100% - 53.25px);
+  height: calc(100% - 53.25px); 
   background: #ebebeb;
   margin-bottom: -100px;
 }
