@@ -12,10 +12,13 @@ Page({
     messageArray: [],
     doRefresh:true,
     notSendBtn: true,
-    pullDownId: 1000
+    pullDownId: 1000,
+    emojiArr: emojiArr,
+    inputValue: '',
   },
   onReady: function () {
     this.videoContext = wx.createVideoContext('myVideo')
+    console.log(emojiArr)
   },
   onLoad: function(options) {
     this.data.roomId = options.roomId || 1;
@@ -470,4 +473,9 @@ Page({
         videoSrc: ""
       })
     },
+    hideEmojiComponent() {
+      this.setData({
+        showEmoji: false
+      })
+    }
 });

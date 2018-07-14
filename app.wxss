@@ -1,6 +1,8 @@
 /**app.wxss**/
 @import './res/my_animation.wxss';
-
+view {
+  -webkit-overflow-scrolling: touch;  
+}
 .container {
   height: 100%;
   display: flex;

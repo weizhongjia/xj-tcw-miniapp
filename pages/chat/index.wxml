@@ -1,5 +1,5 @@
 <view class="pageContainer">
-      <view class="scroll-container" style="overflow-y: scroll; overflow-x: hidden;" >  
+      <view class="scroll-container" style="overflow-y: scroll; overflow-x: hidden;" bindtap='hideEmojiComponent'>  
       <!--  
     <scroll-view scroll-y="{{animate}}" scroll-with-animation="{{animate}}" class="scroll-container"  scroll-into-view="msg{{num}}" bindscrolltoupper="pullDownRefresh">
       -->
@@ -103,7 +103,7 @@
             <view class='emoji-container {{showEmoji ? "show-emoji" : ""}}'>
               <swiper indicator-dots="{{indicatorDots}}" indicator-active-color='{{indicatorActiveColor}}'>
                   <swiper-item  wx:for="{{emojiArr}}" wx:key="{{index}}">
-                    <view class='emoji-cont'>
+                    <view class='emoji-cont clearfix'>
                       <view  class='emoji-icon' wx:for="{{emojiArr[index]}}" wx:for-index="idx" wx:key="{{idx}}" wx:for-item="itemName" data-emoji='{{itemName}}' bindtap='addEmoji'>
                         {{itemName}}
                       </view>
@@ -113,16 +113,8 @@
             </view>
         </form>
         <view class='login-btn' wx:else>
-          <button size="default" type="default" open-type="getUserInfo" bindgetuserinfo="updateUserInfo" class="sendButton"  >请输入</button>
+          <button size="default" type="default" open-type="getUserInfo" bindgetuserinfo="updateUserInfo" class="sendButton"  >请登录</button>
           <view class='btn-group'>
-          <!-- //emoj -->
-            <view class='emoj-btn' bindtap='showEmoj'>
-              <image src='/res/emoj.png'></image>
-            </view>
-            <!-- //拍照 -->
-            <view class='photo-btn' bindtap='uploadImage'>
-              <image src='/res/photo.png'></image>
-            </view>
           </view>
         </view>
     </view>
