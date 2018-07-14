@@ -122,7 +122,7 @@ Page({
       });
       this.setData({
         inputValue: "",
-        inputFocus: true
+        // inputFocus: true
       });
     }
   },
@@ -229,7 +229,8 @@ Page({
     }
     this.setData({
       //zbs: 红米note和ios有区别：苹果focusHeight设置为0， 红米设置为下面的
-      focusHeight: platform == 'ios' ? "" : e.detail.height + "px",
+      // focusHeight: platform == 'ios' ? "" : e.detail.height + "px",
+      focusHeight: "",
       showKeyboard: true,
       notSendBtn: btnFlag
     })
