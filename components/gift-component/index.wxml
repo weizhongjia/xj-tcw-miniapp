@@ -3,7 +3,8 @@
   <view class='gift-dialog tran {{showGift ? "": "enter"}}' animation="{{animationData}}">
     <view class='gift-title'>
       <text class='border-left-red'>赠送礼物</text>
-     <image src='./../../res/icon_close.png' class='close-icon' bindtap='closeDialog'></image></view>
+      <image src='./../../res/icon_close.png' class='close-icon' bindtap='closeDialog'></image>
+    </view>
     <!--礼物列表  -->
     <view class='detail'>礼物</view>
     <!-- <view class='gift-list-cont'>
