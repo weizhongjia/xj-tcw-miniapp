@@ -24,10 +24,12 @@ Page({
     this.data.roomId = options.roomId || 1;
     if (app.globalData.token) {
       this.checkUserInfo()
+      this.getRoomInfo()
       this.initStompClient()
     } else {
       app.loginCallback = res => {
         this.checkUserInfo()
+        this.getRoomInfo()
         this.initStompClient()
       }
     }
@@ -51,6 +53,13 @@ Page({
     // 关闭socket
     wx.closeSocket();
   },
+  onShareAppMessage: function () {
+    return {
+      title: this.data.roomInfo.roomName,
+      path: '/pages/chat/index?id=' + this.data.roomId,
+      imageUrl: this.data.roomInfo.shareImage
+    }
+  },
   requestGiftList() {
     let self = this
     request({
@@ -70,6 +79,16 @@ Page({
           giftArr: data,
           giftLikeMap: mapLike
         })
+      }
+    })
+  },
+  getRoomInfo() {
+    let self = this
+    request({
+      url: '/api/wx/room/'+this.data.roomId,
+      method: 'GET',
+      success(res) {
+        self.data.roomInfo = res.data.data
       }
     })
   },
@@ -130,7 +149,7 @@ Page({
       });
       this.setData({
         inputValue: "",
-        inputFocus: true
+        // inputFocus: true
       });
     }
   },
@@ -237,7 +256,8 @@ Page({
     }
     this.setData({
       //zbs: 红米note和ios有区别：苹果focusHeight设置为0， 红米设置为下面的
-      focusHeight: platform == 'ios' ? "" : e.detail.height + "px",
+      // focusHeight: platform == 'ios' ? "" : e.detail.height + "px",
+      focusHeight: "",
       showKeyboard: true,
       notSendBtn: btnFlag
     })
