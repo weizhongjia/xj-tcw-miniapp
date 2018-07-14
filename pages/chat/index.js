@@ -89,6 +89,9 @@ Page({
       method: 'GET',
       success(res) {
         self.data.roomInfo = res.data.data
+        wx.setNavigationBarTitle({
+          title: res.data.data.roomName
+        })
       }
     })
   },
