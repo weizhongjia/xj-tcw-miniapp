@@ -253,7 +253,6 @@ float: left;
     width: 200rpx;
     height: 200rpx;
     margin: 20px;
-    border-radius: 50%;
 }
 .detailGift video {
   display:block;

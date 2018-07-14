@@ -9,7 +9,8 @@ Page({
   data: {
     animate: true,
     placeholderText: "连接服务器中...",
-    messageArray: []
+    messageArray: [],
+    doRefresh:true
   },
   onReady: function () {
     this.videoContext = wx.createVideoContext('myVideo')
@@ -25,9 +26,6 @@ Page({
         this.initStompClient()
       }
     }
-    this.setData({
-      pullDownId: this.data.messageArray[0].id
-    })
     // 请求礼物列表
     // 放到成功回调之后
     // this.requestGiftList()
@@ -417,7 +415,7 @@ Page({
       if(this.data.doRefresh) {
         that.data.doRefresh = false;
         request({
-          url: `/api/wx/message/1/before/${that.data.pullDownId}/10`,
+          url: `/api/wx/message/1/before/${that.data.messageArray[0].id}/10`,
           method: 'GET',
           success(res) {
             // console.log("success进来了")
@@ -435,7 +433,6 @@ Page({
             // console.log(newArr);
             that.setData({
               messageArray: newArr,
-              pullDownId: newArr[0].id,
               doRefresh: true
             })
 
