@@ -10,7 +10,9 @@ Page({
     animate: true,
     placeholderText: "连接服务器中...",
     messageArray: [],
-    doRefresh:true
+    doRefresh:true,
+    notSendBtn: true,
+    pullDownId: 1000
   },
   onReady: function () {
     this.videoContext = wx.createVideoContext('myVideo')
@@ -26,6 +28,9 @@ Page({
         this.initStompClient()
       }
     }
+    this.setData({
+      pullDownId: this.data.messageArray[0].id
+    })
     // 请求礼物列表
     // 放到成功回调之后
     // this.requestGiftList()
@@ -361,7 +366,7 @@ Page({
       }
     })
 
-   },
+  },
    // 同一个人领取红包，直接调到红包列表
    requestRedpackList(redpackId) {
     let self = this
@@ -391,9 +396,9 @@ Page({
     })    
    },
     closeBeforeHB() {
-    this.setData({
-      showBeforeHBComp: false,
-    })  
+      this.setData({
+        showBeforeHBComp: false,
+      })  
     },
     elargeImage(e) {
       let idx = e.currentTarget.dataset.idx
@@ -411,12 +416,13 @@ Page({
     },
 
     /*zbs: 下拉刷新  */
-    pullDownRefresh() {
+    onPullDownRefresh() {
+      console.log("下拉刷新")
       var that = this;
       if(this.data.doRefresh) {
         that.data.doRefresh = false;
         request({
-          url: `/api/wx/message/1/before/${that.data.messageArray[0].id}/10`,
+          url: `/api/wx/message/1/before/${that.data.pullDownId}/10`,
           method: 'GET',
           success(res) {
             // console.log("success进来了")
@@ -434,6 +440,7 @@ Page({
             // console.log(newArr);
             that.setData({
               messageArray: newArr,
+              pullDownId: newArr[0].id,
               doRefresh: true
             })
 
@@ -445,7 +452,8 @@ Page({
             */
           }
         })
-      }  
+      }
+      wx.stopPullDownRefresh();
     },
 
     /*zbs: 视频组件的处理*/

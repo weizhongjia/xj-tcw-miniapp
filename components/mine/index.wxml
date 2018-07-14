@@ -1,54 +1,22 @@
-
 <!-- 
   1. 用户头像
   2. 用户名称
   3. 钱包资金
-
 -->
 <view class="mine-container">
-
   <view class="mine-header">
     <image class="userImg" src="{{avatarUrl}}" />
     <text class="userName">{{nickName}}</text>
   </view>
-
-  <view class="mine-content">
-
+  <view class="mine-content" bindtap='wait'>
     <view class="rowOne">
-      <mine-detail
-        class="rowOneLeft"
-        title="我的钱包"
-        detail="{{money}}"
-        source="/res/about.png"
-      />
-
+      <mine-detail class="rowOneLeft" title="我的钱包" detail="{{money}}" source="/res/about.png" />
       <view class="line" />
-
-      <mine-detail
-        class="rowOneRight"
-        title="提现"
-        detail="需关注公众号"
-        source="/res/about2.png"
-      />
-
+      <mine-detail class="rowOneRight" title="提现" detail="需关注公众号" source="/res/about2.png" />
     </view>
-
     <view class="rowTwo">
-      <mine-detail
-        class="rowOneRight"
-        title="中奖记录"
-        detail="查看细节"
-        source="/res/gift.png"
-      />
+      <mine-detail class="rowOneRight" title="中奖记录" detail="查看细节" source="/res/gift.png" />
     </view>
-
   </view>
-  
+
 </view>
-
-
-
-
-
-
-

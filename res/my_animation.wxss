@@ -17,6 +17,9 @@
     animation-iteration-count:1, infinite;
     /*animation-fill-mode:forwards, forwards;*/
 }
+.fly-all1,.fly-all2,.fly-all3,.fly-all4 {
+  opacity: .6;
+}
 .fly-all1 {
 /*    animation-name:flyAll1, shakeUp;
     animation-duration:1s, 4s;

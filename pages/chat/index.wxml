@@ -1,6 +1,8 @@
 <view class="pageContainer">
-    <!-- <view class="topArea"> -->
+      <view class="scroll-container" style="overflow-y: scroll; overflow-x: hidden;" >  
+      <!--  
     <scroll-view scroll-y="{{animate}}" scroll-with-animation="{{animate}}" class="scroll-container"  scroll-into-view="msg{{num}}" bindscrolltoupper="pullDownRefresh">
+      -->
         <view wx:for="{{messageArray}}" wx:for-index="idx" wx:for-item="itemName" wx:key='itemName' class='item' id="msg{{itemName.id}}">
         <!--自己  -->
             <view class="selfMessage clearfix" wx:if="{{itemName.type == 'self'}}">
@@ -71,8 +73,10 @@
                 </view>
             </view>
         </view>
-    <!-- </view> -->
+      </view> 
+       <!--  
     </scroll-view>
+    -->
     <image src="../../res/left-top.png" alt="" class="left-top-img fly-all1"></image>
     <image src="../../res/lb.png" alt="" class="left-bottom-img fly-all2"></image>
     <image src="../../res/rb.png" alt="" class="right-bottom-img fly-all3"></image>
@@ -84,7 +88,7 @@
          <form wx:if="{{isLogin}}">
             <view class="inputArea">
             <!--点击完成按钮时触发  -->
-                <input type="text" placeholder="{{placeholderText}}" placeholder-class='placeholder-btn' class="message" bindinput="bindKeyInput" bindconfirm="send"  value="{{inputValue}}" bindfocus='focus' bindblur="blur" focus='{{inputFocus}}'/>
+                <input type="text" placeholder="{{placeholderText}}" placeholder-class='placeholder-btn' class="message" bindinput="bindKeyInput" bindconfirm="send"  value="{{inputValue}}" bindfocus='focus' bindblur="blur" focus='{{inputFocus}}' confirm-hold='true'/>
                 <view class='btn-group'>
                   <view class='emoj-btn' bindtap='showEmoj'>
                     <image src='/res/emoj.png'></image>
