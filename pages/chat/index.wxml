@@ -37,7 +37,8 @@
                   <image src='{{itemName.avatarUrl}}' class='user-avatar'></image>
                 </view>
                 <view class="detailMessage" wx:if="{{itemName.isType =='TEXT'}}">{{itemName.message}}</view>
-                <image src="{{itemName.message}}" wx:elif="{{itemName.isType =='IMAGE'}}" class='detailImage {{clickedImageIndex ===idx ? "full-image": ""}}' mode='scaleToFill'  bindtap='elargeImage' data-idx='{{idx}}'></image>
+                <image src="{{itemName.message}}" wx:elif="{{itemName.isType =='IMAGE'}}" class='detailImage {{clickedImageIndex ===idx ? "full-image": ""}}' mode='widthFix'  bindtap='elargeImage' data-idx='{{idx}}'>
+                </image>
                 <view class=" detailMessage detailGift" wx:elif="{{itemName.isType =='GIFT'}}" >
                     送出{{itemName.message.number}}个 {{giftLikeMap[itemName.message.giftId].name
                     }}
@@ -46,7 +47,7 @@
                 </view>
                 <view id="baPing" class=" detailMessage detailGift" wx:elif="{{itemName.isType =='SHOWTIME'}}" >
                     <text class="baPingText">重金霸屏{{itemName.message.costTime}}秒:{{itemName.message.blessing}}</text>
-                    <image wx:if="{{itemName.message.showtimeType === 'IMAGE'}}" src='{{itemName.message.showtimeSrc}}' class="baPingImg" mode="aspectFit"></image>
+                    <image wx:if="{{itemName.message.showtimeType === 'IMAGE'}}" src='{{itemName.message.showtimeSrc}}' class="baPingImg" mode="widthFix"></image>
                     <view
                       wx:if="{{itemName.message.showtimeType === 'VIDEO'}}"
                       class="baPingVideo" 
@@ -141,7 +142,11 @@
     </navigator>
 
     <view wx:if="{{videoSrc}}" class="holderVideoContainer">
-      <video bindpause="videoEnd" bindended="videoEnd" id="myVideo" src="{{videoSrc}}" class="holderVideo" />
+      <view class="videoBox">
+        <text class="videoClose" bindtap="videoEnd">×</text>
+        <video bindended="videoEnd" id="myVideo" src="{{videoSrc}}" class="holderVideo" />
+      </view>
+      
     </view>
     
 </view>

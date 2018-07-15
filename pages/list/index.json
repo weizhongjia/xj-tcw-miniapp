@@ -1,6 +1,7 @@
 {
-  "backgroundColor": "#eee",
-  "backgroundTextStyle": "light",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark",
+  "backgroundColor": "#e8e8e8",
   "usingComponents": {
     "videoList-item": "/components/videoList-item/index"
   }

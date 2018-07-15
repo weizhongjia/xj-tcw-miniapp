@@ -91,7 +91,7 @@ float: left;
 .otherMessage .detailImage {
  float: left;
  margin-left: 15rpx;
-
+ width: 300rpx;
 }
 .bottomArea {
   position: fixed; 
@@ -360,8 +360,8 @@ float: left;
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100vw !important;
+  height: 100vh !important;
   margin: 0!important;
   z-index: 1001;
 }
@@ -399,9 +399,9 @@ float: left;
 .baPingText {
   margin-bottom: 30rpx;
 }
-.baPingImg {
-  width: 500rpx;
-  height: 375rpx;
+#baPing .baPingImg, #baPing .baPingVideo {
+  width: 300rpx;
+  margin: 0;
 }
 .baPingVideo {
   background-color: #000;
@@ -433,14 +433,35 @@ float: left;
   position: absolute;
   top:0;
   left: 0;
-  z-index: 99999;
+  z-index: 1000;
   width: 100%;
   height: 100%;
-  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.8);
 }
-.holderVideo {
+.videoBox {
   width: 100%;
   position: absolute;
   top: 50%;
-  transform: translateY(-50%); 
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  background-color: red;
+}
+.holderVideo {
+  width: 100%;
+}
+.videoClose {
+  width: 10vw;
+  height: 10vw;
+  line-height: 10vw;
+  text-align: center; 
+  border-top-left-radius: 100%;
+  
+  color: #fff; 
+  font-size: 50rpx;
+  background-color: #000;
+  position: absolute;
+  top: -10vw;
+
 }

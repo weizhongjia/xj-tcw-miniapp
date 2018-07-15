@@ -34,7 +34,7 @@ Page({
       }
     }
     this.setData({
-      pullDownId: this.data.messageArray[0].id
+      pullDownId: this.data.messageArray.length !== 0 ? this.data.messageArray[0].id : 99999
     })
     // 请求礼物列表
     // 放到成功回调之后

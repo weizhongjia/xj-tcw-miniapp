@@ -1,4 +1,4 @@
-<scroll-view
+<view
   class="videoContainer"
 >
   <!-- 暴露的属性有：roomImg、roomName、videoSrc、authorImg、author、btnIsShow  -->
@@ -9,4 +9,4 @@
     btnIsShow="{{item.roomEntered}}"
     videoSrc="{{item.showtimeSrc}}"
   />
-</scroll-view>
+</view>
