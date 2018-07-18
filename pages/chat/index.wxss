@@ -125,7 +125,8 @@ float: left;
 .scroll-container {
   padding-top: 5px;
   width: 100%;
-  height: calc(100% - 53.25px); 
+  height: calc(100% - 53.25px);  
+  /* height: calc(100% - 65px);  */
   background: #ebebeb;
   margin-bottom: -100px;
 }
@@ -363,7 +364,7 @@ float: left;
   width: 100vw !important;
   height: 100vh !important;
   margin: 0!important;
-  z-index: 1001;
+  z-index: 1001 !important;
 }
 
 .sendBtn {

@@ -34,7 +34,7 @@ Page({
       }
     }
     this.setData({
-      pullDownId: this.data.messageArray.length !== 0 ? this.data.messageArray[0].id : 99999
+      pullDownId: this.data.messageArray.length !== 0 ? this.data.messageArray[0].id : 999999
     })
     // 请求礼物列表
     // 放到成功回调之后
@@ -152,6 +152,7 @@ Page({
       });
       this.setData({
         inputValue: "",
+        notSendBtn: true
         // inputFocus: true
       });
     }
@@ -248,9 +249,7 @@ Page({
     });
   },
   focus(e) {
-    // console.log(e);
     const {platform} = this.data.systemInfo;
-    console.log(platform);
     let btnFlag = this.data.notSendBtn;
     if (e.detail.value !== '') {
       btnFlag = false;
@@ -264,7 +263,7 @@ Page({
       showKeyboard: true,
       notSendBtn: btnFlag
     })
-    console.log(this.data.focusHeight);
+    this.scrollToBottom();
   },
   blur(e) {
     let btnFlag = this.data.notSendBtn;
@@ -500,5 +499,13 @@ Page({
       this.setData({
         showEmoji: false
       })
+    },
+
+    /**/
+    scrollToBottom() {
+      console.log("执行了。。。");
+      // .scroll-container
+      
     }
+    
 });
