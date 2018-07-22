@@ -21,7 +21,9 @@ Page({
     console.log(emojiArr)
   },
   onLoad: function(options) {
-    this.data.roomId = options.roomId || 1;
+    this.setData({
+      roomId: options.roomId || 1
+    })
     if (app.globalData.token) {
       this.checkUserInfo()
       this.getRoomInfo()

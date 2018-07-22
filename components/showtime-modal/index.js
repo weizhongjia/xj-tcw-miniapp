@@ -1,6 +1,9 @@
 const {request, uploadFile} = require('../../utils/request')
 
 Component({
+  attached() {
+
+  },
   properties: {
     roomId: {
       type: String,
@@ -139,7 +142,6 @@ Component({
       } else {
         showtimePayment = this.data.showtimeProduct[this.data.activeIndex];
       }
-
       request({
         url: '/api/wx/pay/showtime/order',
         data: {
