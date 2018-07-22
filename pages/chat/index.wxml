@@ -114,7 +114,7 @@
             </view>
         </form>
         <view class='login-btn' wx:else>
-          <button size="default" type="default" open-type="getUserInfo" bindgetuserinfo="updateUserInfo" class="sendButton"  >请登录</button>
+          <button size="default" type="default" open-type="getUserInfo" bindgetuserinfo="updateUserInfo" class="sendButton"  >点击登录，开始聊天</button>
           <view class='btn-group'>
           </view>
         </view>
