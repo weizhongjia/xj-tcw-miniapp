@@ -12,7 +12,6 @@ Page({
     messageArray: [],
     doRefresh:true,
     notSendBtn: true,
-    pullDownId: 1000,
     emojiArr: emojiArr,
     inputValue: '',
   },
@@ -35,9 +34,7 @@ Page({
         this.initStompClient()
       }
     }
-    this.setData({
-      pullDownId: this.data.messageArray.length !== 0 ? this.data.messageArray[0].id : 999999
-    })
+
     // 请求礼物列表
     // 放到成功回调之后
     // this.requestGiftList()
@@ -446,9 +443,10 @@ Page({
       console.log("下拉刷新")
       var that = this;
       if(this.data.doRefresh) {
+        const pullDownId = this.data.messageArray.length !== 0 ? this.data.messageArray[0].id : 999999
         that.data.doRefresh = false;
         request({
-          url: `/api/wx/message/1/before/${that.data.pullDownId}/10`,
+          url: `/api/wx/message/${this.data.roomId}/before/${pullDownId}/10`,
           method: 'GET',
           success(res) {
             // console.log("success进来了")
