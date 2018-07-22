@@ -32,6 +32,10 @@ Component({
       type: Boolean,
       value: false
     },
+    shareImage: {
+      type: String,
+      value: ''
+    },
     avatarUrl: {
       type: String,
       value: ''

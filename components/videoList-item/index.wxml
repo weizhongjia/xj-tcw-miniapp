@@ -3,13 +3,12 @@
 <view class="videoRow">
   <view class="rowTop">
     <view class="topLeft">
-      <image class="imgSty" src="{{roomImg}}" />
+      <image class="imgSty" src="{{shareImage}}" />
       <text class="textSty">{{roomName}}</text>
     </view>
     <view wx:if="{{roomEntered}}" class="topRight">
       <button class="textSty" size="mini" plain bindtap='goRoom' data-roomid='{{roomId}}'>进入房间</button>
     </view>
-    
   </view>
   <view class="rowMain">
       <video 
@@ -17,7 +16,6 @@
         src="{{videoSrc}}" 
         class="video"
       />
-
   </view>
   <view class="rowBottom">
     <image class="imgSty" src="{{avatarUrl}}" />

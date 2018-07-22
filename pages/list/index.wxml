@@ -10,6 +10,7 @@
     videoSrc="{{item.showtimeSrc}}"
     avatarUrl="{{item.avatarUrl}}"
     roomId="{{item.roomId}}"
+    shareImage="{{item.shareImage}}"
     wx:key="{{item.orderId}}"  
   />
 </view>
