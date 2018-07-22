@@ -6,8 +6,8 @@
       <image class="imgSty" src="{{roomImg}}" />
       <text class="textSty">{{roomName}}</text>
     </view>
-    <view wx:if="{{btnIsShow}}" class="topRight">
-      <button class="textSty" size="mini" plain>进入房间</button>
+    <view wx:if="{{roomEntered}}" class="topRight">
+      <button class="textSty" size="mini" plain bindtap='goRoom' data-roomid='{{roomId}}'>进入房间</button>
     </view>
     
   </view>
@@ -20,7 +20,7 @@
 
   </view>
   <view class="rowBottom">
-    <image class="imgSty" src="{{authorImg}}" />
+    <image class="imgSty" src="{{avatarUrl}}" />
     <text class="textSty author">{{author}}</text>
   </view>
 </view>

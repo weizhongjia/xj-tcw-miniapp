@@ -24,11 +24,18 @@ Component({
       type: String,
       value: ""
     },
-    btnIsShow: {
+    roomEntered: {
       type: Boolean,
       value: false
+    },
+    roomId: {
+      type: Boolean,
+      value: false
+    },
+    avatarUrl: {
+      type: String,
+      value: ''
     }
-
   },
 
   /**
@@ -42,6 +49,11 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    goRoom(e) {
+      let roomId = e.currentTarget.dataset.roomid
+      wx.navigateTo({
+        url: `/pages/chat/index?id=1${roomId}`
+      })
+    }
   }
 })

@@ -6,7 +6,10 @@
     wx:for="{{MovieList}}"
     roomName="{{item.roomName}}"
     author="{{item.nickName}}"
-    btnIsShow="{{item.roomEntered}}"
+    roomEntered="{{item.roomEntered}}"
     videoSrc="{{item.showtimeSrc}}"
+    avatarUrl="{{item.avatarUrl}}"
+    roomId="{{item.roomId}}"
+    wx:key="{{item.orderId}}"  
   />
 </view>
