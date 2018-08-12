@@ -3,6 +3,7 @@
   "backgroundTextStyle": "dark",
   "backgroundColor": "#e8e8e8",
   "usingComponents": {
-    "videoList-item": "/components/videoList-item/index"
+    "videoList-item": "/components/videoList-item/index",
+    "navbar": "/components/navbar/index"
   }
 }

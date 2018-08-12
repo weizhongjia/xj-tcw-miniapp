@@ -6,26 +6,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    MovieList:[
-      {
-        name: '教父',
-        comment: '最精彩的剧本，最真是的黑帮故事。',
-        imagePath: '/res/jiaofu.jpg',
-        isHighlyRecommended: true
-      },
-      {
-        name: '这个杀手不太冷',
-        comment: '法国故事。',
-        imagePath: '/res/jiaofu.jpg',
-        isHighlyRecommended: false
-      },
-      {
-        name: '功夫足球',
-        comment: '魔幻巨作。',
-        imagePath: '/res/jiaofu.jpg',
-        isHighlyRecommended: true
-      },
-    ]
+    MovieList:[],
+    otherVideoList:[],
+    videoTypeList: [], // 视频列表类型
+    activeTypeId: 0
   },
 
   /**
@@ -110,6 +94,44 @@ Page({
       }
     })
   },
+  getVideoType() {
+    const self = this;
+    request({
+      url: '/api/wx/video/type',
+      method: "GET",
+      success: function (res) {
+        console.log(res)
+        if (res.data.code == 200 ) {
+          self.setData({
+            videoTypeList: res.data.data
+          })
+        } else {
+          console.log(res)
+        }
+      }
+    })
+  },
+  getOtherVideo(typeid) {
+    const self = this;
+    request({
+      url: `/api/wx/video/type/${typeid}`,
+      method: "GET",
+      data: {
+        beforeId: 9999,
+        size: 10
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.code == 200 ) {
+          self.setData({
+            otherVideoList: res.data.data
+          })
+        } else {
+          console.log(res)
+        }
+      }
+    })
+  },
   checkUserInfo: function(e) {
     wx.getUserInfo({
       // 带上登录信息
@@ -118,6 +140,7 @@ Page({
         // 成功获取用户信息
         this.sendEncryptedData(res.encryptedData, res.iv)
         this.getHistoryVideo()
+        this.getVideoType()
       },
       fail: res => {
         console.log(res)
@@ -161,4 +184,11 @@ Page({
       }
     })
   },
+  activeTypeId(e) {
+    console.log(e.detail)
+    this.setData({
+      activeTypeId: e.detail.typeid
+    })
+    e.detail.typeid != 0 && this.getOtherVideo(e.detail.typeid)
+  }
 })

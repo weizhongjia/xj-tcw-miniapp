@@ -1,0 +1,4 @@
+@import '/res/style/weui.wxss';
+.color_fff {
+  background: #fff;
+}

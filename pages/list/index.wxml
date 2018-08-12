@@ -2,15 +2,44 @@
   class="videoContainer"
 >
   <!-- 暴露的属性有：roomImg、roomName、videoSrc、authorImg、author、btnIsShow  -->
-  <videoList-item
-    wx:for="{{MovieList}}"
-    roomName="{{item.roomName}}"
-    author="{{item.nickName}}"
-    roomEntered="{{item.roomEntered}}"
-    videoSrc="{{item.showtimeSrc}}"
-    avatarUrl="{{item.avatarUrl}}"
-    roomId="{{item.roomId}}"
-    shareImage="{{item.shareImage}}"
-    wx:key="{{item.orderId}}"  
-  />
+  <navbar list='{{videoTypeList}}' bind:activeTypeId='activeTypeId' ></navbar> 
+  <view class='video-list' wx:if='{{activeTypeId == 0}}'>
+    <videoList-item
+      wx:for="{{MovieList}}"
+      roomName="{{item.roomName}}"
+      author="{{item.nickName}}"
+      roomEntered="{{item.roomEntered}}"
+      videoSrc="{{item.showtimeSrc}}"
+      avatarUrl="{{item.avatarUrl}}"
+      roomId="{{item.roomId}}"
+      shareImage="{{item.shareImage}}"
+      wx:key="{{item.orderId}}"  
+    />
+  </view>
+  <view class='video-list' wx:elif='{{activeTypeId == 1}}'>
+    <videoList-item
+      wx:for="{{otherVideoList}}"
+      roomName="{{item.roomName}}"
+      author="{{item.nickName}}"
+      roomEntered="{{item.roomEntered}}"
+      videoSrc="{{item.showtimeSrc}}"
+      avatarUrl="{{item.avatarUrl}}"
+      roomId="{{item.roomId}}"
+      shareImage="{{item.shareImage}}"
+      wx:key="{{item.orderId}}"  
+    />
+  </view>
+  <view class='video-list' wx:else='{{activeTypeId == 2}}'>
+    <videoList-item
+      wx:for="{{otherVideoList}}"
+      roomName="{{item.roomName}}"
+      author="{{item.nickName}}"
+      roomEntered="{{item.roomEntered}}"
+      videoSrc="{{item.showtimeSrc}}"
+      avatarUrl="{{item.avatarUrl}}"
+      roomId="{{item.roomId}}"
+      shareImage="{{item.shareImage}}"
+      wx:key="{{item.orderId}}"  
+    />
+  </view>
 </view>
