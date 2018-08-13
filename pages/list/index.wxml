@@ -3,7 +3,7 @@
 >
   <!-- 暴露的属性有：roomImg、roomName、videoSrc、authorImg、author、btnIsShow  -->
   <navbar list='{{videoTypeList}}' bind:activeTypeId='activeTypeId' ></navbar> 
-  <view class='video-list' wx:if='{{activeTypeId == 0}}'>
+  <view class='video-list' wx:if='{{activeTypeId == 1}}'>
     <videoList-item
       wx:for="{{MovieList}}"
       roomName="{{item.roomName}}"
@@ -16,29 +16,29 @@
       wx:key="{{item.orderId}}"  
     />
   </view>
-  <view class='video-list' wx:elif='{{activeTypeId == 1}}'>
+  <view class='video-list' wx:elif='{{activeTypeId == 2}}'>
     <videoList-item
       wx:for="{{otherVideoList}}"
-      roomName="{{item.roomName}}"
+      roomName="{{item.roomName || item.title}}"
       author="{{item.nickName}}"
       roomEntered="{{item.roomEntered}}"
-      videoSrc="{{item.showtimeSrc}}"
+      videoSrc="{{item.showtimeSrc || item.src}}"
       avatarUrl="{{item.avatarUrl}}"
       roomId="{{item.roomId}}"
-      shareImage="{{item.shareImage}}"
+      shareImage="{{item.shareImage || item.imageSrc}}"
       wx:key="{{item.orderId}}"  
     />
   </view>
-  <view class='video-list' wx:else='{{activeTypeId == 2}}'>
+  <view class='video-list' wx:else='{{activeTypeId == 3}}'>
     <videoList-item
       wx:for="{{otherVideoList}}"
-      roomName="{{item.roomName}}"
+      roomName="{{item.roomName || item.titl}}"
       author="{{item.nickName}}"
       roomEntered="{{item.roomEntered}}"
-      videoSrc="{{item.showtimeSrc}}"
-      avatarUrl="{{item.avatarUrl}}"
+      videoSrc="{{item.showtimeSrc || item.src}}"
+      avatarUrl="{{item.avatarUrl }}"
       roomId="{{item.roomId}}"
-      shareImage="{{item.shareImage}}"
+      shareImage="{{item.shareImage || item.imageSrc}}"
       wx:key="{{item.orderId}}"  
     />
   </view>

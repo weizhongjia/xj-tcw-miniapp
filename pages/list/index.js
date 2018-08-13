@@ -9,7 +9,7 @@ Page({
     MovieList:[],
     otherVideoList:[],
     videoTypeList: [], // 视频列表类型
-    activeTypeId: 0
+    activeTypeId: 1
   },
 
   /**
@@ -189,6 +189,7 @@ Page({
     this.setData({
       activeTypeId: e.detail.typeid
     })
-    e.detail.typeid != 0 && this.getOtherVideo(e.detail.typeid)
+    // 婚庆视频不调用该接口
+    e.detail.typeid != 1 && this.getOtherVideo(e.detail.typeid)
   }
 })
