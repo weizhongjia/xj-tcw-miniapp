@@ -1,0 +1,5 @@
+/* pages/chatlist/index.wxss */
+@import '/res/style/weui.wxss';
+.chatlist {
+  padding-top: 20rpx;
+}

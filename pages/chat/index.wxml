@@ -133,10 +133,10 @@
     <!--弹出红包  -->
     <beforehb-component wx:if="{{showBeforeHBComp}}" bindcloseBeforeHB='closeBeforeHB' roomId='{{roomId}}' redpackLeft="{{redpackLeft}}" redpackAvatarUrl="{{redpackAvatarUrl}}" redpackName='{{redpackName}}' redpackPosition='0' redpackId='{{redpackId}}' bindopenHBList='openHBList' redpackOrder="{{redpackOrder}}"></beforehb-component>
 
-    <showtime-modal wx:if="{{showShowtimeModal}}" bind:close="closeShowtimeModal" bind:send="sendShowtime" roomId="{{roomId}}"></showtime-modal>
+    <showtime-modal wx:if="{{showShowtimeModal}}"  bind:close="closeShowtimeModal" bind:send="sendShowtime" roomId="{{roomId}}"></showtime-modal>
 
     <!-- zbs: 我的按钮 -->
-    <navigator class="mineView" url="../mine/index">
+    <navigator class="mineView" url="../tabMine/index" open-type='reLaunch'>
       <image class="mineImg" src="/res/person.png" />
       <text class="mineText">我的</text>
     </navigator>

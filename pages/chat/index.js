@@ -308,9 +308,11 @@ Page({
     })
   },
   closeShowtimeModal() {
-    this.setData({
-      showShowtimeModal: false
-    })
+    setTimeout(_ => {
+        this.setData({
+          showShowtimeModal: false
+      })
+    },1000)
   },
   sendShowtime(val) {
     this.sendSocketMessage({

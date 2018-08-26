@@ -1,0 +1,18 @@
+<!--pages/chatlist/index.wxml-->
+<view class="page chatlist">
+  <view class="weui-panel" wx:for="{{chatList}}" wx:key="index">
+    <!-- <view class="weui-panel__hd"></view> -->
+    <navigator class="weui-panel__bd" url="/pages/chat/index?roomId={{item.id}}">
+      <view class="weui-media-box weui-media-box_text" hover-class="weui-cell_active">
+        <view class="weui-media-box__title weui-media-box__title_in-text">{{item.roomName}}</view>
+        <view class="weui-media-box__desc">
+          <image src='{{item.shareImage}}'></image>
+        </view>
+        <view class="weui-media-box__info">
+          <view class="weui-media-box__info__meta">点击进入房间</view>
+          <view class="weui-media-box__info__meta weui-media-box__info__meta_extra"></view>
+        </view>
+      </view>
+    </navigator>
+  </view>
+</view>

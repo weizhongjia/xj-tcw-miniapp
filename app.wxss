@@ -1,6 +1,7 @@
 /**app.wxss**/
 @import './res/style/my_animation.wxss';
-/* @import './res/style/weui.wxss'; */
+/*@import './res/style/weui.wxss';*/
+
 view {
   -webkit-overflow-scrolling: touch;  
 }
