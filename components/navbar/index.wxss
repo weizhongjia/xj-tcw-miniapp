@@ -2,3 +2,7 @@
 .color_fff {
   background: #fff;
 }
+
+.weui-navbar__slider {
+	width: 33%!important;
+}

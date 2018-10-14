@@ -3,7 +3,7 @@ const {request} = require('../../utils/request')
 
 Page({
   data: {
-    money: "189.45元",
+    money: "0元",
     userInfo: {},
   },
 

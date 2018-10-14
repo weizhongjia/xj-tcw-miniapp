@@ -71,7 +71,7 @@
   color: red;
 }
 .active image {
-  border-color: rgba(255, 83, 77,1);
+  border-color: rgba(255, 83, 77,1)!important;
 }
 .active::after {
   /* position: absolute; */

@@ -95,15 +95,9 @@ Page({
     })
   },
   bindKeyInput: function(e) {
-    let btnFlag = this.data.notSendBtn;
-    if(e.detail.value) {
-      btnFlag = false;
-    }else {
-      btnFlag = true;
-    }
     this.setData({
       inputValue: e.detail.value,
-      notSendBtn: btnFlag
+      notSendBtn: e.detail.value !== '' ? false : true
     });
   },
   // 连接websocket聊天 接受广播信息
@@ -151,7 +145,7 @@ Page({
       });
       this.setData({
         inputValue: "",
-        notSendBtn: true
+        notSendBtn: false
         // inputFocus: true
       });
     }
@@ -249,31 +243,20 @@ Page({
   },
   focus(e) {
     const {platform} = this.data.systemInfo;
-    let btnFlag = this.data.notSendBtn;
-    if (e.detail.value !== '') {
-      btnFlag = false;
-    } else {
-      btnFlag = true;
-    }
     this.setData({
       //zbs: 红米note和ios有区别：苹果focusHeight设置为0， 红米设置为下面的
       // focusHeight: platform == 'ios' ? "" : e.detail.height + "px",
       focusHeight: "",
       showKeyboard: true,
-      notSendBtn: btnFlag
+      notSendBtn: e.detail.value !== '' ? false : true
     })
     this.scrollToBottom();
   },
   blur(e) {
-    let btnFlag = this.data.notSendBtn;
-    if(e.detail.value !== '') {
-      btnFlag = false;
-    }else {
-      btnFlag = true;
-    }
+
     this.setData({
       showKeyboard: false,
-      notSendBtn: btnFlag
+      notSendBtn: e.detail.value !== '' ? false : true
     })
   },
   // 监听子组件close 关闭gift-cont
@@ -335,8 +318,13 @@ Page({
     let emoji = e.currentTarget.dataset.emoji
     self.setData({
       inputValue: self.data.inputValue + emoji,
-      showEmoji: false
+      showEmoji: false,
+      notSendBtn: true,
+      inputFocus: true
     });
+  },
+  aaa() {
+    console.log('sss')
   },
   /*
    *监听子组件sendHB事件，触发发送红包
